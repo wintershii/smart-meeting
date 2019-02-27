@@ -14,8 +14,6 @@ public class UserMeeting {
     private Date createTime;
     private Date updateTime;
 
-    public UserMeeting() {
-    }
 
     public UserMeeting(Integer id, String meetingName, Integer userId, Date startTime, Date endTime, Integer roomId,
                        Integer masterId, Date createTime, Date updateTime) {
