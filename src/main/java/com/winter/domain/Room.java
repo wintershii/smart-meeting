@@ -11,8 +11,6 @@ public class Room {
     private Date createTime;
     private Date updateTime;
 
-    public Room() {
-    }
 
     public Room(Integer id, String roomNumber, String machineNumber, Date createTime, Date updateTime) {
         Id = id;
