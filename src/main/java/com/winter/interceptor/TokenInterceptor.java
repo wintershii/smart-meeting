@@ -1,4 +1,4 @@
-package com.winter.common;
+package com.winter.interceptor;
 
 import com.winter.util.TokenUtil;
 import org.springframework.stereotype.Component;

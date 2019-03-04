@@ -15,6 +15,8 @@ public class Const {
 
     public static final String USERNAME = "username";
 
+    public static final String PHONE = "phone";
+
     public interface ProductListOrderBy {
         Set<String> PRICE_ASC_DSC = Sets.newHashSet("price_desc","price_asc");
     }

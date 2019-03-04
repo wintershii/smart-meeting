@@ -20,11 +20,16 @@ public interface UserMapper {
 
     int updateByPrimaryKey(User record);
 
-    int checkUsername(String username);
+    int checkPhone(String phone);
 
     int checkEmail(String email);
 
-    User selectLogin(@Param("username") String username, @Param("password") String password);
+    User selectLogin(@Param("phone") String phone, @Param("password") String password);
 
     List<User> getAll();
+
+    User selectByPhone(String phone);
+
+    int updateInfo(@Param("id") Integer id, @Param("phone") String phone, @Param("password") String password,
+                   @Param("sex") String sex, @Param("email") String email, @Param("avatarUrl") String avatarUrl);
 }

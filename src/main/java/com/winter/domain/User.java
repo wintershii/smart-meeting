@@ -17,7 +17,7 @@ public class User {
     private Date updateTime;
 
 
-    public User(Integer id, String username, String password, String sex, String phone, String email, String avatarUrl, String faceUrl, Date createTime, Date updateTime,String faceData) {
+    public User(Integer id, String username, String password, String sex, String phone, String email, String faceData, String avatarUrl, String faceUrl, Date createTime, Date updateTime) {
         this.id = id;
         this.username = username;
         this.password = password;
@@ -31,18 +31,6 @@ public class User {
         this.updateTime = updateTime;
     }
 
-    public User(Integer id, String username, String password, String sex, String phone, String email, String faceData, String avatarUrl, Date createTime, Date updateTime) {
-        this.id = id;
-        this.username = username;
-        this.password = password;
-        this.sex = sex;
-        this.phone = phone;
-        this.email = email;
-        this.faceData = faceData;
-        this.avatarUrl = avatarUrl;
-        this.createTime = createTime;
-        this.updateTime = updateTime;
-    }
 
     public Integer getId() {
         return id;

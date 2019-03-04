@@ -1,17 +1,17 @@
 -- 用户表
 CREATE TABLE smart_user (
   id int(11) PRIMARY KEY AUTO_INCREMENT,
-  username varchar(50) NOT NULL COMMENT '用户名',
+  username varchar(50) NOT NULL COMMENT '用户名,可重复',
   password    varchar(50) NOT NULL COMMENT '用户密码,MD5加密 ',
   sex varchar(5) NOT NULL ,
-  phone  varchar(20)  NOT NULL,
+  phone  varchar(20)  NOT NULL COMMETN '手机号,用于登录',
   email  varchar(50)  NOT NULL,
   face_data text NOT NULL COMMENT '人脸数据',
   avatar_url varchar(500) NOT NULL COMMENT '头像数据',
   face_url varchar(500) NOT NULL COMMENT '人脸数据',
   create_time datetime    NOT NULL COMMENT '创建时间',
   update_time datetime    NOT NULL COMMENT '最后一次更新时间',
-  UNIQUE KEY user_name_unique (username) USING BTREE
+  UNIQUE user_no_pwd_index (phone, password) USING BTREE
 )
   ENGINE = InnoDB
   AUTO_INCREMENT = 1000

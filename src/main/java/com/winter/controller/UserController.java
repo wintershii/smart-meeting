@@ -4,8 +4,10 @@ import com.winter.common.ServerResponse;
 import com.winter.domain.User;
 import com.winter.service.IFileService;
 import com.winter.service.IUserService;
+import com.winter.util.MD5Util;
 import com.winter.util.PropertiesUtil;
 import com.winter.util.TokenUtil;
+import org.apache.commons.lang3.StringUtils;
 import org.checkerframework.checker.units.qual.A;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -70,10 +72,11 @@ public class UserController {
      */
     @RequestMapping(value = "/login.do",method = RequestMethod.POST)
     @ResponseBody
-    public ServerResponse<User> login(String username, String password, HttpServletResponse response) {
-        ServerResponse<User> serverResponse = userService.login(username,password);
+    public ServerResponse<User> login(String phone, String password, HttpServletResponse response) {
+        ServerResponse<User> serverResponse = userService.login(phone,password);
         if (serverResponse.isSuccess()) {
-            String token = TokenUtil.sign(username);
+            Integer id = serverResponse.getData().getId();
+            String token = TokenUtil.sign(id,phone);
             if (token != null) {
                 response.addHeader("token",token);
                 return serverResponse;
@@ -83,11 +86,56 @@ public class UserController {
     }
 
 
+    /**
+     * 获取所有用户信息
+     * @return
+     */
     @RequestMapping(value = "/getAll.do",method = RequestMethod.POST)
     @ResponseBody
     public ServerResponse<List<User>> getAll() {
         return userService.getAll();
     }
 
+
+    /**
+     * 获取指定用户信息
+     * @return
+     */
+    @RequestMapping(value = "/getOneByPhone.do",method = RequestMethod.POST)
+    @ResponseBody
+    public ServerResponse<User> getOneByPhone(String phone) {
+        return userService.getOneByPhone(phone);
+    }
+
+
+    /**
+     * 修改用户信息
+     * @return
+     */
+    @RequestMapping(value = "/update.do",method = RequestMethod.POST)
+    @ResponseBody
+    public ServerResponse<User> update(@RequestParam(value = "id") Integer id, @RequestParam(value = "phone") String phone,
+                                       @RequestParam(value = "password") String password, @RequestParam(value = "sex") String sex,
+                                       @RequestParam(value = "email") String email, @RequestParam(value = "avatar") MultipartFile avatarFile,
+                                       HttpServletRequest request) {
+        String token = request.getHeader("token");
+        Integer tokenId = Integer.parseInt(TokenUtil.getInfo(token,"id"));
+        if (tokenId.intValue() == id.intValue()) {
+
+            String path = request.getSession().getServletContext().getRealPath("upload");
+
+            String avatarFileName = fileService.upload(avatarFile,path);
+            String avatarUrl = PropertiesUtil.getProperty("ftp.server.http.prefix") + avatarFileName;
+            if (StringUtils.isBlank(password)){
+                return userService.update(id,phone,null,sex,email,avatarUrl);
+            } else {
+                String md5Password = MD5Util.MD5EncodeUtf8(password);
+                return userService.update(id,phone,md5Password,sex,email,avatarUrl);
+            }
+
+        }
+        return ServerResponse.createByErrorMessage("无权限操作!");
+
+    }
 }
 

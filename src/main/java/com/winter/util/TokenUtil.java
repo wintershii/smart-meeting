@@ -3,6 +3,7 @@ package com.winter.util;
 import com.auth0.jwt.JWT;
 import com.auth0.jwt.JWTVerifier;
 import com.auth0.jwt.algorithms.Algorithm;
+import com.auth0.jwt.exceptions.JWTDecodeException;
 import com.auth0.jwt.interfaces.DecodedJWT;
 import com.winter.common.Const;
 
@@ -22,10 +23,9 @@ public class TokenUtil {
 
     /**
      * 颁发签名
-     * @param username
      * @return
      */
-    public static String sign(String username) {
+    public static String sign(Integer id, String phone) {
         try {
             // 设置过期时间
             Date date = new Date(System.currentTimeMillis() + EXPIRE_TIME);
@@ -38,7 +38,8 @@ public class TokenUtil {
             // 返回token字符串
             return JWT.create()
                     .withHeader(header)
-                    .withClaim(Const.CURRENT_USER, username)
+                    .withClaim("id",id.toString())
+                    .withClaim("phone",phone)
                     .withExpiresAt(date)
                     .sign(algorithm);
         } catch (Exception e) {
@@ -62,5 +63,29 @@ public class TokenUtil {
             return false;
         }
     }
+
+
+    /**
+     * 从token中获取phone信息
+     * @param token
+     * @return
+     */
+    public static String getInfo(String token ,String type){
+        try {
+            DecodedJWT jwt = JWT.decode(token);
+            if (type.equals("phone")) {
+                return jwt.getClaim("phone").asString();
+            }
+            if (type.equals("id")) {
+                return jwt.getClaim("id").asString();
+            }
+
+        } catch (JWTDecodeException e){
+            e.printStackTrace();
+            return null;
+        }
+        return null;
+    }
+
 
 }

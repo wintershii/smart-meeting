@@ -29,7 +29,7 @@ public class UserServiceImpl implements IUserService {
      */
     public ServerResponse<String> register(User user) {
 
-        ServerResponse validResponse = this.checkValid(user.getUsername(), Const.USERNAME);
+        ServerResponse validResponse = this.checkValid(user.getPhone(), Const.PHONE);
         if (!validResponse.isSuccess()) {
             return validResponse;
         }
@@ -52,18 +52,18 @@ public class UserServiceImpl implements IUserService {
 
     /**
      * 用户登录
-     * @param username
+     * @param phone
      * @param password
      * @return
      */
-    public ServerResponse<User> login(String username, String password) {
-        int resultCount = userMapper.checkUsername(username);
+    public ServerResponse<User> login(String phone, String password) {
+        int resultCount = userMapper.checkPhone(phone);
         if (resultCount == 0) {
-            return ServerResponse.createBySuccessMessage("用户名不存在");
+            return ServerResponse.createBySuccessMessage("该用户不存在");
         }
 
         String md5pwd = MD5Util.MD5EncodeUtf8(password);
-        User user = userMapper.selectLogin(username,md5pwd);
+        User user = userMapper.selectLogin(phone,md5pwd);
         if (user == null) {
             return ServerResponse.createByErrorMessage("密码错误");
         }
@@ -92,10 +92,10 @@ public class UserServiceImpl implements IUserService {
     public ServerResponse<String> checkValid(String str, String type) {
         if (StringUtils.isNoneBlank(type)) {
             //开始校验
-            if (Const.USERNAME.equals(type)) {
-                int resultCount = userMapper.checkUsername(str);
+            if (Const.PHONE.equals(type)) {
+                int resultCount = userMapper.checkPhone(str);
                 if (resultCount > 0) {
-                    return ServerResponse.createByErrorMessage("用户名已存在");
+                    return ServerResponse.createByErrorMessage("该手机号已注册");
                 }
             }
 
@@ -111,5 +111,37 @@ public class UserServiceImpl implements IUserService {
 
         return ServerResponse.createBySuccess("校验成功");
     }
+
+    /**
+     * 通过手机号获取用户信息
+     * @param phone
+     * @return
+     */
+    public ServerResponse<User> getOneByPhone(String phone) {
+        User user = userMapper.selectByPhone(phone);
+        if (user != null) {
+            return ServerResponse.createBySuccess(user);
+        }
+        return ServerResponse.createByErrorMessage("用户不存在!");
+    }
+
+    /**
+     * 修改用户信息
+     * @param id
+     * @param phone
+     * @param sex
+     * @param email
+     * @param avatarUrl
+     * @return
+     */
+    @Override
+    public ServerResponse update(Integer id, String phone, String password, String sex, String email, String avatarUrl) {
+        int resultCount = userMapper.updateInfo(id,phone,password,sex,email,avatarUrl);
+        if (resultCount > 0) {
+            return ServerResponse.createBySuccessMessage("修改信息成功");
+        }
+        return ServerResponse.createByErrorMessage("修改信息失败");
+    }
+
 
 }
