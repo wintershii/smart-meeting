@@ -6,12 +6,13 @@
       <idArg column="id" javaType="java.lang.Integer" jdbcType="INTEGER" />
       <arg column="roomNumber" javaType="java.lang.String" jdbcType="VARCHAR" />
       <arg column="machineNumber" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="status" javaType="java.lang.Integer" jdbcType="INTEGER" />
       <arg column="create_time" javaType="java.util.Date" jdbcType="TIMESTAMP" />
       <arg column="update_time" javaType="java.util.Date" jdbcType="TIMESTAMP" />
     </constructor>
   </resultMap>
   <sql id="Base_Column_List">
-    id, roomNumber, machineNumber, create_time, update_time
+    id, roomNumber, machineNumber, status, create_time, update_time
   </sql>
   <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
     select 
@@ -24,10 +25,10 @@
     where id = #{id,jdbcType=INTEGER}
   </delete>
   <insert id="insert" parameterType="com.winter.domain.Room">
-    insert into smart_room (id, roomNumber, machineNumber, 
-      create_time, update_time)
+    insert into smart_room (id, roomNumber, machineNumber,
+     status,create_time, update_time)
     values (#{id,jdbcType=INTEGER}, #{roomnumber,jdbcType=VARCHAR}, #{machinenumber,jdbcType=VARCHAR}, 
-      #{createTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP})
+      #{status,jdbcType=INTEGER},#{createTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP})
   </insert>
   <insert id="insertSelective" parameterType="com.winter.domain.Room">
     insert into smart_room
@@ -40,6 +41,9 @@
       </if>
       <if test="machinenumber != null">
         machineNumber,
+      </if>
+      <if test="status != null">
+        status,
       </if>
       <if test="createTime != null">
         create_time,
@@ -58,6 +62,9 @@
       <if test="machinenumber != null">
         #{machinenumber,jdbcType=VARCHAR},
       </if>
+      <if test="status != null">
+        #{status,jdbcType=INTEGER},
+      </if>
       <if test="createTime != null">
         #{createTime,jdbcType=TIMESTAMP},
       </if>
@@ -74,6 +81,9 @@
       </if>
       <if test="machinenumber != null">
         machineNumber = #{machinenumber,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null">
+        status = #{status,jdbcType=VARCHAR},
       </if>
       <if test="createTime != null">
         create_time = #{createTime,jdbcType=TIMESTAMP},
@@ -92,4 +102,19 @@
       update_time = #{updateTime,jdbcType=TIMESTAMP}
     where id = #{id,jdbcType=INTEGER}
   </update>
+
+  <select id="selectAll" resultMap="BaseResultMap" resultType="list">
+    select
+    <include refid="Base_Column_List"/>
+    from smart_room
+  </select>
+
+  <select id="getMeetingIdByRoomId" resultType="list">
+    select id
+    from smart_meeting
+    where room_id = #{roomId}
+    <if test="flag != null">
+      and DATE_SUB(CURDATE(), INTERVAL 3 DAY) <= date(create_time)
+    </if>
+  </select>
 </mapper>

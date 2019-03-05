@@ -1,23 +1,25 @@
-package com.winter.domain;
+package com.winter.vo;
 
-import java.util.Date;
+import java.util.List;
 
-public class Room {
+public class RoomVo {
     private Integer Id;
     private String roomNumber;
     private String machineNumber;
     private Integer status;
+    private List<Integer> meetingLists;
+    private List<Integer> recentlyMeetings;
 
-    private Date createTime;
-    private Date updateTime;
+    public RoomVo() {
+    }
 
-    public Room(Integer id, String roomNumber, String machineNumber, Integer status, Date createTime, Date updateTime) {
+    public RoomVo(Integer id, String roomNumber, String machineNumber, Integer status, List<Integer> meetingLists, List<Integer> recentlyMeetings) {
         Id = id;
         this.roomNumber = roomNumber;
         this.machineNumber = machineNumber;
         this.status = status;
-        this.createTime = createTime;
-        this.updateTime = updateTime;
+        this.meetingLists = meetingLists;
+        this.recentlyMeetings = recentlyMeetings;
     }
 
     public Integer getId() {
@@ -52,19 +54,19 @@ public class Room {
         this.status = status;
     }
 
-    public Date getCreateTime() {
-        return createTime;
+    public List<Integer> getMeetingLists() {
+        return meetingLists;
     }
 
-    public void setCreateTime(Date createTime) {
-        this.createTime = createTime;
+    public void setMeetingLists(List<Integer> meetingLists) {
+        this.meetingLists = meetingLists;
     }
 
-    public Date getUpdateTime() {
-        return updateTime;
+    public List<Integer> getRecentlyMeetings() {
+        return recentlyMeetings;
     }
 
-    public void setUpdateTime(Date updateTime) {
-        this.updateTime = updateTime;
+    public void setRecentlyMeetings(List<Integer> recentlyMeetings) {
+        this.recentlyMeetings = recentlyMeetings;
     }
 }
