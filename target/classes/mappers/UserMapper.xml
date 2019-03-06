@@ -227,19 +227,19 @@
     where phone = #{phone}
   </select>
 
-    <update id="updateInfo" parameterType="map">
-        update smart_user
-        <set>
-            phone = #{phone},
-            <if test="password != null">
-                password = #{password,jdbcType=VARCHAR},
-            </if>
-                sex = #{sex},
-                email = #{email},
-                avatar_url = #{avatarUrl},
-                update_time = now()
-        </set>
+    <!--<update id="updateInfo" parameterType="map">-->
+        <!--update smart_user-->
+        <!--<set>-->
+            <!--phone = #{phone},-->
+            <!--<if test="password != null">-->
+                <!--password = #{password,jdbcType=VARCHAR},-->
+            <!--</if>-->
+                <!--sex = #{sex},-->
+                <!--email = #{email},-->
+                <!--avatar_url = #{avatarUrl},-->
+                <!--update_time = now()-->
+        <!--</set>-->
 
-        where id = #{id}
-    </update>
+        <!--where id = #{id}-->
+    <!--</update>-->
 </mapper>

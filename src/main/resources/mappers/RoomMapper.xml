@@ -114,7 +114,7 @@
     from smart_meeting
     where room_id = #{roomId}
     <if test="flag != null">
-      and DATE_SUB(CURDATE(), INTERVAL 3 DAY) <= date(create_time)
+      and DATE_SUB(CURDATE(), INTERVAL 3 DAY) &lt;= create_time
     </if>
   </select>
 </mapper>

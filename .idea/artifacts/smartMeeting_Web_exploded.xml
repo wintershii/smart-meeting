@@ -61,6 +61,9 @@
           <element id="library" level="project" name="Maven: redis.clients:jedis:3.0.0" />
           <element id="library" level="project" name="Maven: com.auth0:java-jwt:3.5.0" />
           <element id="library" level="project" name="Maven: commons-codec:commons-codec:1.11" />
+          <element id="library" level="project" name="Maven: com.squareup.okhttp:okhttp:2.5.0" />
+          <element id="library" level="project" name="Maven: com.squareup.okio:okio:1.6.0" />
+          <element id="library" level="project" name="Maven: com.google.code.gson:gson:2.8.5" />
         </element>
       </element>
     </root>

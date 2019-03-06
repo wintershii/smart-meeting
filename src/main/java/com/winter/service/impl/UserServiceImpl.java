@@ -59,7 +59,7 @@ public class UserServiceImpl implements IUserService {
     public ServerResponse<User> login(String phone, String password) {
         int resultCount = userMapper.checkPhone(phone);
         if (resultCount == 0) {
-            return ServerResponse.createBySuccessMessage("该用户不存在");
+            return ServerResponse.createByErrorMessage("该用户不存在");
         }
 
         String md5pwd = MD5Util.MD5EncodeUtf8(password);
