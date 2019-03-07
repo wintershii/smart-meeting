@@ -20,4 +20,13 @@ public class PhoneController {
         String code = PhoneUtil.getVerificationCode(phoneNumber);
         return ServerResponse.createBySuccess(code);
     }
+
+    @ResponseBody
+    @RequestMapping(value = "/judgeCode.do",method = RequestMethod.POST)
+    public ServerResponse judgeCode(String code,String phoneNumber) {
+        if (PhoneUtil.judgeCodeIsTrue(code,phoneNumber)) {
+            return ServerResponse.createBySuccessMessage("验证成功");
+        }
+        return ServerResponse.createByErrorMessage("验证失败");
+    }
 }

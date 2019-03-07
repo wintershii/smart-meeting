@@ -4,6 +4,7 @@ import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.gson.Gson;
 import com.squareup.okhttp.*;
+import com.winter.common.PhoneNumber;
 import com.winter.common.PhoneRequest;
 
 import java.io.IOException;
@@ -24,6 +25,7 @@ public class PhoneUtil {
         OkHttpClient client = new OkHttpClient();
 
         PhoneRequest phoneRequest = new PhoneRequest(phoneNumber,"AppModel");
+
 
         Gson gson = new Gson();
         String json = gson.toJson(phoneRequest);
@@ -59,7 +61,56 @@ public class PhoneUtil {
     }
 
 
+    /**
+     * 验证用户验证码是否正确
+     * @param code
+     * @return
+     */
+    public static boolean judgeCodeIsTrue(String code,String mobilePhoneNumber) {
+        String url = "https://api2.bmob.cn/1/verifySmsCode/" + code;
+        OkHttpClient client = new OkHttpClient();
 
+
+        PhoneNumber phoneNumber = new PhoneNumber(mobilePhoneNumber);
+
+        Gson gson = new Gson();
+        String json = gson.toJson(phoneNumber);
+        System.out.println(json);
+        RequestBody  jsonBody = RequestBody.create(JSON,json);
+
+
+        Request request = new Request.Builder()
+                .url(url)
+                .addHeader("X-Bmob-Application-Id","4527189a38e9393bebbaaf3940982580")
+                .addHeader("X-Bmob-REST-API-Key","6449d52f810bf605698ff865f5017929")
+                .addHeader("Content-Type","application/json")
+                .post(jsonBody)
+                .build();
+
+        try {
+            Response response = client.newCall(request).execute();
+            String result = response.body().string();
+            System.out.println("获取到响应:" + result);
+            System.out.println("开始请求....");
+            if ( !response.isSuccessful()) {
+                System.out.println("请求失败...");
+                return false;
+            }
+            System.out.println("请求成功...");
+            System.out.println("获取到响应:" + result);
+            return true;
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return false;
+    }
+
+    /**
+     * 请求体转Json
+     * @param result
+     * @return
+     */
     private static String bodyToJson(String result) {
 
         JsonNode root = null;
