@@ -27,7 +27,7 @@ public class RoomServiceImpl implements IRoomService {
     }
 
     /**
-     * 根据会议室id获取会议id
+     * 根据会议室id获取会议id列表
      * @param roomId
      * @return
      */

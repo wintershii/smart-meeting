@@ -4,7 +4,7 @@ CREATE TABLE smart_user (
   username varchar(50) NOT NULL COMMENT '用户名,可重复',
   password    varchar(50) NOT NULL COMMENT '用户密码,MD5加密 ',
   sex varchar(5) NOT NULL ,
-  phone  varchar(20)  NOT NULL COMMETN '手机号,用于登录',
+  phone  varchar(20)  NOT NULL COMMENT '手机号,用于登录',
   email  varchar(50)  NOT NULL,
   face_data text NOT NULL COMMENT '人脸数据',
   avatar_url varchar(500) NOT NULL COMMENT '头像数据',

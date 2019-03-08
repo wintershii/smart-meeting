@@ -140,4 +140,16 @@
       update_time = #{updateTime,jdbcType=TIMESTAMP}
     where id = #{id,jdbcType=INTEGER}
   </update>
+  <select id="getUserMeetings" resultType="list" parameterType="map" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List"/>
+    from smart_meeting
+    where
+    <if test="type != null">
+       status = 0
+    </if>
+    <if test="type == null">
+       status = 1
+    </if>
+  </select>
 </mapper>

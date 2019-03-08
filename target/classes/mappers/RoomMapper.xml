@@ -109,12 +109,13 @@
     from smart_room
   </select>
 
-  <select id="getMeetingIdByRoomId" resultType="list">
+  <select id="getMeetingIdByRoomId" resultType="java.lang.Integer" parameterType="map">
     select id
     from smart_meeting
     where room_id = #{roomId}
     <if test="flag != null">
       and DATE_SUB(CURDATE(), INTERVAL 3 DAY) &lt;= create_time
     </if>
+    order by create_time
   </select>
 </mapper>

@@ -1,6 +1,9 @@
 package com.winter.dao;
 
 import com.winter.domain.UserMeeting;
+import org.apache.ibatis.annotations.Param;
+
+import java.util.List;
 
 public interface UserMeetingMapper {
     int deleteByPrimaryKey(Integer id);
@@ -14,4 +17,6 @@ public interface UserMeetingMapper {
     int updateByPrimaryKeySelective(UserMeeting record);
 
     int updateByPrimaryKey(UserMeeting record);
+
+    List<UserMeeting> getUserMeetings(@Param("userId") Integer userId, @Param("type") Integer type);
 }
