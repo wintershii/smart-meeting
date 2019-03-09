@@ -4,33 +4,61 @@ import java.util.Date;
 
 public class User {
     private Integer id;
+
     private String username;
+
     private String password;
+
     private String sex;
+
+    private Integer role;
+
     private String phone;
+
     private String email;
-    private String faceData;
+
     private String avatarUrl;
+
     private String faceUrl;
 
     private Date createTime;
+
     private Date updateTime;
 
+    private String faceData;
 
-    public User(Integer id, String username, String password, String sex, String phone, String email, String faceData, String avatarUrl, String faceUrl, Date createTime, Date updateTime) {
+    public User(Integer id, String username, String password, String sex, Integer role, String phone, String email, String avatarUrl, String faceUrl, Date createTime, Date updateTime) {
         this.id = id;
         this.username = username;
         this.password = password;
         this.sex = sex;
+        this.role = role;
         this.phone = phone;
         this.email = email;
-        this.faceData = faceData;
         this.avatarUrl = avatarUrl;
         this.faceUrl = faceUrl;
         this.createTime = createTime;
         this.updateTime = updateTime;
     }
 
+    public User(Integer id, String username, String password, String sex, Integer role, String phone, String email, String avatarUrl, String faceUrl, Date createTime, Date updateTime, String faceData) {
+        this.id = id;
+        this.username = username;
+        this.password = password;
+        this.sex = sex;
+        this.role = role;
+        this.phone = phone;
+        this.email = email;
+        this.avatarUrl = avatarUrl;
+        this.faceUrl = faceUrl;
+        this.createTime = createTime;
+        this.updateTime = updateTime;
+        this.faceData = faceData;
+    }
+
+    public User() {
+        super();
+    }
 
     public Integer getId() {
         return id;
@@ -45,7 +73,7 @@ public class User {
     }
 
     public void setUsername(String username) {
-        this.username = username;
+        this.username = username == null ? null : username.trim();
     }
 
     public String getPassword() {
@@ -53,7 +81,7 @@ public class User {
     }
 
     public void setPassword(String password) {
-        this.password = password;
+        this.password = password == null ? null : password.trim();
     }
 
     public String getSex() {
@@ -61,7 +89,15 @@ public class User {
     }
 
     public void setSex(String sex) {
-        this.sex = sex;
+        this.sex = sex == null ? null : sex.trim();
+    }
+
+    public Integer getRole() {
+        return role;
+    }
+
+    public void setRole(Integer role) {
+        this.role = role;
     }
 
     public String getPhone() {
@@ -69,7 +105,7 @@ public class User {
     }
 
     public void setPhone(String phone) {
-        this.phone = phone;
+        this.phone = phone == null ? null : phone.trim();
     }
 
     public String getEmail() {
@@ -77,15 +113,7 @@ public class User {
     }
 
     public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public String getFaceData() {
-        return faceData;
-    }
-
-    public void setFaceData(String faceData) {
-        this.faceData = faceData;
+        this.email = email == null ? null : email.trim();
     }
 
     public String getAvatarUrl() {
@@ -93,7 +121,7 @@ public class User {
     }
 
     public void setAvatarUrl(String avatarUrl) {
-        this.avatarUrl = avatarUrl;
+        this.avatarUrl = avatarUrl == null ? null : avatarUrl.trim();
     }
 
     public String getFaceUrl() {
@@ -101,7 +129,7 @@ public class User {
     }
 
     public void setFaceUrl(String faceUrl) {
-        this.faceUrl = faceUrl;
+        this.faceUrl = faceUrl == null ? null : faceUrl.trim();
     }
 
     public Date getCreateTime() {
@@ -118,5 +146,13 @@ public class User {
 
     public void setUpdateTime(Date updateTime) {
         this.updateTime = updateTime;
+    }
+
+    public String getFaceData() {
+        return faceData;
+    }
+
+    public void setFaceData(String faceData) {
+        this.faceData = faceData == null ? null : faceData.trim();
     }
 }

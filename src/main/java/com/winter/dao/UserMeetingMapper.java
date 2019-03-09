@@ -4,6 +4,7 @@ import com.winter.domain.UserMeeting;
 import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
+import java.util.Map;
 
 public interface UserMeetingMapper {
     int deleteByPrimaryKey(Integer id);
@@ -18,5 +19,9 @@ public interface UserMeetingMapper {
 
     int updateByPrimaryKey(UserMeeting record);
 
-    List<UserMeeting> getUserMeetings(@Param("userId") Integer userId, @Param("type") Integer type);
+    List<UserMeeting> getUserMeetings(@Param("userId") Integer userId,@Param("flag") Integer flag);
+
+    int getPeopleNum(Integer meetingId);
+
+    Map<Integer,Integer> getUserStatus(Integer meetingId);
 }

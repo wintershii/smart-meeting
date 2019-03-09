@@ -1,5 +1,6 @@
 package com.winter.controller;
 
+import com.winter.common.Const;
 import com.winter.common.ServerResponse;
 import com.winter.domain.User;
 import com.winter.service.IFileService;
@@ -8,7 +9,6 @@ import com.winter.util.MD5Util;
 import com.winter.util.PropertiesUtil;
 import com.winter.util.TokenUtil;
 import org.apache.commons.lang3.StringUtils;
-import org.checkerframework.checker.units.qual.A;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -16,8 +16,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
-import org.springframework.web.multipart.MultipartHttpServletRequest;
-import org.springframework.web.multipart.MultipartRequest;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -52,13 +50,12 @@ public class UserController {
     public ServerResponse<String> register(User user, HttpServletRequest request, @RequestParam(value = "avatar", required = false)
             MultipartFile avatarFile, @RequestParam(value = "face", required = false) MultipartFile faceFile) {
 
-        String path = request.getSession().getServletContext().getRealPath("upload");
+        user.setRole(Const.Role.USER);
+        String avatarFileName = fileService.upload(avatarFile,PropertiesUtil.getProperty("upload_path"));
+        String avatarUrl = PropertiesUtil.getProperty("image.server.http.prefix") + avatarFileName;
 
-        String avatarFileName = fileService.upload(avatarFile,path);
-        String avatarUrl = PropertiesUtil.getProperty("ftp.server.http.prefix") + avatarFileName;
-
-        String faceFileName = fileService.upload(faceFile,path);
-        String faceUrl = PropertiesUtil.getProperty("ftp.server.http.prefix") + faceFileName;
+        String faceFileName = fileService.upload(faceFile,PropertiesUtil.getProperty("upload_path"));
+        String faceUrl = PropertiesUtil.getProperty("image.server.http.prefix") + faceFileName;
 
         user.setAvatarUrl(avatarUrl);
         user.setFaceUrl(faceUrl);

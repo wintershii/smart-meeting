@@ -4,10 +4,13 @@
   <resultMap id="BaseResultMap" type="com.winter.domain.UserMeeting">
     <constructor>
       <idArg column="id" javaType="java.lang.Integer" jdbcType="INTEGER" />
-      <arg column="meetingName" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="meeting_name" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="meeting_intro" javaType="java.lang.String" jdbcType="VARCHAR" />
       <arg column="user_id" javaType="java.lang.Integer" jdbcType="INTEGER" />
       <arg column="room_id" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="user_status" javaType="java.lang.Integer" jdbcType="INTEGER" />
       <arg column="status" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="master_id" javaType="java.lang.Integer" jdbcType="INTEGER" />
       <arg column="start_time" javaType="java.util.Date" jdbcType="TIMESTAMP" />
       <arg column="end_time" javaType="java.util.Date" jdbcType="TIMESTAMP" />
       <arg column="create_time" javaType="java.util.Date" jdbcType="TIMESTAMP" />
@@ -15,7 +18,8 @@
     </constructor>
   </resultMap>
   <sql id="Base_Column_List">
-    id, meetingName, user_id, room_id, status, start_time, end_time, create_time, update_time
+    id, meeting_name, meeting_intro, user_id, room_id, user_status, status, master_id, 
+    start_time, end_time, create_time, update_time
   </sql>
   <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
     select 
@@ -28,12 +32,14 @@
     where id = #{id,jdbcType=INTEGER}
   </delete>
   <insert id="insert" parameterType="com.winter.domain.UserMeeting">
-    insert into smart_meeting (id, meetingName, user_id, 
-      room_id, status, start_time, 
+    insert into smart_meeting (id, meeting_name, meeting_intro, 
+      user_id, room_id, user_status, 
+      status, master_id, start_time, 
       end_time, create_time, update_time
       )
-    values (#{id,jdbcType=INTEGER}, #{meetingname,jdbcType=VARCHAR}, #{userId,jdbcType=INTEGER}, 
-      #{roomId,jdbcType=INTEGER}, #{status,jdbcType=INTEGER}, #{startTime,jdbcType=TIMESTAMP}, 
+    values (#{id,jdbcType=INTEGER}, #{meetingName,jdbcType=VARCHAR}, #{meetingIntro,jdbcType=VARCHAR}, 
+      #{userId,jdbcType=INTEGER}, #{roomId,jdbcType=INTEGER}, #{userStatus,jdbcType=INTEGER}, 
+      #{status,jdbcType=INTEGER}, #{masterId,jdbcType=INTEGER}, #{startTime,jdbcType=TIMESTAMP}, 
       #{endTime,jdbcType=TIMESTAMP}, #{createTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP}
       )
   </insert>
@@ -43,8 +49,11 @@
       <if test="id != null">
         id,
       </if>
-      <if test="meetingname != null">
-        meetingName,
+      <if test="meetingName != null">
+        meeting_name,
+      </if>
+      <if test="meetingIntro != null">
+        meeting_intro,
       </if>
       <if test="userId != null">
         user_id,
@@ -52,8 +61,14 @@
       <if test="roomId != null">
         room_id,
       </if>
+      <if test="userStatus != null">
+        user_status,
+      </if>
       <if test="status != null">
         status,
+      </if>
+      <if test="masterId != null">
+        master_id,
       </if>
       <if test="startTime != null">
         start_time,
@@ -72,8 +87,11 @@
       <if test="id != null">
         #{id,jdbcType=INTEGER},
       </if>
-      <if test="meetingname != null">
-        #{meetingname,jdbcType=VARCHAR},
+      <if test="meetingName != null">
+        #{meetingName,jdbcType=VARCHAR},
+      </if>
+      <if test="meetingIntro != null">
+        #{meetingIntro,jdbcType=VARCHAR},
       </if>
       <if test="userId != null">
         #{userId,jdbcType=INTEGER},
@@ -81,8 +99,14 @@
       <if test="roomId != null">
         #{roomId,jdbcType=INTEGER},
       </if>
+      <if test="userStatus != null">
+        #{userStatus,jdbcType=INTEGER},
+      </if>
       <if test="status != null">
         #{status,jdbcType=INTEGER},
+      </if>
+      <if test="masterId != null">
+        #{masterId,jdbcType=INTEGER},
       </if>
       <if test="startTime != null">
         #{startTime,jdbcType=TIMESTAMP},
@@ -101,8 +125,11 @@
   <update id="updateByPrimaryKeySelective" parameterType="com.winter.domain.UserMeeting">
     update smart_meeting
     <set>
-      <if test="meetingname != null">
-        meetingName = #{meetingname,jdbcType=VARCHAR},
+      <if test="meetingName != null">
+        meeting_name = #{meetingName,jdbcType=VARCHAR},
+      </if>
+      <if test="meetingIntro != null">
+        meeting_intro = #{meetingIntro,jdbcType=VARCHAR},
       </if>
       <if test="userId != null">
         user_id = #{userId,jdbcType=INTEGER},
@@ -110,8 +137,14 @@
       <if test="roomId != null">
         room_id = #{roomId,jdbcType=INTEGER},
       </if>
+      <if test="userStatus != null">
+        user_status = #{userStatus,jdbcType=INTEGER},
+      </if>
       <if test="status != null">
         status = #{status,jdbcType=INTEGER},
+      </if>
+      <if test="masterId != null">
+        master_id = #{masterId,jdbcType=INTEGER},
       </if>
       <if test="startTime != null">
         start_time = #{startTime,jdbcType=TIMESTAMP},
@@ -130,26 +163,44 @@
   </update>
   <update id="updateByPrimaryKey" parameterType="com.winter.domain.UserMeeting">
     update smart_meeting
-    set meetingName = #{meetingname,jdbcType=VARCHAR},
+    set meeting_name = #{meetingName,jdbcType=VARCHAR},
+      meeting_intro = #{meetingIntro,jdbcType=VARCHAR},
       user_id = #{userId,jdbcType=INTEGER},
       room_id = #{roomId,jdbcType=INTEGER},
+      user_status = #{userStatus,jdbcType=INTEGER},
       status = #{status,jdbcType=INTEGER},
+      master_id = #{masterId,jdbcType=INTEGER},
       start_time = #{startTime,jdbcType=TIMESTAMP},
       end_time = #{endTime,jdbcType=TIMESTAMP},
       create_time = #{createTime,jdbcType=TIMESTAMP},
       update_time = #{updateTime,jdbcType=TIMESTAMP}
     where id = #{id,jdbcType=INTEGER}
   </update>
-  <select id="getUserMeetings" resultType="list" parameterType="map" resultMap="BaseResultMap">
+
+  <select id="getUserMeetings" parameterType="map" resultMap="BaseResultMap" resultType="list">
     select
     <include refid="Base_Column_List"/>
     from smart_meeting
-    where
-    <if test="type != null">
-       status = 0
+    where user_id = #{userId}
+    and
+    <if test="flag != null">
+      status = 1
     </if>
-    <if test="type == null">
-       status = 1
+
+    <if test="flag == null">
+      status = 2 or status = 3
     </if>
+  </select>
+
+  <select id="getPeopleNum" resultType="int" parameterType="integer">
+    select count(1)
+    from smart_meeting
+    where id = #{meetingId}
+  </select>
+
+  <select id="getUserStatus" parameterType="integer" resultType="map">
+    select user_id,user_status
+    from smart_meeting
+    where id = #{meetingId}
   </select>
 </mapper>

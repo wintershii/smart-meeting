@@ -2,6 +2,7 @@ package com.winter.controller;
 
 import com.winter.common.ServerResponse;
 import com.winter.domain.Room;
+import com.winter.domain.UserMeeting;
 import com.winter.service.IRoomService;
 import com.winter.vo.RoomVo;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -52,8 +53,8 @@ public class RoomController {
             roomVo.setRoomNumber(room.getRoomNumber());
             roomVo.setMachineNumber(room.getMachineNumber());
             roomVo.setStatus(room.getStatus());
-            List<Integer> meetingLists = roomService.getMeetingsByRoomId(room.getId(),false);
-            List<Integer> recentlyMeetings = roomService.getMeetingsByRoomId(room.getId(),true);
+            List<UserMeeting> meetingLists = roomService.getMeetingsByRoomId(room.getId(),false);
+            List<UserMeeting> recentlyMeetings = roomService.getMeetingsByRoomId(room.getId(),true);
 
             roomVo.setMeetingLists(meetingLists);
             roomVo.setRecentlyMeetings(recentlyMeetings);

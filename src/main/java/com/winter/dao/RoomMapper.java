@@ -1,6 +1,7 @@
 package com.winter.dao;
 
 import com.winter.domain.Room;
+import com.winter.domain.UserMeeting;
 import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
@@ -20,5 +21,5 @@ public interface RoomMapper {
 
     List<Room> selectAll();
 
-    List<Integer> getMeetingIdByRoomId(@Param("roomId") Integer roomId,@Param("flag") Integer flag);
+    List<UserMeeting> getMeetingIdByRoomId(@Param("roomId") Integer roomId, @Param("flag") Integer flag);
 }

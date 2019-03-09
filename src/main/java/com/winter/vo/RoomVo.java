@@ -1,5 +1,7 @@
 package com.winter.vo;
 
+import com.winter.domain.UserMeeting;
+
 import java.util.List;
 
 public class RoomVo {
@@ -7,20 +9,12 @@ public class RoomVo {
     private String roomNumber;
     private String machineNumber;
     private Integer status;
-    private List<Integer> meetingLists;
-    private List<Integer> recentlyMeetings;
+    private List<UserMeeting> meetingLists;
+    private List<UserMeeting> recentlyMeetings;
 
     public RoomVo() {
     }
 
-    public RoomVo(Integer id, String roomNumber, String machineNumber, Integer status, List<Integer> meetingLists, List<Integer> recentlyMeetings) {
-        Id = id;
-        this.roomNumber = roomNumber;
-        this.machineNumber = machineNumber;
-        this.status = status;
-        this.meetingLists = meetingLists;
-        this.recentlyMeetings = recentlyMeetings;
-    }
 
     public Integer getId() {
         return Id;
@@ -54,19 +48,19 @@ public class RoomVo {
         this.status = status;
     }
 
-    public List<Integer> getMeetingLists() {
+    public List<UserMeeting> getMeetingLists() {
         return meetingLists;
     }
 
-    public void setMeetingLists(List<Integer> meetingLists) {
+    public void setMeetingLists(List<UserMeeting> meetingLists) {
         this.meetingLists = meetingLists;
     }
 
-    public List<Integer> getRecentlyMeetings() {
+    public List<UserMeeting> getRecentlyMeetings() {
         return recentlyMeetings;
     }
 
-    public void setRecentlyMeetings(List<Integer> recentlyMeetings) {
+    public void setRecentlyMeetings(List<UserMeeting> recentlyMeetings) {
         this.recentlyMeetings = recentlyMeetings;
     }
 }

@@ -5,24 +5,19 @@ import java.util.Map;
 public class MeetingVo {
     private Integer meetingId;
     private String meetingName;
+    private String meetingIntro;
+    private Integer peopleNum;
     private String startTime;
     private String endTime;
+    private Integer status;
+    private Integer userStatus;
     private Map<Integer,Integer> memberStatus;
     private Integer roomId;
+    private String roomName;
     private Integer masterId;
 
-    public MeetingVo() {
-    }
 
-    public MeetingVo(Integer meetingId, String meetingName, String startTime, String endTime,
-                     Map<Integer, Integer> memberStatus, Integer roomId, Integer masterId) {
-        this.meetingId = meetingId;
-        this.meetingName = meetingName;
-        this.startTime = startTime;
-        this.endTime = endTime;
-        this.memberStatus = memberStatus;
-        this.roomId = roomId;
-        this.masterId = masterId;
+    public MeetingVo() {
     }
 
     public Integer getMeetingId() {
@@ -41,6 +36,22 @@ public class MeetingVo {
         this.meetingName = meetingName;
     }
 
+    public String getMeetingIntro() {
+        return meetingIntro;
+    }
+
+    public void setMeetingIntro(String meetingIntro) {
+        this.meetingIntro = meetingIntro;
+    }
+
+    public Integer getPeopleNum() {
+        return peopleNum;
+    }
+
+    public void setPeopleNum(Integer peopleNum) {
+        this.peopleNum = peopleNum;
+    }
+
     public String getStartTime() {
         return startTime;
     }
@@ -57,6 +68,22 @@ public class MeetingVo {
         this.endTime = endTime;
     }
 
+    public Integer getStatus() {
+        return status;
+    }
+
+    public void setStatus(Integer status) {
+        this.status = status;
+    }
+
+    public Integer getUserStatus() {
+        return userStatus;
+    }
+
+    public void setUserStatus(Integer userStatus) {
+        this.userStatus = userStatus;
+    }
+
     public Map<Integer, Integer> getMemberStatus() {
         return memberStatus;
     }
@@ -71,6 +98,14 @@ public class MeetingVo {
 
     public void setRoomId(Integer roomId) {
         this.roomId = roomId;
+    }
+
+    public String getRoomName() {
+        return roomName;
+    }
+
+    public void setRoomName(String roomName) {
+        this.roomName = roomName;
     }
 
     public Integer getMasterId() {

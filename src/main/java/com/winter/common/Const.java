@@ -13,31 +13,35 @@ public class Const {
 
     public static final String EMAIL = "email";
 
-    public static final String USERNAME = "username";
-
     public static final String PHONE = "phone";
 
-    public interface ProductListOrderBy {
-        Set<String> PRICE_ASC_DSC = Sets.newHashSet("price_desc","price_asc");
+    //用户身份常量
+    public interface Role {
+        static final int USER = 0;
+        static final int MANAGER = 1;
+    }
+
+    //会议室状态常量
+    public interface RoomStatus{
+        static final int FREE = 1;
+        static final int USE = 2;
+        static final int FIX = 3;
+    }
+
+    //会议进展状态
+    public interface MeetingStatus{
+        static final int OVER = 1;
+        static final int ONGOING = 2;
+        static final int NOTSTART = 3;
+    }
+
+    //会议时用户情况
+    public interface UserPerform{
+        static final int NORMAL = 1;
+        static final int ABSENCE = 2;
+        static final int LATE = 3;
+        static final int LEAVE = 4;
     }
 
 
-    public enum ProductStatusEnum {
-        ON_SALE(1,"在线");
-
-        private String value;
-        private int code;
-        ProductStatusEnum(int code, String value) {
-            this.code = code;
-            this.value = value;
-        }
-
-        public String getValue() {
-            return value;
-        }
-
-        public int getCode() {
-            return code;
-        }
-    }
 }

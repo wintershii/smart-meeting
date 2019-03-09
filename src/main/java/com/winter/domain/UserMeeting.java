@@ -4,28 +4,46 @@ import java.util.Date;
 
 public class UserMeeting {
     private Integer id;
+
     private String meetingName;
+
+    private String meetingIntro;
+
     private Integer userId;
-    private Date startTime;
-    private Date endTime;
+
     private Integer roomId;
+
+    private Integer userStatus;
+
+    private Integer status;
+
     private Integer masterId;
 
+    private Date startTime;
+
+    private Date endTime;
+
     private Date createTime;
+
     private Date updateTime;
 
-
-    public UserMeeting(Integer id, String meetingName, Integer userId, Date startTime, Date endTime, Integer roomId,
-                       Integer masterId, Date createTime, Date updateTime) {
+    public UserMeeting(Integer id, String meetingName, String meetingIntro, Integer userId, Integer roomId, Integer userStatus, Integer status, Integer masterId, Date startTime, Date endTime, Date createTime, Date updateTime) {
         this.id = id;
         this.meetingName = meetingName;
+        this.meetingIntro = meetingIntro;
         this.userId = userId;
+        this.roomId = roomId;
+        this.userStatus = userStatus;
+        this.status = status;
+        this.masterId = masterId;
         this.startTime = startTime;
         this.endTime = endTime;
-        this.roomId = roomId;
-        this.masterId = masterId;
         this.createTime = createTime;
         this.updateTime = updateTime;
+    }
+
+    public UserMeeting() {
+        super();
     }
 
     public Integer getId() {
@@ -41,7 +59,15 @@ public class UserMeeting {
     }
 
     public void setMeetingName(String meetingName) {
-        this.meetingName = meetingName;
+        this.meetingName = meetingName == null ? null : meetingName.trim();
+    }
+
+    public String getMeetingIntro() {
+        return meetingIntro;
+    }
+
+    public void setMeetingIntro(String meetingIntro) {
+        this.meetingIntro = meetingIntro == null ? null : meetingIntro.trim();
     }
 
     public Integer getUserId() {
@@ -50,6 +76,38 @@ public class UserMeeting {
 
     public void setUserId(Integer userId) {
         this.userId = userId;
+    }
+
+    public Integer getRoomId() {
+        return roomId;
+    }
+
+    public void setRoomId(Integer roomId) {
+        this.roomId = roomId;
+    }
+
+    public Integer getUserStatus() {
+        return userStatus;
+    }
+
+    public void setUserStatus(Integer userStatus) {
+        this.userStatus = userStatus;
+    }
+
+    public Integer getStatus() {
+        return status;
+    }
+
+    public void setStatus(Integer status) {
+        this.status = status;
+    }
+
+    public Integer getMasterId() {
+        return masterId;
+    }
+
+    public void setMasterId(Integer masterId) {
+        this.masterId = masterId;
     }
 
     public Date getStartTime() {
@@ -66,22 +124,6 @@ public class UserMeeting {
 
     public void setEndTime(Date endTime) {
         this.endTime = endTime;
-    }
-
-    public Integer getRoomId() {
-        return roomId;
-    }
-
-    public void setRoomId(Integer roomId) {
-        this.roomId = roomId;
-    }
-
-    public Integer getMasterId() {
-        return masterId;
-    }
-
-    public void setMasterId(Integer masterId) {
-        this.masterId = masterId;
     }
 
     public Date getCreateTime() {
