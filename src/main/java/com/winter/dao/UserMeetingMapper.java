@@ -1,6 +1,7 @@
 package com.winter.dao;
 
 import com.winter.domain.UserMeeting;
+import com.winter.vo.UserStatus;
 import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
@@ -19,9 +20,14 @@ public interface UserMeetingMapper {
 
     int updateByPrimaryKey(UserMeeting record);
 
-    List<UserMeeting> getUserMeetings(@Param("userId") Integer userId,@Param("flag") Integer flag);
+    List<UserMeeting> getUserMeetingsOngoing(Integer userId);
 
-    int getPeopleNum(Integer meetingId);
+    List<UserMeeting> getUserMeetingsFinished(Integer userId);
 
-    Map<Integer,Integer> getUserStatus(Integer meetingId);
+
+    int getPeopleNum(Integer meetingName);
+
+    List<UserStatus> getUserStatus(Integer meetingId);
+
+    List<UserMeeting> getMeetingIdByRoomId(@Param("roomId") Integer roomId, @Param("flag") Integer flag);
 }

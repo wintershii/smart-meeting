@@ -1,12 +1,13 @@
 package com.winter.service;
 
 import com.winter.vo.MeetingVo;
+import com.winter.vo.UserStatus;
 
 import java.util.List;
 import java.util.Map;
 
 public interface IMeetingService {
-    List<MeetingVo> getUserMeetings(Integer userId, int type);
+    List<MeetingVo> getUserMeetings(Integer userId, Integer type);
     MeetingVo getMeetingById(Integer meetingId);
-    Map<Integer,Integer> getUserStatus(Integer meeting);
+    List<UserStatus> getUserStatus(Integer meeting);
 }

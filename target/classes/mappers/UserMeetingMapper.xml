@@ -17,6 +17,14 @@
       <arg column="update_time" javaType="java.util.Date" jdbcType="TIMESTAMP" />
     </constructor>
   </resultMap>
+
+
+  <resultMap id="UserStatus" type="com.winter.vo.UserStatus">
+    <result column="user_id" property="userId"/>
+    <result column="username" property="username"/>
+    <result column="user_status" property="userStatus"/>
+  </resultMap>
+
   <sql id="Base_Column_List">
     id, meeting_name, meeting_intro, user_id, room_id, user_status, status, master_id, 
     start_time, end_time, create_time, update_time
@@ -177,30 +185,43 @@
     where id = #{id,jdbcType=INTEGER}
   </update>
 
-  <select id="getUserMeetings" parameterType="map" resultMap="BaseResultMap" resultType="list">
+  <select id="getUserMeetingsOngoing" parameterType="map" resultMap="BaseResultMap" resultType="list">
     select
     <include refid="Base_Column_List"/>
     from smart_meeting
     where user_id = #{userId}
     and
-    <if test="flag != null">
-      status = 1
-    </if>
+    (status = 2 or status = 3)
+  </select>
 
-    <if test="flag == null">
-      status = 2 or status = 3
-    </if>
+  <select id="getUserMeetingsFinished" parameterType="map" resultMap="BaseResultMap" resultType="list">
+    select
+    <include refid="Base_Column_List"/>
+    from smart_meeting
+    where user_id = #{userId}
+    and
+    status = 1
   </select>
 
   <select id="getPeopleNum" resultType="int" parameterType="integer">
     select count(1)
     from smart_meeting
-    where id = #{meetingId}
+    where meeting_name = #{meetingName}
   </select>
 
-  <select id="getUserStatus" parameterType="integer" resultType="map">
-    select user_id,user_status
+  <select id="getUserStatus" parameterType="integer" resultType="list" resultMap="UserStatus">
+    select user_id, username, user_status
+    from smart_meeting ,smart_user
+    where smart_meeting.id = #{meetingId}
+  </select>
+
+  <select id="getMeetingIdByRoomId" resultMap="BaseResultMap" resultType="list" parameterType="map">
+    select
+    <include refid="Base_Column_List"/>
     from smart_meeting
-    where id = #{meetingId}
+    where room_id = #{roomId}
+    <if test="flag != null">
+      and DATE_SUB(CURDATE(), INTERVAL 5 DAY) &lt;= start_time
+    </if>
   </select>
 </mapper>

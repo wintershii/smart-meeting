@@ -123,13 +123,5 @@
     from smart_room
   </select>
 
-  <select id="getMeetingIdByRoomId" resultMap="BaseResultMap" resultType="list" parameterType="map">
-    select
-    <include refid="Base_Column_List"/>
-    from smart_meeting
-    where room_id = #{roomId}
-    <if test="flag != null">
-      and DATE_SUB(CURDATE(), INTERVAL 5 DAY) &lt;= start_time
-    </if>
-  </select>
+
 </mapper>

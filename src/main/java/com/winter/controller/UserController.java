@@ -119,10 +119,10 @@ public class UserController {
         Integer tokenId = Integer.parseInt(TokenUtil.getInfo(token,"id"));
         if (tokenId.intValue() == id.intValue()) {
 
-            String path = request.getSession().getServletContext().getRealPath("upload");
+            String path = PropertiesUtil.getProperty("upload_path");
 
             String avatarFileName = fileService.upload(avatarFile,path);
-            String avatarUrl = PropertiesUtil.getProperty("ftp.server.http.prefix") + avatarFileName;
+            String avatarUrl = PropertiesUtil.getProperty("image.server.http.prefix") + avatarFileName;
             if (StringUtils.isBlank(password)){
                 return userService.update(id,phone,null,sex,email,avatarUrl);
             } else {

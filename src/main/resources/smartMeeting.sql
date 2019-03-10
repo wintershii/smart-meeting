@@ -60,17 +60,20 @@ CREATE TABLE smart_meeting (
 
 
 
-insert into smart_room values (default,'FZ101','0000000001',1,now(),now());
-insert into smart_room values (default,'FZ102','0000000002',1,now(),now());
-insert into smart_room values (default,'FZ103','0000000003',1,now(),now());
-insert into smart_room values (default,'FZ104','0000000004',1,now(),now());
-insert into smart_room values (default,'FZ105','0000000005',1,now(),now());
-insert into smart_room values (default,'FZ106','0000000006',1,now(),now());
-insert into smart_room values (default,'FZ107','0000000007',1,now(),now());
-insert into smart_room values (default,'FZ108','0000000008',1,now(),now());
+insert into smart_room values (default,'FZ101',30,'0000000001',1,now(),now());
+insert into smart_room values (default,'FZ102',40,'0000000002',2,now(),now());
+insert into smart_room values (default,'FZ103',50,'0000000003',3,now(),now());
+insert into smart_room values (default,'FZ104',60,'0000000004',1,now(),now());
+insert into smart_room values (default,'FZ105',70,'0000000005',1,now(),now());
+insert into smart_room values (default,'FZ106',80,'0000000006',2,now(),now());
+insert into smart_room values (default,'FZ107',90,'0000000007',2,now(),now());
+insert into smart_room values (default,'FZ108',100,'0000000008',1,now(),now());
 
 
-insert into smart_meeting values (default,'寒假会议','1000',1000,0,now(),now(),now(),now());
-insert into smart_meeting values (default,'寒假会议','1002',1000,0,now(),now(),now(),now());
-insert into smart_meeting values (default,'纳新会议','1000',1002,1,now(),now(),now(),now());
-insert into smart_meeting values (default,'纳新会议','1002',1002,1,now(),now(),now(),now());
+insert into smart_meeting values (default,'寒假会议','寒假来了!',1000,1,1,1,1001,date_add(now(), interval -7 day),date_add(now(), interval-8 day),now(),now());
+insert into smart_meeting values (default,'寒假会议','寒假来了!',1001,1,1,1,1001,date_add(now(), interval -7 day),date_add(now(), interval-8 day),now(),now());
+insert into smart_meeting values (default,'纳新会议','3G纳新',1000,3,2,2,1002,now(),now(),now(),now());
+insert into smart_meeting values (default,'纳新会议','3G纳新',1002,3,3,2,1002,now(),now(),now(),now());
+insert into smart_meeting values (default,'比赛会议','开始比赛',1001,2,1,3,1002,date_add(now(), interval 3 day),date_add(now(), interval 4 day),now(),now());
+insert into smart_meeting values (default,'比赛会议','开始比赛',1002,2,4,3,1002,date_add(now(), interval 3 day),date_add(now(), interval 4 day),now(),now());
+

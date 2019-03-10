@@ -1,5 +1,6 @@
 package com.winter.vo;
 
+import java.util.List;
 import java.util.Map;
 
 public class MeetingVo {
@@ -11,7 +12,7 @@ public class MeetingVo {
     private String endTime;
     private Integer status;
     private Integer userStatus;
-    private Map<Integer,Integer> memberStatus;
+    private List<UserStatus> memberStatus;
     private Integer roomId;
     private String roomName;
     private Integer masterId;
@@ -84,11 +85,11 @@ public class MeetingVo {
         this.userStatus = userStatus;
     }
 
-    public Map<Integer, Integer> getMemberStatus() {
+    public List<UserStatus> getMemberStatus() {
         return memberStatus;
     }
 
-    public void setMemberStatus(Map<Integer, Integer> memberStatus) {
+    public void setMemberStatus(List<UserStatus> memberStatus) {
         this.memberStatus = memberStatus;
     }
 
@@ -114,5 +115,23 @@ public class MeetingVo {
 
     public void setMasterId(Integer masterId) {
         this.masterId = masterId;
+    }
+
+    @Override
+    public String toString() {
+        return "MeetingVo{" +
+                "meetingId=" + meetingId +
+                ", meetingName='" + meetingName + '\'' +
+                ", meetingIntro='" + meetingIntro + '\'' +
+                ", peopleNum=" + peopleNum +
+                ", startTime='" + startTime + '\'' +
+                ", endTime='" + endTime + '\'' +
+                ", status=" + status +
+                ", userStatus=" + userStatus +
+                ", memberStatus=" + memberStatus +
+                ", roomId=" + roomId +
+                ", roomName='" + roomName + '\'' +
+                ", masterId=" + masterId +
+                '}';
     }
 }

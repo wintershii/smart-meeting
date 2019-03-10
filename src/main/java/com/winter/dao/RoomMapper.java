@@ -21,5 +21,5 @@ public interface RoomMapper {
 
     List<Room> selectAll();
 
-    List<UserMeeting> getMeetingIdByRoomId(@Param("roomId") Integer roomId, @Param("flag") Integer flag);
+
 }
