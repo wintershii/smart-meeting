@@ -36,7 +36,8 @@ CREATE TABLE smart_room (
 
 -- 会议表
 CREATE TABLE smart_meeting (
-  id int(11) NOT NULL AUTO_INCREMENT COMMENT '会议id',
+  id int(11) NOT NULL AUTO_INCREMENT COMMENT 'id',
+  meeting_id NOT NULL COMMENT '会议id',
   meeting_name varchar(200) NOT NULL COMMENT '会议名称',
   meeting_intro varchar(500) default null COMMENT '会议简介',
   user_id int(11) NOT NULL COMMENT '与会人员id',
@@ -50,6 +51,7 @@ CREATE TABLE smart_meeting (
   update_time datetime DEFAULT NULL COMMENT '更新时间',
   PRIMARY KEY (id),
   KEY user_id_index (user_id) USING BTREE,
+  KEY _id_index (user_id) USING BTREE,
   KEY status_index (status) USING BTREE
 )
   ENGINE = InnoDB

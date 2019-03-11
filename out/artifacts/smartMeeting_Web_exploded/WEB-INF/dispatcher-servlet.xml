@@ -55,6 +55,12 @@
         <!--定义在<mvc:interceptor>下面的表示匹配指定路径的请求才进行拦截-->
         <bean class="com.winter.interceptor.TokenInterceptor"/>
     </mvc:interceptor>
+
+        <mvc:interceptor>
+            <!--处理跨域-->
+            <mvc:mapping path="/**"/>
+            <bean class="com.winter.interceptor.CommonInterceptor"/>
+        </mvc:interceptor>
     </mvc:interceptors>
 
 </beans>

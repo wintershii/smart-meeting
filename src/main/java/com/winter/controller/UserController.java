@@ -19,7 +19,9 @@ import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @Controller
 @RequestMapping("/user")
@@ -69,14 +71,13 @@ public class UserController {
      */
     @RequestMapping(value = "/login.do",method = RequestMethod.POST)
     @ResponseBody
-    public ServerResponse<User> login(String phone, String password, HttpServletResponse response) {
+    public ServerResponse<User> login(String phone, String password) {
         ServerResponse<User> serverResponse = userService.login(phone,password);
         if (serverResponse.isSuccess()) {
             Integer id = serverResponse.getData().getId();
             String token = TokenUtil.sign(id,phone);
             if (token != null) {
-                response.addHeader("token",token);
-                return serverResponse;
+                return ServerResponse.createBySuccess(token,serverResponse.getData());
             }
         }
         return ServerResponse.createByErrorMessage("登录失败");
