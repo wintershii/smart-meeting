@@ -30,6 +30,7 @@ public class MeetingController {
     @ResponseBody
     @RequestMapping(value = "/getUserMeetings.do",method = RequestMethod.POST)
     public ServerResponse<List<MeetingVo>> getUserMeetings(Integer userId, Integer type){
+        //type: 1--用户正在参加或还未参加的会议  2--用户已经参加过的会议
         List<MeetingVo> meetingList = meetingService.getUserMeetings(userId,type);
         if (meetingList != null) {
             return ServerResponse.createBySuccess(meetingList);

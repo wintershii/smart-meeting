@@ -5,7 +5,6 @@ import com.winter.vo.UserStatus;
 import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
-import java.util.Map;
 
 public interface UserMeetingMapper {
     int deleteByPrimaryKey(Integer id);
@@ -20,14 +19,9 @@ public interface UserMeetingMapper {
 
     int updateByPrimaryKey(UserMeeting record);
 
-    List<UserMeeting> getUserMeetingsOngoing(Integer userId);
-
-    List<UserMeeting> getUserMeetingsFinished(Integer userId);
-
-
-    int getPeopleNum(Integer meetingName);
+    int getPeopleNum(Integer meetingId);
 
     List<UserStatus> getUserStatus(Integer meetingId);
 
-    List<UserMeeting> getMeetingIdByRoomId(@Param("roomId") Integer roomId, @Param("flag") Integer flag);
+    Integer getOneStatusByUserAndMeeting(@Param("userId") Integer userId,@Param("meetingId") Integer meetingId);
 }

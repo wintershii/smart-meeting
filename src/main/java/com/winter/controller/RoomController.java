@@ -1,8 +1,8 @@
 package com.winter.controller;
 
 import com.winter.common.ServerResponse;
+import com.winter.domain.Meeting;
 import com.winter.domain.Room;
-import com.winter.domain.UserMeeting;
 import com.winter.service.IRoomService;
 import com.winter.vo.RoomVo;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -37,6 +37,16 @@ public class RoomController {
     }
 
 
+    @ResponseBody
+    @RequestMapping(value = "/getRoomById.do",method = RequestMethod.POST)
+    public ServerResponse<RoomVo> getRoomById(Integer roomId) {
+        Room room = roomService.getRoomById(roomId);
+        RoomVo roomVo = roomToVo(room);
+        return ServerResponse.createBySuccess(roomVo);
+    }
+    
+
+
     /**
      * 将room对象转为roomVo对象
      * @param rooms
@@ -48,20 +58,28 @@ public class RoomController {
         }
         List<RoomVo> list = new ArrayList<>();
         for (Room room : rooms) {
-            RoomVo roomVo = new RoomVo();
-            roomVo.setId(room.getId());
-            roomVo.setRoomNumber(room.getRoomNumber());
-            roomVo.setMachineNumber(room.getMachineNumber());
-            roomVo.setStatus(room.getStatus());
-            List<UserMeeting> meetingLists = roomService.getMeetingsByRoomId(room.getId(),false);
-            List<UserMeeting> recentlyMeetings = roomService.getMeetingsByRoomId(room.getId(),true);
-
-            roomVo.setMeetingLists(meetingLists);
-            roomVo.setRecentlyMeetings(recentlyMeetings);
-
+            RoomVo roomVo = roomToVo(room);
             list.add(roomVo);
         }
         return list;
+    }
+
+    private RoomVo roomToVo(Room room) {
+        if (room == null) {
+            return null;
+        }
+        RoomVo roomVo = new RoomVo();
+        roomVo.setId(room.getId());
+        roomVo.setRoomNumber(room.getRoomNumber());
+        roomVo.setMachineNumber(room.getMachineNumber());
+        roomVo.setStatus(room.getStatus());
+        roomVo.setContent(room.getContent());
+        List<Meeting> meetingLists = roomService.getMeetingsByRoomId(room.getId(),false);
+        List<Meeting> recentlyMeetings = roomService.getMeetingsByRoomId(room.getId(),true);
+
+        roomVo.setMeetingLists(meetingLists);
+        roomVo.setRecentlyMeetings(recentlyMeetings);
+        return roomVo;
     }
 
 }

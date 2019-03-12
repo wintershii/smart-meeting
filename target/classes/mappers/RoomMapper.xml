@@ -123,5 +123,9 @@
     from smart_room
   </select>
 
-
+  <select id="getRoomNameById" parameterType="integer" resultType="string">
+    select room_number
+    from smart_room
+    where id = #{roomId}
+  </select>
 </mapper>

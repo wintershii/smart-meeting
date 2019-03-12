@@ -1,20 +1,28 @@
 package com.winter.vo;
 
-import com.winter.domain.UserMeeting;
+import com.winter.domain.Meeting;
 
 import java.util.List;
 
 public class RoomVo {
     private Integer Id;
     private String roomNumber;
+    private Integer content;
     private String machineNumber;
     private Integer status;
-    private List<UserMeeting> meetingLists;
-    private List<UserMeeting> recentlyMeetings;
+    private List<Meeting> meetingLists;
+    private List<Meeting> recentlyMeetings;
 
     public RoomVo() {
     }
 
+    public Integer getContent() {
+        return content;
+    }
+
+    public void setContent(Integer content) {
+        this.content = content;
+    }
 
     public Integer getId() {
         return Id;
@@ -48,19 +56,19 @@ public class RoomVo {
         this.status = status;
     }
 
-    public List<UserMeeting> getMeetingLists() {
+    public List<Meeting> getMeetingLists() {
         return meetingLists;
     }
 
-    public void setMeetingLists(List<UserMeeting> meetingLists) {
+    public void setMeetingLists(List<Meeting> meetingLists) {
         this.meetingLists = meetingLists;
     }
 
-    public List<UserMeeting> getRecentlyMeetings() {
+    public List<Meeting> getRecentlyMeetings() {
         return recentlyMeetings;
     }
 
-    public void setRecentlyMeetings(List<UserMeeting> recentlyMeetings) {
+    public void setRecentlyMeetings(List<Meeting> recentlyMeetings) {
         this.recentlyMeetings = recentlyMeetings;
     }
 }

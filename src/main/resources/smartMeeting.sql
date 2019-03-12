@@ -36,13 +36,10 @@ CREATE TABLE smart_room (
 
 -- 会议表
 CREATE TABLE smart_meeting (
-  id int(11) NOT NULL AUTO_INCREMENT COMMENT 'id',
-  meeting_id NOT NULL COMMENT '会议id',
+  id int(11) NOT NULL AUTO_INCREMENT COMMENT '会议id',
   meeting_name varchar(200) NOT NULL COMMENT '会议名称',
   meeting_intro varchar(500) default null COMMENT '会议简介',
-  user_id int(11) NOT NULL COMMENT '与会人员id',
   room_id int(11) NOT NULL COMMENT '会议室id',
-  user_status int(1) NOT NULL COMMENT '用户状态 1-正常 2-缺勤 3-迟到 4-请假',
   status int(1) NOT NULL COMMENT '会议状态  1-已结束  2-正在进行 3-未开始',
   master_id int(11) NOT NULL COMMENT '会议组织人id',
   start_time datetime NOT NULL COMMENT '会议开始时间',
@@ -50,13 +47,30 @@ CREATE TABLE smart_meeting (
   create_time datetime DEFAULT NULL COMMENT '创建时间',
   update_time datetime DEFAULT NULL COMMENT '更新时间',
   PRIMARY KEY (id),
-  KEY user_id_index (user_id) USING BTREE,
-  KEY _id_index (user_id) USING BTREE,
-  KEY status_index (status) USING BTREE
+  KEY room_id_index (room_id) USING BTREE
 )
   ENGINE = InnoDB
   AUTO_INCREMENT = 1000
   DEFAULT CHARSET = utf8;
+
+
+--会议-用户表
+CREATE TABLE meeting_user (
+  id int(11) NOT NULL AUTO_INCREMENT COMMENT 'id',
+  meeting_id int(11) NOT NULL COMMENT '会议id' ,
+  user_id int(11) NOT NULL COMMENT '与会人员id',
+  user_status int(1) NOT NULL COMMENT '用户状态 1-正常 2-缺勤 3-迟到 4-请假',
+  create_time datetime DEFAULT NULL COMMENT '创建时间',
+  update_time datetime DEFAULT NULL COMMENT '更新时间',
+  PRIMARY KEY (id),
+  KEY meeting_id_index (meeting_id) USING BTREE,
+  KEY user_id_index (user_id) USING BTREE,
+  CONSTRAINT meeting_foreign FOREIGN KEY (meeting_id) REFERENCES smart_meeting (id)
+)
+  ENGINE = InnoDB
+  AUTO_INCREMENT = 1000
+  DEFAULT CHARSET = utf8;
+
 
 
 
@@ -72,10 +86,20 @@ insert into smart_room values (default,'FZ107',90,'0000000007',2,now(),now());
 insert into smart_room values (default,'FZ108',100,'0000000008',1,now(),now());
 
 
-insert into smart_meeting values (default,'寒假会议','寒假来了!',1000,1,1,1,1001,date_add(now(), interval -7 day),date_add(now(), interval-8 day),now(),now());
-insert into smart_meeting values (default,'寒假会议','寒假来了!',1001,1,1,1,1001,date_add(now(), interval -7 day),date_add(now(), interval-8 day),now(),now());
-insert into smart_meeting values (default,'纳新会议','3G纳新',1000,3,2,2,1002,now(),now(),now(),now());
-insert into smart_meeting values (default,'纳新会议','3G纳新',1002,3,3,2,1002,now(),now(),now(),now());
-insert into smart_meeting values (default,'比赛会议','开始比赛',1001,2,1,3,1002,date_add(now(), interval 3 day),date_add(now(), interval 4 day),now(),now());
-insert into smart_meeting values (default,'比赛会议','开始比赛',1002,2,4,3,1002,date_add(now(), interval 3 day),date_add(now(), interval 4 day),now(),now());
+insert into smart_meeting values (default,'寒假会议','寒假来了!',1,1,1001,date_add(now(), interval -8 day),date_add(now(), interval-7 day),now(),now());
+insert into smart_meeting values (default,'纳新会议','3G纳新',3,2,1002,now(),now(),now(),now());
+insert into smart_meeting values (default,'比赛会议','开始比赛',2,3,1002,date_add(now(), interval 3 day),date_add(now(), interval 4 day),now(),now());
+
+
+insert into meeting_user values (default ,1000, 1000,1,now(),now());
+insert into meeting_user values (default ,1000, 1001,1,now(),now());
+insert into meeting_user values (default ,1000, 1002,2,now(),now());
+
+insert into meeting_user values (default ,1001, 1001,1,now(),now());
+insert into meeting_user values (default ,1001, 1002,1,now(),now());
+
+insert into meeting_user values (default ,1002, 1000,4,now(),now());
+insert into meeting_user values (default ,1002, 1002,1,now(),now());
+
+
 

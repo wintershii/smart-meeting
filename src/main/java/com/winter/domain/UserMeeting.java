@@ -5,39 +5,21 @@ import java.util.Date;
 public class UserMeeting {
     private Integer id;
 
-    private String meetingName;
-
-    private String meetingIntro;
+    private Integer meetingId;
 
     private Integer userId;
 
-    private Integer roomId;
-
     private Integer userStatus;
-
-    private Integer status;
-
-    private Integer masterId;
-
-    private Date startTime;
-
-    private Date endTime;
 
     private Date createTime;
 
     private Date updateTime;
 
-    public UserMeeting(Integer id, String meetingName, String meetingIntro, Integer userId, Integer roomId, Integer userStatus, Integer status, Integer masterId, Date startTime, Date endTime, Date createTime, Date updateTime) {
+    public UserMeeting(Integer id, Integer meetingId, Integer userId, Integer userStatus, Date createTime, Date updateTime) {
         this.id = id;
-        this.meetingName = meetingName;
-        this.meetingIntro = meetingIntro;
+        this.meetingId = meetingId;
         this.userId = userId;
-        this.roomId = roomId;
         this.userStatus = userStatus;
-        this.status = status;
-        this.masterId = masterId;
-        this.startTime = startTime;
-        this.endTime = endTime;
         this.createTime = createTime;
         this.updateTime = updateTime;
     }
@@ -54,20 +36,12 @@ public class UserMeeting {
         this.id = id;
     }
 
-    public String getMeetingName() {
-        return meetingName;
+    public Integer getMeetingId() {
+        return meetingId;
     }
 
-    public void setMeetingName(String meetingName) {
-        this.meetingName = meetingName == null ? null : meetingName.trim();
-    }
-
-    public String getMeetingIntro() {
-        return meetingIntro;
-    }
-
-    public void setMeetingIntro(String meetingIntro) {
-        this.meetingIntro = meetingIntro == null ? null : meetingIntro.trim();
+    public void setMeetingId(Integer meetingId) {
+        this.meetingId = meetingId;
     }
 
     public Integer getUserId() {
@@ -78,52 +52,12 @@ public class UserMeeting {
         this.userId = userId;
     }
 
-    public Integer getRoomId() {
-        return roomId;
-    }
-
-    public void setRoomId(Integer roomId) {
-        this.roomId = roomId;
-    }
-
     public Integer getUserStatus() {
         return userStatus;
     }
 
     public void setUserStatus(Integer userStatus) {
         this.userStatus = userStatus;
-    }
-
-    public Integer getStatus() {
-        return status;
-    }
-
-    public void setStatus(Integer status) {
-        this.status = status;
-    }
-
-    public Integer getMasterId() {
-        return masterId;
-    }
-
-    public void setMasterId(Integer masterId) {
-        this.masterId = masterId;
-    }
-
-    public Date getStartTime() {
-        return startTime;
-    }
-
-    public void setStartTime(Date startTime) {
-        this.startTime = startTime;
-    }
-
-    public Date getEndTime() {
-        return endTime;
-    }
-
-    public void setEndTime(Date endTime) {
-        this.endTime = endTime;
     }
 
     public Date getCreateTime() {
