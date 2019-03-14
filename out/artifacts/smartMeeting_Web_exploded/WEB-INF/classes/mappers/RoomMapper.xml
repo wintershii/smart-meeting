@@ -128,4 +128,6 @@
     from smart_room
     where id = #{roomId}
   </select>
+
+
 </mapper>

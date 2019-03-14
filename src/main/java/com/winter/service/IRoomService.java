@@ -3,6 +3,7 @@ package com.winter.service;
 import com.winter.domain.Meeting;
 import com.winter.domain.Room;
 
+import java.util.Date;
 import java.util.List;
 
 public interface IRoomService {

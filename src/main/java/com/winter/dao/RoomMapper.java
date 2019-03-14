@@ -1,7 +1,9 @@
 package com.winter.dao;
 
 import com.winter.domain.Room;
+import org.apache.ibatis.annotations.Param;
 
+import java.util.Date;
 import java.util.List;
 
 public interface RoomMapper {
@@ -20,4 +22,6 @@ public interface RoomMapper {
     List<Room> selectAll();
 
     String getRoomNameById(Integer roomId);
+
+
 }

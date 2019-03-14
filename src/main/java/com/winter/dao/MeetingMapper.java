@@ -4,6 +4,7 @@ import com.winter.domain.Meeting;
 import com.winter.vo.MeetingVo;
 import org.apache.ibatis.annotations.Param;
 
+import java.util.Date;
 import java.util.List;
 
 public interface MeetingMapper {
@@ -24,4 +25,12 @@ public interface MeetingMapper {
     List<Meeting> getMeetingsOngoing(Integer userId);
 
     List<Meeting> getMeetingsFinished(Integer userId);
+
+    int whetherBook(@Param("roomId") Integer roomId, @Param("startTime") Date startTime, @Param("endTime") Date endTime);
+
+    Integer bookMeeting(Meeting meeting);
+
+    Integer getMeetingMasterId(Integer meetingId);
+
+    int cancelBook(Integer meetingId);
 }

@@ -33,6 +33,7 @@ public class Const {
         static final int OVER = 1;
         static final int ONGOING = 2;
         static final int NOTSTART = 3;
+        static final int CANCEL = 4;
     }
 
     //会议时用户情况

@@ -1,5 +1,8 @@
 package com.winter.service.impl;
 
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
+import com.winter.common.ServerResponse;
 import com.winter.dao.MeetingMapper;
 import com.winter.dao.RoomMapper;
 import com.winter.dao.UserMapper;
@@ -12,8 +15,10 @@ import com.winter.vo.MeetingVo;
 import com.winter.vo.UserStatus;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 @Service
@@ -90,6 +95,42 @@ public class MeetingServiceImpl implements IMeetingService {
         return null;
     }
 
+    /**
+     * 获取页面的会议信息(每页五条)
+     * @param roomId
+     * @param page
+     * @return
+     */
+    @Override
+    public PageInfo getPageMeetings(Integer roomId, Integer page) {
+        PageHelper.startPage(page,5);
+        List<Meeting> meetingList = meetingMapper.getMeetingByRoomId(roomId,null);
+        PageInfo pageResult = new PageInfo(meetingList);
+        return pageResult;
+    }
+
+    @Override
+    public int whetherBook(Integer roomId, Date startTime, Date endTime) {
+        return meetingMapper.whetherBook(roomId,startTime,endTime);
+    }
+
+
+    @Override
+    @Transactional
+    public int bookMeeting(Meeting meeting) {
+        return meetingMapper.bookMeeting(meeting);
+    }
+
+
+    @Override
+    public Integer getMeetingMasterId(Integer meetingId) {
+        return meetingMapper.getMeetingMasterId(meetingId);
+    }
+
+    @Override
+    public int cancelBook(Integer meetingId) {
+        return meetingMapper.cancelBook(meetingId);
+    }
 
     /**
      * 会议转vo

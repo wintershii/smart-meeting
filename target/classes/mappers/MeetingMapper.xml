@@ -36,8 +36,8 @@
       update_time)
     values (#{id,jdbcType=INTEGER}, #{meetingName,jdbcType=VARCHAR}, #{meetingIntro,jdbcType=VARCHAR}, 
       #{roomId,jdbcType=INTEGER}, #{status,jdbcType=INTEGER}, #{masterId,jdbcType=INTEGER}, 
-      #{startTime,jdbcType=TIMESTAMP}, #{endTime,jdbcType=TIMESTAMP}, #{createTime,jdbcType=TIMESTAMP}, 
-      #{updateTime,jdbcType=TIMESTAMP})
+      #{startTime,jdbcType=TIMESTAMP}, #{endTime,jdbcType=TIMESTAMP}, now(),
+      now())
   </insert>
   <insert id="insertSelective" parameterType="com.winter.domain.Meeting">
     insert into smart_meeting
@@ -179,10 +179,42 @@
     select
     smart_meeting.id, meeting_name, meeting_intro, room_id, status, master_id, start_time, end_time,
     smart_meeting.create_time, smart_meeting.update_time
+    from smart_meeting, meeting_user
     where meeting_user.user_id = #{userId}
     and
     smart_meeting.id = meeting_user.meeting_id
     and
     smart_meeting.status = 1
   </select>
+
+  <select id="whetherBook" parameterType="map" resultType="int">
+    select count(1)
+    from smart_meeting
+    where id = #{roomId} and status = 3
+    and (#{startTime} > start_time and #{startTime} &lt; end_time)
+    or (#{endTime} > start_time and #{endTime} &lt; end_time)
+  </select>
+
+  <insert id="bookMeeting" parameterType="com.winter.domain.Meeting" useGeneratedKeys="true" keyProperty="id">
+    insert into smart_meeting (id, meeting_name, meeting_intro,
+      room_id, status, master_id,
+      start_time, end_time, create_time,
+      update_time)
+    values (#{id,jdbcType=INTEGER}, #{meetingName,jdbcType=VARCHAR}, #{meetingIntro,jdbcType=VARCHAR},
+      #{roomId,jdbcType=INTEGER}, #{status,jdbcType=INTEGER}, #{masterId,jdbcType=INTEGER},
+      #{startTime,jdbcType=TIMESTAMP}, #{endTime,jdbcType=TIMESTAMP}, now(),
+      now())
+  </insert>
+
+  <select id="getMeetingMasterId" resultType="integer" parameterType="integer">
+    select master_id
+    from smart_meeting
+    where id = #{meetingId}
+  </select>
+
+  <update id="cancelBook" parameterType="integer">
+    update smart_meeting
+    set status = 4
+    where id = #{meetingId}
+  </update>
 </mapper>
