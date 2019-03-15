@@ -36,7 +36,7 @@
       user_status, create_time, update_time
       )
     values (#{id,jdbcType=INTEGER}, #{meetingId,jdbcType=INTEGER}, #{userId,jdbcType=INTEGER}, 
-      #{userStatus,jdbcType=INTEGER}, #{createTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP}
+      #{userStatus,jdbcType=INTEGER}, now(), now()
       )
   </insert>
   <insert id="insertSelective" parameterType="com.winter.domain.UserMeeting">
@@ -133,5 +133,12 @@
         from meeting_user
         where user_id = #{userId}
         and meeting_id = #{meetingId}
+    </select>
+
+    <select id="checkExist" parameterType="map" resultType="int">
+        select count(1)
+        from meeting_user
+        where meeting_id = #{meetingId}
+        and user_id = #{userId}
     </select>
 </mapper>

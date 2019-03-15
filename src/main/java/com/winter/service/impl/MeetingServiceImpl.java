@@ -118,7 +118,10 @@ public class MeetingServiceImpl implements IMeetingService {
     @Override
     @Transactional
     public int bookMeeting(Meeting meeting) {
-        return meetingMapper.bookMeeting(meeting);
+        if (this.whetherBook(meeting.getRoomId(),meeting.getStartTime(),meeting.getEndTime()) == 0) {
+            return meetingMapper.bookMeeting(meeting);
+        }
+        return 0;
     }
 
 
@@ -127,9 +130,11 @@ public class MeetingServiceImpl implements IMeetingService {
         return meetingMapper.getMeetingMasterId(meetingId);
     }
 
+
+
     @Override
-    public int cancelBook(Integer meetingId) {
-        return meetingMapper.cancelBook(meetingId);
+    public int setMeetingStatus(Integer meetingId, Integer status) {
+        return meetingMapper.setMeetingStatus(meetingId,status);
     }
 
     /**

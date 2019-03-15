@@ -20,5 +20,5 @@ public interface IMeetingService {
 
     Integer getMeetingMasterId(Integer meetingId);
 
-    int cancelBook(Integer meetingId);
+    int setMeetingStatus(Integer meetingId, Integer status);
 }

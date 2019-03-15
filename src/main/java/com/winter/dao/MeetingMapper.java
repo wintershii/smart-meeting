@@ -32,5 +32,6 @@ public interface MeetingMapper {
 
     Integer getMeetingMasterId(Integer meetingId);
 
-    int cancelBook(Integer meetingId);
+    int setMeetingStatus(@Param("meetingId") Integer meetingId, @Param("status") Integer status);
+
 }

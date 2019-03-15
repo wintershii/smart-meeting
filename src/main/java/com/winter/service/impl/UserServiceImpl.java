@@ -79,6 +79,9 @@ public class UserServiceImpl implements IUserService {
      */
     public ServerResponse<List<User>> getAll() {
         List<User> list =  userMapper.getAll();
+        for(User user : list) {
+            user.setPassword("");
+        }
         return ServerResponse.createBySuccess(list);
     }
 
@@ -120,6 +123,7 @@ public class UserServiceImpl implements IUserService {
     public ServerResponse<User> getOneByPhone(String phone) {
         User user = userMapper.selectByPhone(phone);
         if (user != null) {
+            user.setPassword("");
             return ServerResponse.createBySuccess(user);
         }
         return ServerResponse.createByErrorMessage("用户不存在!");

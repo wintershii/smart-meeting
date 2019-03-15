@@ -24,4 +24,6 @@ public interface UserMeetingMapper {
     List<UserStatus> getUserStatus(Integer meetingId);
 
     Integer getOneStatusByUserAndMeeting(@Param("userId") Integer userId,@Param("meetingId") Integer meetingId);
+
+    int checkExist(@Param("userId") Integer userId, @Param("meetingId") Integer meetingId);
 }

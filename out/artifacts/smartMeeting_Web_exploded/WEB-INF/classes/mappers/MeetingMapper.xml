@@ -212,9 +212,9 @@
     where id = #{meetingId}
   </select>
 
-  <update id="cancelBook" parameterType="integer">
+  <update id="setMeetingStatus" parameterType="integer">
     update smart_meeting
-    set status = 4
+    set status = #{status}
     where id = #{meetingId}
   </update>
 </mapper>

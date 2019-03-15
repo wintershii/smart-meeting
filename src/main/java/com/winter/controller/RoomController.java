@@ -25,6 +25,10 @@ public class RoomController {
         this.roomService = roomService;
     }
 
+    /**
+     * 获取所有会议室的信息
+     * @return
+     */
     @ResponseBody
     @RequestMapping(value = "/getAllRooms.do",method = RequestMethod.POST)
     public ServerResponse<List<RoomVo>> getAllRooms() {
@@ -37,6 +41,11 @@ public class RoomController {
     }
 
 
+    /**
+     * 获取指定id的会议室信息
+     * @param roomId
+     * @return
+     */
     @ResponseBody
     @RequestMapping(value = "/getRoomById.do",method = RequestMethod.POST)
     public ServerResponse<RoomVo> getRoomById(Integer roomId) {

@@ -14,6 +14,11 @@ import org.springframework.web.bind.annotation.ResponseBody;
 @RequestMapping("/phone")
 public class PhoneController {
 
+    /**
+     * 获取短信验证码
+     * @param phoneNumber
+     * @return
+     */
     @ResponseBody
     @RequestMapping(value = "/getVerificationCode.do",method = RequestMethod.POST)
     public ServerResponse getVerificationCode(String phoneNumber) {
@@ -21,6 +26,12 @@ public class PhoneController {
         return ServerResponse.createBySuccess(code);
     }
 
+    /**
+     * 验证用户验证码
+     * @param code
+     * @param phoneNumber
+     * @return
+     */
     @ResponseBody
     @RequestMapping(value = "/judgeCode.do",method = RequestMethod.POST)
     public ServerResponse judgeCode(String code,String phoneNumber) {
