@@ -217,4 +217,11 @@
     set status = #{status}
     where id = #{meetingId}
   </update>
+
+  <select id="getAllUserByMeetingId" parameterType="integer" resultMap="BaseResultMap" resultType="com.winter.vo.UserAccessInfo">
+    select smart_user.username, smart_user.face_data, meeting_user.user_id
+    from smart_user,meeting_user
+    where meeting_user.meeting_id = #{meetingId}
+    and smart_user.id = meeting_user.user_id
+  </select>
 </mapper>

@@ -148,4 +148,13 @@ public class UserServiceImpl implements IUserService {
     }
 
 
+    @Override
+    public ServerResponse updateWithoutAvatar(Integer id, String phone, String password, String sex, String email) {
+        int resultCount = userMapper.updateInfoWithoutAvatar(id,phone,password,sex,email);
+        if (resultCount > 0) {
+            return ServerResponse.createBySuccessMessage("修改信息成功");
+        }
+        return ServerResponse.createByErrorMessage("修改信息失败");
+    }
+
 }

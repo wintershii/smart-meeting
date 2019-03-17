@@ -1,5 +1,6 @@
 package com.winter.service.impl;
 
+import com.winter.common.ServerResponse;
 import com.winter.dao.UserMeetingMapper;
 import com.winter.domain.UserMeeting;
 import com.winter.service.IUserMeetingService;
@@ -29,5 +30,15 @@ public class UserMeetingServiceImpl implements IUserMeetingService {
             return false;
         }
         return true;
+    }
+
+
+    @Override
+    public ServerResponse uploadUserMeetingStatus(Integer userId, Integer meetingId, Integer userStatus) {
+        int resultCount = userMeetingMapper.uploadUserMeetingStatus(userId,meetingId,userId);
+        if (resultCount > 0) {
+            return ServerResponse.createBySuccessMessage("签到成功!");
+        }
+        return ServerResponse.createByErrorMessage("签到失败!请联系管理员");
     }
 }

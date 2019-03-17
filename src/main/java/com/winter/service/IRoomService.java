@@ -1,14 +1,24 @@
 package com.winter.service;
 
+import com.winter.common.ServerResponse;
 import com.winter.domain.Meeting;
 import com.winter.domain.Room;
+import com.winter.vo.RoomVo;
+import com.winter.vo.UserAccessInfo;
 
 import java.util.Date;
 import java.util.List;
 
 public interface IRoomService {
-    List<Room> getAllRooms();
+    ServerResponse<List<RoomVo>> getAllRooms();
     List<Meeting> getMeetingsByRoomId(Integer roomId, boolean flag);
 
-    Room getRoomById(Integer roomId);
+    RoomVo getRoomById(Integer roomId);
+
+
+    ServerResponse checkMapping(String roomNumber, String machineNumber);
+
+    ServerResponse<RoomVo> getInfoByRoomNumber(String roomNumber);
+
+
 }

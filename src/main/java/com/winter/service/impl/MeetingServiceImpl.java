@@ -12,6 +12,7 @@ import com.winter.domain.UserMeeting;
 import com.winter.service.IMeetingService;
 import com.winter.util.DateTimeUtil;
 import com.winter.vo.MeetingVo;
+import com.winter.vo.UserAccessInfo;
 import com.winter.vo.UserStatus;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -136,6 +137,18 @@ public class MeetingServiceImpl implements IMeetingService {
     public int setMeetingStatus(Integer meetingId, Integer status) {
         return meetingMapper.setMeetingStatus(meetingId,status);
     }
+
+
+    @Override
+    public ServerResponse<List<UserAccessInfo>> getAllUserByMeetingId(Integer meetingId) {
+        List<UserAccessInfo> list = meetingMapper.getAllUserByMeetingId(meetingId);
+        if (list != null) {
+            return ServerResponse.createBySuccess(list);
+        }
+        return ServerResponse.createByErrorMessage("获取用户数据失败");
+    }
+
+
 
     /**
      * 会议转vo

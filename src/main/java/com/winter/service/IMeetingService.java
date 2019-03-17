@@ -1,8 +1,10 @@
 package com.winter.service;
 
 import com.github.pagehelper.PageInfo;
+import com.winter.common.ServerResponse;
 import com.winter.domain.Meeting;
 import com.winter.vo.MeetingVo;
+import com.winter.vo.UserAccessInfo;
 import com.winter.vo.UserStatus;
 
 import java.util.Date;
@@ -21,4 +23,8 @@ public interface IMeetingService {
     Integer getMeetingMasterId(Integer meetingId);
 
     int setMeetingStatus(Integer meetingId, Integer status);
+
+    ServerResponse<List<UserAccessInfo>> getAllUserByMeetingId(Integer meetingId);
+
+    
 }

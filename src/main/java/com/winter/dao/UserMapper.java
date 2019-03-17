@@ -33,6 +33,9 @@ public interface UserMapper {
     int updateInfo(@Param("id") Integer id, @Param("phone") String phone, @Param("password") String password,
                    @Param("sex") String sex, @Param("email") String email, @Param("avatarUrl") String avatarUrl);
 
+    int updateInfoWithoutAvatar(@Param("id") Integer id, @Param("phone") String phone, @Param("password") String password,
+                   @Param("sex") String sex, @Param("email") String email);
+
     String getNameById(Integer userId);
 
 }

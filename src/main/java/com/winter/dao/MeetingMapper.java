@@ -2,6 +2,7 @@ package com.winter.dao;
 
 import com.winter.domain.Meeting;
 import com.winter.vo.MeetingVo;
+import com.winter.vo.UserAccessInfo;
 import org.apache.ibatis.annotations.Param;
 
 import java.util.Date;
@@ -33,5 +34,7 @@ public interface MeetingMapper {
     Integer getMeetingMasterId(Integer meetingId);
 
     int setMeetingStatus(@Param("meetingId") Integer meetingId, @Param("status") Integer status);
+
+    List<UserAccessInfo> getAllUserByMeetingId(Integer meetingId);
 
 }

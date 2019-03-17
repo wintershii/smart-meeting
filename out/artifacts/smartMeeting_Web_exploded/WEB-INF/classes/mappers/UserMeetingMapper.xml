@@ -141,4 +141,11 @@
         where meeting_id = #{meetingId}
         and user_id = #{userId}
     </select>
+
+  <update id="uploadUserMeetingStatus" parameterType="map">
+    update meeting_user
+    set user_status = #{userStatus}
+    where meetingId = #{meetingId}
+    and user_id = #{userId}
+  </update>
 </mapper>

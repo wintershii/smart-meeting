@@ -108,21 +108,30 @@ public class UserController {
     @ResponseBody
     public ServerResponse<User> update(@RequestParam(value = "id") Integer id, @RequestParam(value = "phone") String phone,
                                        @RequestParam(value = "password") String password, @RequestParam(value = "sex") String sex,
-                                       @RequestParam(value = "email") String email, @RequestParam(value = "avatar") MultipartFile avatarFile,
+                                       @RequestParam(value = "email") String email, @RequestParam(value = "avatar",required = false) MultipartFile avatarFile,
                                        HttpServletRequest request) {
         String token = request.getHeader("token");
         Integer tokenId = Integer.parseInt(TokenUtil.getInfo(token,"id"));
         if (tokenId.intValue() == id.intValue()) {
 
-            String path = PropertiesUtil.getProperty("upload_path");
-
-            String avatarFileName = fileService.upload(avatarFile,path);
-            String avatarUrl = PropertiesUtil.getProperty("image.server.http.prefix") + avatarFileName;
-            if (StringUtils.isBlank(password)){
-                return userService.update(id,phone,null,sex,email,avatarUrl);
+            if (avatarFile == null) {
+                if (StringUtils.isBlank(password)){
+                    return userService.updateWithoutAvatar(id,phone,null,sex,email);
+                } else {
+                    String md5Password = MD5Util.MD5EncodeUtf8(password);
+                    return userService.updateWithoutAvatar(id,phone,md5Password,sex,email);
+                }
             } else {
-                String md5Password = MD5Util.MD5EncodeUtf8(password);
-                return userService.update(id,phone,md5Password,sex,email,avatarUrl);
+                String path = PropertiesUtil.getProperty("upload_path");
+
+                String avatarFileName = fileService.upload(avatarFile,path);
+                String avatarUrl = PropertiesUtil.getProperty("image.server.http.prefix") + avatarFileName;
+                if (StringUtils.isBlank(password)){
+                    return userService.update(id,phone,null,sex,email,avatarUrl);
+                } else {
+                    String md5Password = MD5Util.MD5EncodeUtf8(password);
+                    return userService.update(id,phone,md5Password,sex,email,avatarUrl);
+                }
             }
 
         }

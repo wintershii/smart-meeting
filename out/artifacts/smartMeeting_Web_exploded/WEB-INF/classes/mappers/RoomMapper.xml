@@ -129,5 +129,17 @@
     where id = #{roomId}
   </select>
 
+  <select id="checkMapping" parameterType="map" resultType="int">
+    select count(1)
+    from smart_room
+    where room_number = #{roomNumber}
+    and machine_number = #{machineNumber}
+  </select>
 
+  <select id="getInfoByRoomNumber" resultMap="BaseResultMap" parameterType="string">
+    select
+    <include refid="Base_Column_List"/>
+    from smart_room
+    where room_number = #{roomNumber}
+  </select>
 </mapper>

@@ -12,4 +12,6 @@ public interface IUserService {
     ServerResponse<User> getOneByPhone(String phone);
 
     ServerResponse update(Integer id, String phone, String password, String sex, String email, String avatarUrl);
+
+    ServerResponse updateWithoutAvatar(Integer id, String phone, String password, String sex, String email);
 }
