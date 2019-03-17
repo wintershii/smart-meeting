@@ -6,6 +6,7 @@ import com.squareup.okhttp.RequestBody;
 import com.winter.common.ServerResponse;
 import com.winter.util.PhoneUtil;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
