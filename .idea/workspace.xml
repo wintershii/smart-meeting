@@ -7,38 +7,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d0d3e8bf-a72a-4995-8ef0-d8f28350ccb6" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/winter/controller/access/AccessMeetingRoomController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/winter/vo/UserAccessInfo.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/smartMeeting_Web/smartMeeting_Web.war" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/smartMeeting_Web/smartMeeting_Web.war" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/smartMeeting_Web_exploded/WEB-INF/classes/com/winter/controller/UserController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/smartMeeting_Web_exploded/WEB-INF/classes/com/winter/controller/UserController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/smartMeeting_Web_exploded/WEB-INF/classes/com/winter/dao/UserMapper.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/smartMeeting_Web_exploded/WEB-INF/classes/com/winter/dao/UserMapper.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/smartMeeting_Web_exploded/WEB-INF/classes/com/winter/service/IUserService.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/smartMeeting_Web_exploded/WEB-INF/classes/com/winter/service/IUserService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/smartMeeting_Web_exploded/WEB-INF/classes/com/winter/service/impl/UserServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/smartMeeting_Web_exploded/WEB-INF/classes/com/winter/service/impl/UserServiceImpl.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/smartMeeting_Web_exploded/WEB-INF/classes/mappers/UserMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/smartMeeting_Web_exploded/WEB-INF/classes/mappers/UserMapper.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/winter/controller/RoomController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/winter/controller/RoomController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/winter/controller/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/winter/controller/UserController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/winter/dao/MeetingMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/winter/dao/MeetingMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/winter/dao/RoomMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/winter/dao/RoomMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/winter/dao/UserMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/winter/dao/UserMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/winter/dao/UserMeetingMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/winter/dao/UserMeetingMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/winter/controller/access/AccessMeetingRoomController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/winter/controller/access/AccessMeetingRoomController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/winter/service/IMeetingService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/winter/service/IMeetingService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/winter/service/IRoomService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/winter/service/IRoomService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/winter/service/IUserMeetingService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/winter/service/IUserMeetingService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/winter/service/IUserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/winter/service/IUserService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/winter/service/impl/MeetingServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/winter/service/impl/MeetingServiceImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/winter/service/impl/RoomServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/winter/service/impl/RoomServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/winter/service/impl/UserMeetingServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/winter/service/impl/UserMeetingServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/winter/service/impl/UserServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/winter/service/impl/UserServiceImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/mappers/MeetingMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/mappers/MeetingMapper.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/mappers/RoomMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/mappers/RoomMapper.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/mappers/UserMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/mappers/UserMapper.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/mappers/UserMeetingMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/mappers/UserMeetingMapper.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/winter/controller/UserController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/winter/controller/UserController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/winter/dao/UserMapper.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/winter/dao/UserMapper.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/winter/service/IUserService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/winter/service/IUserService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/winter/service/impl/UserServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/winter/service/impl/UserServiceImpl.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/mappers/UserMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/mappers/UserMapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/WEB-INF/dispatcher-servlet.xml" beforeDir="false" afterPath="$PROJECT_DIR$/web/WEB-INF/dispatcher-servlet.xml" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -87,7 +63,7 @@
     <session id="-1899033947">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="25" />
+          <entry key="project.closed" value="26" />
           <entry key="project.open.time.1" value="2" />
           <entry key="project.open.time.13" value="1" />
           <entry key="project.open.time.15" value="1" />
@@ -95,7 +71,7 @@
           <entry key="project.open.time.17" value="1" />
           <entry key="project.open.time.18" value="1" />
           <entry key="project.open.time.19" value="2" />
-          <entry key="project.open.time.20" value="3" />
+          <entry key="project.open.time.20" value="4" />
           <entry key="project.open.time.21" value="3" />
           <entry key="project.open.time.22" value="1" />
           <entry key="project.open.time.23" value="1" />
@@ -106,98 +82,74 @@
           <entry key="project.open.time.33" value="1" />
           <entry key="project.open.time.38" value="1" />
           <entry key="project.open.time.6" value="2" />
-          <entry key="project.opened" value="27" />
+          <entry key="project.opened" value="28" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
           <entry key="1" value="4" />
           <entry key="class" value="14" />
-          <entry key="java" value="363" />
+          <entry key="java" value="373" />
           <entry key="png" value="1" />
           <entry key="properties" value="10" />
           <entry key="sql" value="21" />
-          <entry key="xml" value="76" />
+          <entry key="xml" value="81" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
           <entry key="CLASS" value="14" />
           <entry key="Image" value="1" />
-          <entry key="JAVA" value="363" />
+          <entry key="JAVA" value="373" />
           <entry key="PLAIN_TEXT" value="4" />
           <entry key="Properties" value="10" />
           <entry key="SQL" value="18" />
           <entry key="Scratch" value="3" />
-          <entry key="XML" value="76" />
+          <entry key="XML" value="81" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
           <entry key="1" value="4" />
           <entry key="dummy" value="11" />
-          <entry key="java" value="14529" />
+          <entry key="java" value="14737" />
           <entry key="properties" value="100" />
           <entry key="sql" value="1676" />
           <entry key="txt" value="13" />
-          <entry key="xml" value="2905" />
+          <entry key="xml" value="2969" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="JAVA" value="14529" />
+          <entry key="JAVA" value="14737" />
           <entry key="PLAIN_TEXT" value="28" />
           <entry key="Properties" value="100" />
           <entry key="SQL" value="1739" />
           <entry key="Scratch" value="40" />
-          <entry key="XML" value="2802" />
+          <entry key="XML" value="2866" />
         </counts>
       </usages-collector>
     </session>
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/winter/service/IMeetingService.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="361">
-              <caret line="28" column="4" selection-start-line="28" selection-start-column="4" selection-end-line="28" selection-end-column="4" />
+            <state relative-caret-position="133">
+              <caret line="16" column="21" selection-start-line="16" selection-start-column="21" selection-end-line="16" selection-end-column="21" />
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/winter/service/IRoomService.java">
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/winter/controller/access/AccessMeetingRoomController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="285">
-              <caret line="22" lean-forward="true" selection-start-line="22" selection-end-line="22" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/winter/service/impl/MeetingServiceImpl.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="352">
-              <caret line="96" column="5" lean-forward="true" selection-start-line="96" selection-start-column="5" selection-end-line="96" selection-end-column="5" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/winter/dao/UserMapper.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="510">
-              <caret line="30" column="19" selection-start-line="30" selection-start-column="19" selection-end-line="30" selection-end-column="19" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/winter/service/IFileService.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="95">
-              <caret line="5" column="51" selection-start-line="5" selection-start-column="51" selection-end-line="5" selection-end-column="51" />
+            <state relative-caret-position="555">
+              <caret line="100" column="17" lean-forward="true" selection-start-line="100" selection-start-column="17" selection-end-line="100" selection-end-column="17" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -246,7 +198,6 @@
         <option value="$PROJECT_DIR$/src/main/java/com/winter/controller/MeetingController.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/winter/controller/PhoneController.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/winter/interceptor/CommonInterceptor.java" />
-        <option value="$PROJECT_DIR$/web/WEB-INF/dispatcher-servlet.xml" />
         <option value="$PROJECT_DIR$/src/main/java/com/winter/service/IFileService.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/winter/service/IUserService.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/winter/dao/UserMapper.java" />
@@ -254,21 +205,22 @@
         <option value="$PROJECT_DIR$/src/main/java/com/winter/service/impl/UserServiceImpl.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/winter/controller/UserController.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/winter/dao/RoomMapper.java" />
-        <option value="$PROJECT_DIR$/src/main/resources/mappers/RoomMapper.xml" />
         <option value="$PROJECT_DIR$/src/main/java/com/winter/controller/RoomController.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/winter/vo/UserAccessINfo.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/winter/vo/UserAccessInfo.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/winter/service/impl/RoomServiceImpl.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/winter/service/IRoomService.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/winter/dao/MeetingMapper.java" />
-        <option value="$PROJECT_DIR$/src/main/resources/mappers/MeetingMapper.xml" />
-        <option value="$PROJECT_DIR$/src/main/java/com/winter/service/impl/MeetingServiceImpl.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/winter/service/IMeetingService.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/winter/service/IUserMeetingService.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/winter/controller/access/AccessMeetingRoomController.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/winter/service/impl/UserMeetingServiceImpl.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/winter/dao/UserMeetingMapper.java" />
         <option value="$PROJECT_DIR$/src/main/resources/mappers/UserMeetingMapper.xml" />
+        <option value="$PROJECT_DIR$/web/WEB-INF/dispatcher-servlet.xml" />
+        <option value="$PROJECT_DIR$/src/main/resources/mappers/RoomMapper.xml" />
+        <option value="$PROJECT_DIR$/src/main/java/com/winter/controller/access/AccessMeetingRoomController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/winter/service/impl/RoomServiceImpl.java" />
+        <option value="$PROJECT_DIR$/src/main/resources/mappers/MeetingMapper.xml" />
+        <option value="$PROJECT_DIR$/src/main/java/com/winter/service/impl/MeetingServiceImpl.java" />
       </list>
     </option>
   </component>
@@ -315,18 +267,18 @@
     </treeState>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="1694" />
-    <option name="y" value="300" />
-    <option name="width" value="1717" />
-    <option name="height" value="887" />
+    <option name="x" value="132" />
+    <option name="y" value="80" />
+    <option name="width" value="1707" />
+    <option name="height" value="886" />
   </component>
   <component name="ProjectView">
     <navigator proportions="" version="1">
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="PackagesPane" />
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -539,7 +491,7 @@
     <property name="SearchEverywhereHistoryKey" value="&#9;FILE&#9;file:///home/shidongxuan/smartMeeting/src/main/resources/applicationContext.xml" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1552833365074" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1552902838804" />
     <property name="database.console.LAST_STATE" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
@@ -780,7 +732,8 @@
       <workItem from="1552655673374" duration="489000" />
       <workItem from="1552700854323" duration="633000" />
       <workItem from="1552807184904" duration="3002000" />
-      <workItem from="1552810775329" duration="9936000" />
+      <workItem from="1552810775329" duration="9993000" />
+      <workItem from="1552899654205" duration="2986000" />
     </task>
     <servers />
   </component>
@@ -790,13 +743,13 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="145075000" />
+    <option name="totallyTimeSpent" value="148118000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="1920" y="180" width="1440" height="900" extended-state="6" />
+    <frame x="0" y="27" width="1920" height="988" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.23314203" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.23585913" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Designer" order="2" />
       <window_info id="Image Layers" order="3" />
@@ -806,7 +759,7 @@
       <window_info id="Web" order="7" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.45654994" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.39348078" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -993,13 +946,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/web/WEB-INF/dispatcher-servlet.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="855">
-          <caret line="45" column="22" selection-start-line="45" selection-start-column="22" selection-end-line="45" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/winter/controller/PhoneController.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="76">
@@ -1046,27 +992,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/winter/domain/Room.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="171">
-          <caret line="9" column="4" selection-start-line="9" selection-start-column="4" selection-end-line="9" selection-end-column="4" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/mappers/RoomMapper.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="646">
-          <caret line="143" column="11" lean-forward="true" selection-start-line="143" selection-start-column="11" selection-end-line="143" selection-end-column="11" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/winter/dao/RoomMapper.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="437">
-          <caret line="27" column="28" selection-start-line="27" selection-start-column="28" selection-end-line="27" selection-end-column="28" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/winter/vo/MeetingVo.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="95">
@@ -1092,9 +1017,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="149">
           <caret line="115" lean-forward="true" selection-start-line="115" selection-end-line="115" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1106,13 +1028,6 @@
             <element signature="e#1043#1044#0" expanded="true" />
             <element signature="e#1090#1091#0" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/winter/service/impl/RoomServiceImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="352">
-          <caret line="96" lean-forward="true" selection-start-line="96" selection-end-line="96" />
         </state>
       </provider>
     </entry>
@@ -1134,26 +1049,30 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/mappers/MeetingMapper.xml">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/winter/dao/UserMeetingMapper.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="575">
-          <caret line="224" column="44" selection-start-line="224" selection-start-column="44" selection-end-line="224" selection-end-column="44" />
+        <state relative-caret-position="475">
+          <caret line="29" column="32" selection-start-line="29" selection-start-column="32" selection-end-line="29" selection-end-column="32" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/winter/dao/MeetingMapper.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/winter/service/impl/UserMeetingServiceImpl.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="486">
-          <caret line="33" column="18" lean-forward="true" selection-start-line="33" selection-start-column="18" selection-end-line="33" selection-end-column="18" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
+        <state relative-caret-position="-22">
+          <caret line="12" column="21" selection-start-line="12" selection-start-column="21" selection-end-line="12" selection-end-column="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/winter/service/IUserMeetingService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="190">
+          <caret line="10" column="98" selection-start-line="10" selection-start-column="98" selection-end-line="10" selection-end-column="98" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/winter/dao/UserMapper.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="510">
+        <state relative-caret-position="513">
           <caret line="30" column="19" selection-start-line="30" selection-start-column="19" selection-end-line="30" selection-end-column="19" />
         </state>
       </provider>
@@ -1165,17 +1084,52 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/winter/service/impl/MeetingServiceImpl.java">
+    <entry file="file://$PROJECT_DIR$/web/WEB-INF/dispatcher-servlet.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="352">
-          <caret line="96" column="5" lean-forward="true" selection-start-line="96" selection-start-column="5" selection-end-line="96" selection-end-column="5" />
+        <state relative-caret-position="498">
+          <caret line="58" column="49" lean-forward="true" selection-start-line="58" selection-start-column="49" selection-end-line="58" selection-end-column="49" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/winter/domain/Room.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="266">
+          <caret line="14" lean-forward="true" selection-start-line="14" selection-end-line="14" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/winter/service/IRoomService.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="285">
-          <caret line="22" lean-forward="true" selection-start-line="22" selection-end-line="22" />
+        <state relative-caret-position="247">
+          <caret line="20" column="27" selection-start-line="20" selection-start-column="27" selection-end-line="20" selection-end-column="27" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/winter/service/impl/RoomServiceImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="267">
+          <caret line="87" column="74" selection-start-line="87" selection-start-column="74" selection-end-line="87" selection-end-column="74" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/winter/dao/RoomMapper.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="437">
+          <caret line="27" column="48" lean-forward="true" selection-start-line="27" selection-start-column="48" selection-end-line="27" selection-end-column="48" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/mappers/RoomMapper.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1801">
+          <caret line="13" column="14" lean-forward="true" selection-start-line="13" selection-start-column="14" selection-end-line="13" selection-end-column="14" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/mappers/UserMeetingMapper.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="278">
+          <caret line="18" column="16" lean-forward="true" selection-start-line="18" selection-start-column="16" selection-end-line="18" selection-end-column="16" />
         </state>
       </provider>
     </entry>
@@ -1200,48 +1154,17 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/winter/controller/access/AccessMeetingRoomController.java">
+    <entry file="file://$PROJECT_DIR$/src/main/resources/mappers/MeetingMapper.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="453">
-          <caret line="73" column="17" lean-forward="true" selection-start-line="73" selection-start-column="17" selection-end-line="73" selection-end-column="17" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#474#475#0" expanded="true" />
-            <element signature="e#520#521#0" expanded="true" />
-            <element signature="e#881#882#0" expanded="true" />
-            <element signature="e#933#934#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="320">
+          <caret line="233" column="9" lean-forward="true" selection-start-line="233" selection-start-column="9" selection-end-line="233" selection-end-column="9" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/mappers/UserMeetingMapper.xml">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/winter/dao/MeetingMapper.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="556">
-          <caret line="148" column="28" selection-start-line="148" selection-start-column="28" selection-end-line="148" selection-end-column="28" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/winter/dao/UserMeetingMapper.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="475">
-          <caret line="29" column="32" selection-start-line="29" selection-start-column="32" selection-end-line="29" selection-end-column="32" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/winter/service/impl/UserMeetingServiceImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-22">
-          <caret line="12" column="21" selection-start-line="12" selection-start-column="21" selection-end-line="12" selection-end-column="21" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/winter/service/IUserMeetingService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="190">
-          <caret line="10" column="98" selection-start-line="10" selection-start-column="98" selection-end-line="10" selection-end-column="98" />
+        <state relative-caret-position="703">
+          <caret line="37" column="46" selection-start-line="37" selection-start-column="46" selection-end-line="37" selection-end-column="46" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -1250,8 +1173,25 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/winter/service/IMeetingService.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="361">
-          <caret line="28" column="4" selection-start-line="28" selection-start-column="4" selection-end-line="28" selection-end-column="4" />
+        <state relative-caret-position="133">
+          <caret line="16" column="21" selection-start-line="16" selection-start-column="21" selection-end-line="16" selection-end-column="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/winter/service/impl/MeetingServiceImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="109">
+          <caret line="99" column="22" lean-forward="true" selection-start-line="99" selection-start-column="22" selection-end-line="99" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/winter/controller/access/AccessMeetingRoomController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="555">
+          <caret line="100" column="17" lean-forward="true" selection-start-line="100" selection-start-column="17" selection-end-line="100" selection-end-column="17" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

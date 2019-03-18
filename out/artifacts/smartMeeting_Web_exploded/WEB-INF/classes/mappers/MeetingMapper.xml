@@ -15,6 +15,13 @@
       <arg column="update_time" javaType="java.util.Date" jdbcType="TIMESTAMP" />
     </constructor>
   </resultMap>
+
+  <resultMap id="UserAccessInfo" type="com.winter.vo.UserAccessInfo">
+    <result column="user_id" property="userId" />
+    <result column="username" property="userName" />
+    <result column="face_data" property="faceData" />
+  </resultMap>
+
   <sql id="Base_Column_List">
     id, meeting_name, meeting_intro, room_id, status, master_id, start_time, end_time,
     create_time, update_time
@@ -218,8 +225,8 @@
     where id = #{meetingId}
   </update>
 
-  <select id="getAllUserByMeetingId" parameterType="integer" resultMap="BaseResultMap" resultType="com.winter.vo.UserAccessInfo">
-    select smart_user.username, smart_user.face_data, meeting_user.user_id
+  <select id="getAllUserByMeetingId" parameterType="integer" resultType="com.winter.vo.UserAccessInfo" resultMap="UserAccessInfo">
+    select  meeting_user.user_id, smart_user.username, smart_user.face_data
     from smart_user,meeting_user
     where meeting_user.meeting_id = #{meetingId}
     and smart_user.id = meeting_user.user_id

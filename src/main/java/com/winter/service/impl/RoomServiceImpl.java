@@ -88,7 +88,7 @@ public class RoomServiceImpl implements IRoomService {
     public ServerResponse<RoomVo> getInfoByRoomNumber(String roomNumber) {
         Room room = roomMapper.getInfoByRoomNumber(roomNumber);
         RoomVo roomVo = roomToVo(room);
-        if (room != null) {
+        if (roomVo != null) {
             return ServerResponse.createBySuccess(roomVo);
         }
         return ServerResponse.createByErrorMessage("查找失败,请检查参数");

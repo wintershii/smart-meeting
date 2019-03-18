@@ -42,25 +42,45 @@ public class AccessMeetingRoomController {
         this.userMeetingService = userMeetingService;
     }
 
+    /**
+     * 验证会议室门牌号与需要绑定的设备是否是对应关系
+     * @param roomNumber
+     * @param machineNumber
+     * @return
+     */
     @ResponseBody
     @RequestMapping(value = "/checkMapping.do",method = RequestMethod.POST)
     public ServerResponse checkMapping(String roomNumber, String machineNumber) {
         return roomService.checkMapping(roomNumber,machineNumber);
     }
 
+    /**
+     * 根据会议室门牌号获取会议室信息
+     * @param roomNumber
+     * @return
+     */
     @ResponseBody
     @RequestMapping(value = "/getInfoByRoomNumber.do",method = RequestMethod.GET)
     public ServerResponse<RoomVo> getInfoByRoomNumber(String roomNumber) {
         return roomService.getInfoByRoomNumber(roomNumber);
     }
 
+    /**
+     * 根据会议id获取与会人员id,名字,人脸数据(faceData)
+     * @param meetingId
+     * @return
+     */
     @ResponseBody
     @RequestMapping(value = "/getAllUserByMeetingId.do",method = RequestMethod.GET)
     public ServerResponse getAllUserByMeetingId(Integer meetingId) {
         return meetingService.getAllUserByMeetingId(meetingId);
     }
 
-
+    /**
+     * 根据会议id获取与会人员的会议状态
+     * @param meetingId
+     * @return
+     */
     @ResponseBody
     @RequestMapping(value = "/getAllUserStatus.do",method = RequestMethod.GET)
     public ServerResponse<List<UserStatus>> getAllUserStatus(Integer meetingId) {
@@ -71,6 +91,13 @@ public class AccessMeetingRoomController {
         return ServerResponse.createByErrorMessage("获取用户信息失败");
     }
 
+    /**
+     * 更新与会人员的参与会议状态
+     * @param userId
+     * @param meetingId
+     * @param userStatus
+     * @return
+     */
     @ResponseBody
     @RequestMapping(value = "/uploadUserMeetingStatus.do",method = RequestMethod.POST)
     public ServerResponse uploadUserMeetingStatus(Integer userId, Integer meetingId, Integer userStatus) {

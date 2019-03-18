@@ -90,7 +90,7 @@ public class MeetingServiceImpl implements IMeetingService {
     @Override
     public List<UserStatus> getUserStatus(Integer meetingId) {
         List<UserStatus> userStatus = userMeetingMapper.getUserStatus(meetingId);
-        if (userStatus != null) {
+        if (userStatus != null && userStatus.size() != 0) {
             return userStatus;
         }
         return null;
@@ -142,7 +142,7 @@ public class MeetingServiceImpl implements IMeetingService {
     @Override
     public ServerResponse<List<UserAccessInfo>> getAllUserByMeetingId(Integer meetingId) {
         List<UserAccessInfo> list = meetingMapper.getAllUserByMeetingId(meetingId);
-        if (list != null) {
+        if (list != null && list.size() != 0) {
             return ServerResponse.createBySuccess(list);
         }
         return ServerResponse.createByErrorMessage("获取用户数据失败");

@@ -136,7 +136,7 @@
     and machine_number = #{machineNumber}
   </select>
 
-  <select id="getInfoByRoomNumber" resultMap="BaseResultMap" parameterType="string">
+  <select id="getInfoByRoomNumber" resultMap="BaseResultMap" parameterType="string" resultType="com.winter.domain.Room">
     select
     <include refid="Base_Column_List"/>
     from smart_room
