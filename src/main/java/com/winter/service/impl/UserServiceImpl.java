@@ -139,8 +139,8 @@ public class UserServiceImpl implements IUserService {
      * @return
      */
     @Override
-    public ServerResponse update(Integer id, String phone, String password, String sex, String email, String avatarUrl) {
-        int resultCount = userMapper.updateInfo(id,phone,password,sex,email,avatarUrl);
+    public ServerResponse update(Integer id, String phone, String sex, String email, String avatarUrl) {
+        int resultCount = userMapper.updateInfo(id,phone,sex,email,avatarUrl);
         if (resultCount > 0) {
             return ServerResponse.createBySuccessMessage("修改信息成功");
         }
@@ -149,12 +149,25 @@ public class UserServiceImpl implements IUserService {
 
 
     @Override
-    public ServerResponse updateWithoutAvatar(Integer id, String phone, String password, String sex, String email) {
-        int resultCount = userMapper.updateInfoWithoutAvatar(id,phone,password,sex,email);
+    public ServerResponse updateWithoutAvatar(Integer id, String phone, String sex, String email) {
+        int resultCount = userMapper.updateInfoWithoutAvatar(id,phone,sex,email);
         if (resultCount > 0) {
             return ServerResponse.createBySuccessMessage("修改信息成功");
         }
         return ServerResponse.createByErrorMessage("修改信息失败");
     }
 
+    @Override
+    public String getUserPassword(Integer userId) {
+        return userMapper.getUserPassword(userId);
+    }
+
+    @Override
+    public ServerResponse updatePassword(Integer userId, String newPassword) {
+        int resultCount = userMapper.updatePassword(userId,newPassword);
+        if (resultCount > 0) {
+            return ServerResponse.createBySuccessMessage("修改密码成功!");
+        }
+        return ServerResponse.createByErrorMessage("修改密码失败!");
+    }
 }

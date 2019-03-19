@@ -107,36 +107,46 @@ public class UserController {
     @RequestMapping(value = "/update.do",method = RequestMethod.POST)
     @ResponseBody
     public ServerResponse<User> update(@RequestParam(value = "id") Integer id, @RequestParam(value = "phone") String phone,
-                                       @RequestParam(value = "password") String password, @RequestParam(value = "sex") String sex,
+                                        @RequestParam(value = "sex") String sex,
                                        @RequestParam(value = "email") String email, @RequestParam(value = "avatar",required = false) MultipartFile avatarFile,
                                        HttpServletRequest request) {
         String token = request.getHeader("token");
         Integer tokenId = Integer.parseInt(TokenUtil.getInfo(token,"id"));
         if (tokenId.intValue() == id.intValue()) {
-
             if (avatarFile == null) {
-                if (StringUtils.isBlank(password)){
-                    return userService.updateWithoutAvatar(id,phone,null,sex,email);
-                } else {
-                    String md5Password = MD5Util.MD5EncodeUtf8(password);
-                    return userService.updateWithoutAvatar(id,phone,md5Password,sex,email);
-                }
+                return userService.updateWithoutAvatar(id,phone,sex,email);
             } else {
                 String path = PropertiesUtil.getProperty("upload_path");
 
                 String avatarFileName = fileService.upload(avatarFile,path);
                 String avatarUrl = PropertiesUtil.getProperty("image.server.http.prefix") + avatarFileName;
-                if (StringUtils.isBlank(password)){
-                    return userService.update(id,phone,null,sex,email,avatarUrl);
-                } else {
-                    String md5Password = MD5Util.MD5EncodeUtf8(password);
-                    return userService.update(id,phone,md5Password,sex,email,avatarUrl);
-                }
+                return userService.update(id,phone,sex,email,avatarUrl);
             }
-
         }
         return ServerResponse.createByErrorMessage("无权限操作!");
-
     }
+
+    /**
+     * 修改用户密码
+     */
+    @ResponseBody
+    @RequestMapping(value = "/updatePassword.do",method = RequestMethod.POST)
+    public ServerResponse<User> updatePassword(Integer userId, String oldPassword, String newPassword,
+                                               HttpServletRequest request) {
+        String token = request.getHeader("token");
+        Integer tokenId = Integer.parseInt(TokenUtil.getInfo(token,"id"));
+        if (tokenId.intValue() == userId.intValue()) {
+            String pass = userService.getUserPassword(userId);
+            if (pass == null || StringUtils.isBlank(pass)) {
+                return ServerResponse.createByErrorMessage("未查找到该账号!");
+            }
+            if (pass.equals(MD5Util.MD5EncodeUtf8(oldPassword))) {
+                return userService.updatePassword(userId,MD5Util.MD5EncodeUtf8(newPassword));
+            }
+            return ServerResponse.createByErrorMessage("旧密码错误!");
+        }
+        return ServerResponse.createByErrorMessage("无权限操作!");
+    }
+
 }
 

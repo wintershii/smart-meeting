@@ -11,7 +11,11 @@ public interface IUserService {
     ServerResponse<List<User>> getAll();
     ServerResponse<User> getOneByPhone(String phone);
 
-    ServerResponse update(Integer id, String phone, String password, String sex, String email, String avatarUrl);
+    ServerResponse update(Integer id, String phone , String sex, String email, String avatarUrl);
 
-    ServerResponse updateWithoutAvatar(Integer id, String phone, String password, String sex, String email);
+    ServerResponse updateWithoutAvatar(Integer id, String phone, String sex, String email);
+
+    String getUserPassword(Integer userId);
+
+    ServerResponse updatePassword(Integer userId, String newPassword);
 }

@@ -30,12 +30,16 @@ public interface UserMapper {
 
     User selectByPhone(String phone);
 
-    int updateInfo(@Param("id") Integer id, @Param("phone") String phone, @Param("password") String password,
+    int updateInfo(@Param("id") Integer id, @Param("phone") String phone,
                    @Param("sex") String sex, @Param("email") String email, @Param("avatarUrl") String avatarUrl);
 
-    int updateInfoWithoutAvatar(@Param("id") Integer id, @Param("phone") String phone, @Param("password") String password,
+    int updateInfoWithoutAvatar(@Param("id") Integer id, @Param("phone") String phone,
                    @Param("sex") String sex, @Param("email") String email);
 
     String getNameById(Integer userId);
+
+    String getUserPassword(Integer userId);
+
+    int updatePassword(@Param("userId") Integer userId, @Param("newPassword") String newPassword);
 
 }
