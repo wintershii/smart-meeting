@@ -281,4 +281,10 @@
         set password = #{newPassword}
         where id = #{userId}
     </update>
+
+  <update id="forgetPassword" parameterType="map">
+    update smart_user
+    set password = #{newPassword}
+    where phone = #{phoneNumber}
+  </update>
 </mapper>

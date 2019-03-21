@@ -6,6 +6,7 @@ import com.winter.domain.User;
 import com.winter.service.IFileService;
 import com.winter.service.IUserService;
 import com.winter.util.MD5Util;
+import com.winter.util.PhoneUtil;
 import com.winter.util.PropertiesUtil;
 import com.winter.util.TokenUtil;
 import org.apache.commons.lang3.StringUtils;
@@ -146,6 +147,17 @@ public class UserController {
             return ServerResponse.createByErrorMessage("旧密码错误!");
         }
         return ServerResponse.createByErrorMessage("无权限操作!");
+    }
+
+
+    @ResponseBody
+    @RequestMapping(value = "/forgetPassword.do",method = RequestMethod.POST)
+    public ServerResponse forgetPassword(String code,String phoneNumber,String newPassword) {
+        if (PhoneUtil.judgeCodeIsTrue(code,phoneNumber)) {
+            return userService.forgetPassword(phoneNumber,MD5Util.MD5EncodeUtf8(newPassword));
+        }
+        return ServerResponse.createByErrorMessage("验证失败");
+
     }
 
 }

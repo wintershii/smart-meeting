@@ -170,4 +170,13 @@ public class UserServiceImpl implements IUserService {
         }
         return ServerResponse.createByErrorMessage("修改密码失败!");
     }
+
+    @Override
+    public ServerResponse forgetPassword(String phoneNumber, String newPassword) {
+        int resultCount = userMapper.forgetPassword(phoneNumber,newPassword);
+        if (resultCount > 0) {
+            return ServerResponse.createBySuccessMessage("修改密码成功");
+        }
+        return ServerResponse.createByErrorMessage("修改密码失败");
+    }
 }

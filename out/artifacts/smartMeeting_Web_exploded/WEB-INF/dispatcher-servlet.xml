@@ -56,6 +56,7 @@
         <mvc:mapping path="/**"/>
         <mvc:exclude-mapping path="/user/register.do"/>
         <mvc:exclude-mapping path="/user/login.do"/>
+        <mvc:exclude-mapping path="/user/forgetPassword.do"/>
         <mvc:exclude-mapping path="/phone/*.do"/>
         <mvc:exclude-mapping path="/access/*.do"/>
         <!--定义在<mvc:interceptor>下面的表示匹配指定路径的请求才进行拦截-->

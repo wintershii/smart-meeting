@@ -18,4 +18,6 @@ public interface IUserService {
     String getUserPassword(Integer userId);
 
     ServerResponse updatePassword(Integer userId, String newPassword);
+
+    ServerResponse forgetPassword(String phoneNumber, String newPassword);
 }
