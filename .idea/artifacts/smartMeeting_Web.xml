@@ -3,6 +3,12 @@
     <output-path>$PROJECT_DIR$/out/artifacts/smartMeeting_Web</output-path>
     <root id="archive" name="smartMeeting_Web.war">
       <element id="artifact" artifact-name="smartMeeting:Web exploded" />
+      <element id="directory" name="WEB-INF">
+        <element id="directory" name="lib">
+          <element id="library" level="project" name="Maven: com.qiniu:qiniu-java-sdk:7.1.1" />
+          <element id="library" level="project" name="Maven: com.squareup.okhttp3:okhttp:3.2.0" />
+        </element>
+      </element>
     </root>
   </artifact>
 </component>

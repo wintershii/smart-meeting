@@ -11,7 +11,8 @@ public class CommonInterceptor extends HandlerInterceptorAdapter {
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response,
                              Object handler) {
-        response.setHeader("Access-Control-Allow-Origin","*");
+        String origin = request.getHeader("origin");
+        response.setHeader("Access-Control-Allow-Origin",origin);
         response.setHeader("Access-Control-Allow-Methods","GET,POST");
         response.setHeader("Access-Control-Max-Age","3600");
         response.setHeader("Access-Control-Allow-Headers","Origin,X-Requested-With,Content-Type,Accept,token");

@@ -64,6 +64,8 @@
           <element id="library" level="project" name="Maven: com.squareup.okhttp:okhttp:2.5.0" />
           <element id="library" level="project" name="Maven: com.squareup.okio:okio:1.6.0" />
           <element id="library" level="project" name="Maven: com.google.code.gson:gson:2.8.5" />
+          <element id="library" level="project" name="Maven: com.qiniu:qiniu-java-sdk:7.1.1" />
+          <element id="library" level="project" name="Maven: com.squareup.okhttp3:okhttp:3.2.0" />
         </element>
       </element>
     </root>
