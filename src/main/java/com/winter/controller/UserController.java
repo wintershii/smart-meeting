@@ -111,6 +111,14 @@ public class UserController {
         String token = request.getHeader("token");
         Integer tokenId = Integer.parseInt(TokenUtil.getInfo(token,"id"));
         if (tokenId.intValue() == id.intValue()) {
+
+            String realPhone = userService.getPhoneById(id);
+            if(!realPhone.equals(phone)) {
+                if (!userService.checkValid(phone,"phone").isSuccess()) {
+                    return ServerResponse.createByErrorMessage("该手机号已绑定其他账号!");
+                }
+            }
+
             if (avatarFile == null) {
                 return userService.updateWithoutAvatar(id,phone,sex,email);
             } else {

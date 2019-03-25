@@ -3,6 +3,7 @@ package com.winter.service;
 import com.winter.common.ServerResponse;
 import com.winter.domain.Meeting;
 import com.winter.domain.Room;
+import com.winter.vo.AccessRoomVo;
 import com.winter.vo.RoomVo;
 import com.winter.vo.UserAccessInfo;
 
@@ -18,7 +19,7 @@ public interface IRoomService {
 
     ServerResponse checkMapping(String roomNumber, String machineNumber);
 
-    ServerResponse<RoomVo> getInfoByRoomNumber(String roomNumber);
+    ServerResponse<AccessRoomVo> getInfoByRoomNumber(String roomNumber);
 
 
 }

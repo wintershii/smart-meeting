@@ -287,4 +287,10 @@
     set password = #{newPassword}
     where phone = #{phoneNumber}
   </update>
+
+  <select id="getPhoneById" parameterType="integer" resultType="string">
+    select phone
+    from smart_user
+    where id = #{id}
+  </select>
 </mapper>

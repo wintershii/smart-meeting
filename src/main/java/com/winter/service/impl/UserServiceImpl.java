@@ -6,6 +6,7 @@ import com.winter.dao.UserMapper;
 import com.winter.domain.User;
 import com.winter.service.IUserService;
 import com.winter.util.MD5Util;
+import com.winter.util.TokenUtil;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -87,7 +88,7 @@ public class UserServiceImpl implements IUserService {
 
 
     /**
-     * 检查用户名或邮箱是否可用
+     * 检查手机或邮箱是否可用
      * @param str
      * @param type
      * @return
@@ -142,7 +143,8 @@ public class UserServiceImpl implements IUserService {
     public ServerResponse update(Integer id, String phone, String sex, String email, String avatarUrl) {
         int resultCount = userMapper.updateInfo(id,phone,sex,email,avatarUrl);
         if (resultCount > 0) {
-            return ServerResponse.createBySuccessMessage("修改信息成功");
+            String token = TokenUtil.sign(id,phone);
+            return ServerResponse.createBySuccessMessage(token);
         }
         return ServerResponse.createByErrorMessage("修改信息失败");
     }
@@ -152,7 +154,8 @@ public class UserServiceImpl implements IUserService {
     public ServerResponse updateWithoutAvatar(Integer id, String phone, String sex, String email) {
         int resultCount = userMapper.updateInfoWithoutAvatar(id,phone,sex,email);
         if (resultCount > 0) {
-            return ServerResponse.createBySuccessMessage("修改信息成功");
+            String token = TokenUtil.sign(id,phone);
+            return ServerResponse.createBySuccessMessage(token);
         }
         return ServerResponse.createByErrorMessage("修改信息失败");
     }
@@ -178,5 +181,10 @@ public class UserServiceImpl implements IUserService {
             return ServerResponse.createBySuccessMessage("修改密码成功");
         }
         return ServerResponse.createByErrorMessage("修改密码失败");
+    }
+
+    @Override
+    public String getPhoneById(Integer id) {
+        return userMapper.getPhoneById(id);
     }
 }

@@ -20,4 +20,8 @@ public interface IUserService {
     ServerResponse updatePassword(Integer userId, String newPassword);
 
     ServerResponse forgetPassword(String phoneNumber, String newPassword);
+
+    String getPhoneById(Integer id);
+
+    ServerResponse<String> checkValid(String str, String type);
 }

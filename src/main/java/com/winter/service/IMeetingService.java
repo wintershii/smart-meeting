@@ -26,5 +26,6 @@ public interface IMeetingService {
 
     ServerResponse<List<UserAccessInfo>> getAllUserByMeetingId(Integer meetingId);
 
+    List<MeetingVo> meetingToVo(List<Meeting> meetings);
 
 }

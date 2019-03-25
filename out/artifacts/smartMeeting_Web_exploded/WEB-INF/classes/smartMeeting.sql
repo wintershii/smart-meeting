@@ -86,20 +86,20 @@ insert into smart_room values (default,'FZ107',90,'0000000007',2,now(),now());
 insert into smart_room values (default,'FZ108',100,'0000000008',1,now(),now());
 
 
-insert into smart_meeting values (default,'寒假会议','寒假来了!',1000,1,1001,date_add(now(), interval -8 day),date_add(now(), interval-7 day),now(),now());
-insert into smart_meeting values (default,'纳新会议','3G纳新',1002,2,1002,now(),now(),now(),now());
-insert into smart_meeting values (default,'比赛会议','开始比赛',1001,3,1002,date_add(now(), interval 3 day),date_add(now(), interval 4 day),now(),now());
+insert into smart_meeting values (default,'安卓会议','安卓安排',1,1,1001,date_add(now(), interval -4 day),date_add(now(), interval-3 day),now(),now());
+insert into smart_meeting values (default,'二次面试','3G纳新二面',2,2,1002,now(),now(),now(),now());
+insert into smart_meeting values (default,'纳新庆祝会议','哈哈哈哈哈',1,3,1002,date_add(now(), interval 3 day),date_add(now(), interval 4 day),now(),now());
 
 
-insert into meeting_user values (default ,1000, 1000,1,now(),now());
-insert into meeting_user values (default ,1000, 1001,1,now(),now());
-insert into meeting_user values (default ,1000, 1002,2,now(),now());
+insert into meeting_user values (default ,1008, 1000,1,now(),now());
+insert into meeting_user values (default ,1008, 1001,1,now(),now());
+insert into meeting_user values (default ,1008, 1002,2,now(),now());
 
-insert into meeting_user values (default ,1001, 1001,1,now(),now());
-insert into meeting_user values (default ,1001, 1002,1,now(),now());
+insert into meeting_user values (default ,1009, 1001,1,now(),now());
+insert into meeting_user values (default ,1009, 1002,1,now(),now());
 
-insert into meeting_user values (default ,1002, 1000,4,now(),now());
-insert into meeting_user values (default ,1002, 1002,1,now(),now());
+insert into meeting_user values (default ,1010, 1000,4,now(),now());
+insert into meeting_user values (default ,1010, 1002,1,now(),now());
 
 
 

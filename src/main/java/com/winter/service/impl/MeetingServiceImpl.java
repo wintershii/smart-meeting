@@ -155,7 +155,7 @@ public class MeetingServiceImpl implements IMeetingService {
      * @param meetings
      * @return
      */
-    private List<MeetingVo> meetingToVo(List<Meeting> meetings) {
+    public List<MeetingVo> meetingToVo(List<Meeting> meetings) {
         List<MeetingVo> meetingVoList = new ArrayList<>();
         for (Meeting meeting : meetings) {
             meetingVoList.add(meetingToVo(meeting));

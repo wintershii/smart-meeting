@@ -8,6 +8,8 @@ import com.winter.dao.UserMeetingMapper;
 import com.winter.domain.Meeting;
 import com.winter.domain.Room;
 import com.winter.service.IRoomService;
+import com.winter.vo.AccessRoomVo;
+import com.winter.vo.MeetingVo;
 import com.winter.vo.RoomVo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -85,13 +87,25 @@ public class RoomServiceImpl implements IRoomService {
     }
 
     @Override
-    public ServerResponse<RoomVo> getInfoByRoomNumber(String roomNumber) {
+    public ServerResponse<AccessRoomVo> getInfoByRoomNumber(String roomNumber) {
         Room room = roomMapper.getInfoByRoomNumber(roomNumber);
         RoomVo roomVo = roomToVo(room);
-        if (roomVo != null) {
-            return ServerResponse.createBySuccess(roomVo);
+
+        if (roomVo == null) {
+            return ServerResponse.createByErrorMessage("查找失败,请检查参数");
         }
-        return ServerResponse.createByErrorMessage("查找失败,请检查参数");
+
+        AccessRoomVo accessRoomVo = new AccessRoomVo();
+        accessRoomVo.setId(roomVo.getId());
+        accessRoomVo.setContent(roomVo.getContent());
+        accessRoomVo.setMachineNumber(roomVo.getMachineNumber());
+        accessRoomVo.setRoomNumber(roomVo.getRoomNumber());
+        accessRoomVo.setStatus(roomVo.getStatus());
+
+        List meetingList = meetingMapper.getAccessMeeting(roomVo.getId());
+        accessRoomVo.setMeetingLists(meetingList);
+        return ServerResponse.createBySuccess(accessRoomVo);
+
     }
 
 

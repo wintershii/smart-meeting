@@ -37,4 +37,6 @@ public interface MeetingMapper {
 
     List<UserAccessInfo> getAllUserByMeetingId(Integer meetingId);
 
+    List getAccessMeeting(Integer roomId);
+
 }

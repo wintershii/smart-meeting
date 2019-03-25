@@ -231,4 +231,12 @@
     where meeting_user.meeting_id = #{meetingId}
     and smart_user.id = meeting_user.user_id
   </select>
+
+  <select id="getAccessMeeting" resultType="com.winter.domain.Meeting" parameterType="integer">
+    select
+    <include refid="Base_Column_List"/>
+    from smart_meeting
+    where room_id = #{roomId}
+    and start_time >= now()
+  </select>
 </mapper>

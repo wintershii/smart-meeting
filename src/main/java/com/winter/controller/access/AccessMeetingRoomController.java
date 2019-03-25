@@ -2,10 +2,13 @@ package com.winter.controller.access;
 
 import com.sun.org.apache.regexp.internal.RE;
 import com.winter.common.ServerResponse;
+import com.winter.domain.Meeting;
 import com.winter.domain.Room;
 import com.winter.service.IMeetingService;
 import com.winter.service.IRoomService;
 import com.winter.service.IUserMeetingService;
+import com.winter.vo.AccessRoomVo;
+import com.winter.vo.MeetingVo;
 import com.winter.vo.RoomVo;
 import com.winter.vo.UserStatus;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -61,8 +64,12 @@ public class AccessMeetingRoomController {
      */
     @ResponseBody
     @RequestMapping(value = "/getInfoByRoomNumber.do",method = RequestMethod.GET)
-    public ServerResponse<RoomVo> getInfoByRoomNumber(String roomNumber) {
-        return roomService.getInfoByRoomNumber(roomNumber);
+    public ServerResponse<AccessRoomVo> getInfoByRoomNumber(String roomNumber) {
+        AccessRoomVo accessRoomVo = roomService.getInfoByRoomNumber(roomNumber).getData();
+        List meetingVoList = meetingService.meetingToVo((List<Meeting>)accessRoomVo.getMeetingLists());
+        accessRoomVo.setMeetingLists(meetingVoList);
+
+        return ServerResponse.createBySuccess(accessRoomVo);
     }
 
     /**

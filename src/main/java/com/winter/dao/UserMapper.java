@@ -43,4 +43,6 @@ public interface UserMapper {
     int updatePassword(@Param("userId") Integer userId, @Param("newPassword") String newPassword);
 
     int forgetPassword(@Param("phoneNumber") String phoneNumber, @Param("newPassword") String newPassword);
+
+    String getPhoneById(Integer id);
 }
