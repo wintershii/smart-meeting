@@ -16,6 +16,7 @@ public class MeetingVo {
     private Integer roomId;
     private String roomName;
     private Integer masterId;
+    private String masterName;
 
 
     public MeetingVo() {
@@ -115,6 +116,14 @@ public class MeetingVo {
 
     public void setMasterId(Integer masterId) {
         this.masterId = masterId;
+    }
+
+    public String getMasterName() {
+        return masterName;
+    }
+
+    public void setMasterName(String masterName) {
+        this.masterName = masterName;
     }
 
     @Override

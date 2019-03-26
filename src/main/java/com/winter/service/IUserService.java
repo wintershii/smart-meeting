@@ -24,4 +24,5 @@ public interface IUserService {
     String getPhoneById(Integer id);
 
     ServerResponse<String> checkValid(String str, String type);
+
 }

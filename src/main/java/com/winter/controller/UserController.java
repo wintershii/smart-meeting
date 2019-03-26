@@ -154,7 +154,13 @@ public class UserController {
         return ServerResponse.createByErrorMessage("无权限操作!");
     }
 
-
+    /**
+     * 忘记密码
+     * @param code
+     * @param phoneNumber
+     * @param newPassword
+     * @return
+     */
     @ResponseBody
     @RequestMapping(value = "/forgetPassword.do",method = RequestMethod.POST)
     public ServerResponse forgetPassword(String code,String phoneNumber,String newPassword) {

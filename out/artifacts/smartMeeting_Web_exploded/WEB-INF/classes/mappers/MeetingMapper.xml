@@ -232,7 +232,7 @@
     and smart_user.id = meeting_user.user_id
   </select>
 
-  <select id="getAccessMeeting" resultType="com.winter.domain.Meeting" parameterType="integer">
+  <select id="getAccessMeeting" resultType="list" parameterType="integer" resultMap="BaseResultMap">
     select
     <include refid="Base_Column_List"/>
     from smart_meeting

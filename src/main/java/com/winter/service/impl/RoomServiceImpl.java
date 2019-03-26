@@ -7,6 +7,7 @@ import com.winter.dao.RoomMapper;
 import com.winter.dao.UserMeetingMapper;
 import com.winter.domain.Meeting;
 import com.winter.domain.Room;
+import com.winter.service.IMeetingService;
 import com.winter.service.IRoomService;
 import com.winter.vo.AccessRoomVo;
 import com.winter.vo.MeetingVo;
@@ -25,6 +26,8 @@ public class RoomServiceImpl implements IRoomService {
 
     private MeetingMapper meetingMapper;
 
+    private IMeetingService meetingService;
+
     @Autowired
     public void setRoomMapper(RoomMapper roomMapper) {
         this.roomMapper = roomMapper;
@@ -33,6 +36,11 @@ public class RoomServiceImpl implements IRoomService {
     @Autowired
     public void setMeetingMapper(MeetingMapper meetingMapper) {
         this.meetingMapper = meetingMapper;
+    }
+
+    @Autowired
+    public void setMeetingService(IMeetingService meetingService) {
+        this.meetingService = meetingService;
     }
 
     /**
@@ -102,15 +110,13 @@ public class RoomServiceImpl implements IRoomService {
         accessRoomVo.setRoomNumber(roomVo.getRoomNumber());
         accessRoomVo.setStatus(roomVo.getStatus());
 
-        List meetingList = meetingMapper.getAccessMeeting(roomVo.getId());
-        accessRoomVo.setMeetingLists(meetingList);
+        List<Meeting> meetingList = meetingMapper.getAccessMeeting(roomVo.getId());
+        List<MeetingVo> meetingVoList = meetingService.meetingToVo(meetingList);
+
+        accessRoomVo.setMeetingLists(meetingVoList);
         return ServerResponse.createBySuccess(accessRoomVo);
 
     }
-
-
-
-
 
 
     /**

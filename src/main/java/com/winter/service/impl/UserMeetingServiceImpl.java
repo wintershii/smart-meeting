@@ -41,4 +41,6 @@ public class UserMeetingServiceImpl implements IUserMeetingService {
         }
         return ServerResponse.createByErrorMessage("签到失败!请联系管理员");
     }
+
+
 }

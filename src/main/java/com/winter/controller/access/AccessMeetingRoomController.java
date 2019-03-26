@@ -7,6 +7,7 @@ import com.winter.domain.Room;
 import com.winter.service.IMeetingService;
 import com.winter.service.IRoomService;
 import com.winter.service.IUserMeetingService;
+import com.winter.service.IUserService;
 import com.winter.vo.AccessRoomVo;
 import com.winter.vo.MeetingVo;
 import com.winter.vo.RoomVo;
@@ -30,6 +31,8 @@ public class AccessMeetingRoomController {
 
     private IUserMeetingService userMeetingService;
 
+    private IUserService userService;
+
     @Autowired
     public void setRoomService(IRoomService roomService) {
         this.roomService = roomService;
@@ -43,6 +46,11 @@ public class AccessMeetingRoomController {
     @Autowired
     public void setUserMeetingService(IUserMeetingService userMeetingService) {
         this.userMeetingService = userMeetingService;
+    }
+
+    @Autowired
+    public void setUserService(IUserService userService) {
+        this.userService = userService;
     }
 
     /**
@@ -65,11 +73,7 @@ public class AccessMeetingRoomController {
     @ResponseBody
     @RequestMapping(value = "/getInfoByRoomNumber.do",method = RequestMethod.GET)
     public ServerResponse<AccessRoomVo> getInfoByRoomNumber(String roomNumber) {
-        AccessRoomVo accessRoomVo = roomService.getInfoByRoomNumber(roomNumber).getData();
-        List meetingVoList = meetingService.meetingToVo((List<Meeting>)accessRoomVo.getMeetingLists());
-        accessRoomVo.setMeetingLists(meetingVoList);
-
-        return ServerResponse.createBySuccess(accessRoomVo);
+        return roomService.getInfoByRoomNumber(roomNumber);
     }
 
     /**
@@ -110,5 +114,6 @@ public class AccessMeetingRoomController {
     public ServerResponse uploadUserMeetingStatus(Integer userId, Integer meetingId, Integer userStatus) {
         return userMeetingService.uploadUserMeetingStatus(userId,meetingId,userStatus);
     }
+
 
 }

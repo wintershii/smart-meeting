@@ -10,7 +10,7 @@ public class AccessRoomVo {
     private Integer content;
     private String machineNumber;
     private Integer status;
-    private List meetingLists;
+    private List<MeetingVo> meetingLists;
 
     public Integer getId() {
         return Id;

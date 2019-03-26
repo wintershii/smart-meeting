@@ -9,4 +9,6 @@ public interface IUserMeetingService {
     boolean checkExist(Integer userId, Integer meetingId);
 
     ServerResponse uploadUserMeetingStatus(Integer userId, Integer meetingId, Integer userStatus);
+
+
 }
