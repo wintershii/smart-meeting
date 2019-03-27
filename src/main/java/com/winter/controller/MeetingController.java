@@ -119,8 +119,16 @@ public class MeetingController {
     public ServerResponse<Meeting> bookMeeting(Meeting meeting) {
         //设置会议状态为未开始
         meeting.setStatus(Const.MeetingStatus.NOTSTART);
+        if (meeting.getStartTime() == null || meeting.getEndTime() == null) {
+            return ServerResponse.createByErrorMessage("缺少会议相关参数");
+        }
         int resultCount = meetingService.bookMeeting(meeting);
         if (resultCount > 0) {
+            UserMeeting userMeeting = new UserMeeting();
+            userMeeting.setUserId(meeting.getMasterId());
+            userMeeting.setMeetingId(meeting.getId());
+            userMeeting.setUserStatus(Const.UserPerform.ABSENCE);
+            userMeetingService.inviteMeetingMember(userMeeting);
             return ServerResponse.createBySuccess(meeting);
         }
         return ServerResponse.createByErrorMessage("预定失败");

@@ -191,7 +191,6 @@ public class MeetingServiceImpl implements IMeetingService {
             meetingVo.setPeopleNum(userMeetingMapper.getPeopleNum(meeting.getId()));
             meetingVo.setStatus(meeting.getStatus());
             meetingVo.setMemberStatus(userMeetingMapper.getUserStatus(meeting.getId()));
-            System.out.println(userMapper.getNameById(meeting.getMasterId()));
             meetingVo.setMasterName(userMapper.getNameById(meeting.getMasterId()));
             return meetingVo;
     }

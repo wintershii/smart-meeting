@@ -198,8 +198,8 @@
     select count(1)
     from smart_meeting
     where id = #{roomId} and status = 3
-    and (#{startTime} > start_time and #{startTime} &lt; end_time)
-    or (#{endTime} > start_time and #{endTime} &lt; end_time)
+    and (#{startTime} >= start_time and #{startTime} &lt;= end_time)
+    or (#{endTime} >= start_time and #{endTime} &lt;= end_time)
   </select>
 
   <insert id="bookMeeting" parameterType="com.winter.domain.Meeting" useGeneratedKeys="true" keyProperty="id">
@@ -237,6 +237,6 @@
     <include refid="Base_Column_List"/>
     from smart_meeting
     where room_id = #{roomId}
-    and start_time >= now()
+    and end_time >= now()
   </select>
 </mapper>

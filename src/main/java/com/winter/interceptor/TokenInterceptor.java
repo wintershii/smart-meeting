@@ -1,6 +1,9 @@
 package com.winter.interceptor;
 
+import com.winter.service.impl.FileServiceImpl;
 import com.winter.util.TokenUtil;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
 import org.springframework.web.servlet.HandlerInterceptor;
 
@@ -12,6 +15,7 @@ import javax.servlet.http.HttpServletResponse;
  */
 @Component
 public class TokenInterceptor implements HandlerInterceptor {
+    private Logger logger = LoggerFactory.getLogger(FileServiceImpl.class);
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler)
             throws Exception {
@@ -21,11 +25,11 @@ public class TokenInterceptor implements HandlerInterceptor {
         if (token != null){
             boolean result = TokenUtil.verify(token);
             if(result){
-                System.out.println("通过拦截器");
+                logger.info("成功通过拦截器");
                 return true;
             }
         }
-        System.out.println("认证失败");
+        request.getRequestDispatcher("/user/tokenExpired.do").forward(request,response);
         return false;
     }
 }

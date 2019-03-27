@@ -1,6 +1,7 @@
 package com.winter.controller;
 
 import com.winter.common.Const;
+import com.winter.common.ResponseCode;
 import com.winter.common.ServerResponse;
 import com.winter.domain.User;
 import com.winter.service.IFileService;
@@ -169,6 +170,13 @@ public class UserController {
         }
         return ServerResponse.createByErrorMessage("验证失败");
 
+    }
+
+
+    @ResponseBody
+    @RequestMapping("/tokenExpired.do")
+    public ServerResponse tokenExpired() {
+        return ServerResponse.createByErrorCodeMessage(ResponseCode.NEED_LOGIN.getCode(),"token过期!");
     }
 
 }
