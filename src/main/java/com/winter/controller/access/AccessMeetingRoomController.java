@@ -12,6 +12,7 @@ import com.winter.vo.AccessRoomVo;
 import com.winter.vo.MeetingVo;
 import com.winter.vo.RoomVo;
 import com.winter.vo.UserStatus;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -62,6 +63,9 @@ public class AccessMeetingRoomController {
     @ResponseBody
     @RequestMapping(value = "/checkMapping.do",method = RequestMethod.POST)
     public ServerResponse checkMapping(String roomNumber, String machineNumber) {
+        if (StringUtils.isAnyBlank(roomNumber,machineNumber)) {
+                return ServerResponse.createByErrorMessage("参数无效!");
+        }
         return roomService.checkMapping(roomNumber,machineNumber);
     }
 
@@ -73,6 +77,9 @@ public class AccessMeetingRoomController {
     @ResponseBody
     @RequestMapping(value = "/getInfoByRoomNumber.do",method = RequestMethod.GET)
     public ServerResponse<AccessRoomVo> getInfoByRoomNumber(String roomNumber) {
+        if (StringUtils.isBlank(roomNumber)) {
+            return ServerResponse.createByErrorMessage("参数无效!");
+        }
         return roomService.getInfoByRoomNumber(roomNumber);
     }
 
@@ -84,6 +91,9 @@ public class AccessMeetingRoomController {
     @ResponseBody
     @RequestMapping(value = "/getAllUserByMeetingId.do",method = RequestMethod.GET)
     public ServerResponse getAllUserByMeetingId(Integer meetingId) {
+        if (meetingId == null) {
+            return ServerResponse.createByErrorMessage("参数无效!");
+        }
         return meetingService.getAllUserByMeetingId(meetingId);
     }
 
@@ -95,6 +105,9 @@ public class AccessMeetingRoomController {
     @ResponseBody
     @RequestMapping(value = "/getAllUserStatus.do",method = RequestMethod.GET)
     public ServerResponse<List<UserStatus>> getAllUserStatus(Integer meetingId) {
+        if (meetingId == null) {
+            return ServerResponse.createByErrorMessage("参数无效!");
+        }
         List<UserStatus> list = meetingService.getUserStatus(meetingId);
         if (list != null) {
             return ServerResponse.createBySuccess(list);
@@ -112,6 +125,9 @@ public class AccessMeetingRoomController {
     @ResponseBody
     @RequestMapping(value = "/uploadUserMeetingStatus.do",method = RequestMethod.POST)
     public ServerResponse uploadUserMeetingStatus(Integer userId, Integer meetingId, Integer userStatus) {
+        if (userId == null || meetingId == null || userStatus == null) {
+            return ServerResponse.createByErrorMessage("参数无效!");
+        }
         return userMeetingService.uploadUserMeetingStatus(userId,meetingId,userStatus);
     }
 

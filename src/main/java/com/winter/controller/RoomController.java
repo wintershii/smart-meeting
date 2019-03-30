@@ -45,6 +45,9 @@ public class RoomController {
     @ResponseBody
     @RequestMapping(value = "/getRoomById.do",method = RequestMethod.POST)
     public ServerResponse<RoomVo> getRoomById(Integer roomId) {
+        if (roomId == null) {
+            return ServerResponse.createByErrorMessage("参数无效!");
+        }
         RoomVo roomVo = roomService.getRoomById(roomId);
         if (roomVo != null) {
             return ServerResponse.createBySuccess(roomVo);

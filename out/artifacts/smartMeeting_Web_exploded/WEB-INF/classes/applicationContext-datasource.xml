@@ -25,6 +25,7 @@
         <property name="fileEncoding" value="utf-8"/>
     </bean>
 
+    <context:property-placeholder location="classpath:redis.properties"/>
 
     <!--DBCP连接池-->
     <bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
@@ -94,6 +95,24 @@
         <property name="dataSource" ref="dataSource"/>
         <property name="rollbackOnCommitFailure" value="true"/>
     </bean>
+
+    <!-- 配置JedisPoolConfig实例 -->
+    <bean id="jedisPoolConfig" class="redis.clients.jedis.JedisPoolConfig">
+        <property name="maxIdle" value="${redis.maxIdle}" />
+        <property name="testOnBorrow" value="${redis.testOnBorrow}" />
+    </bean>
+    <!-- 配置JedisPool实例 -->
+    <bean id="jedisPool" class="redis.clients.jedis.JedisPool" destroy-method="destroy">
+        <constructor-arg ref="jedisPoolConfig" />
+        <constructor-arg value="${redis.host}" />
+        <constructor-arg value="${redis.port}" />
+        <constructor-arg value="${redis.timeout}" />
+        <constructor-arg value="${redis.default.db}" />
+    </bean>
+    <bean id="redisUtil" class="com.winter.util.RedisUtil">
+        <property name="jedisPool" ref="jedisPool" />
+    </bean>
+
 
 
 </beans>

@@ -51,6 +51,9 @@ public class MeetingController {
     @ResponseBody
     @RequestMapping(value = "/getUserMeetings.do",method = RequestMethod.POST)
     public ServerResponse<List<MeetingVo>> getUserMeetings(Integer userId, Integer type){
+        if (userId == null || type == null) {
+            return ServerResponse.createByErrorMessage("参数无效!");
+        }
         //type: 1--用户正在参加或还未参加的会议  2--用户已经参加过的会议
         List<MeetingVo> meetingList = meetingService.getUserMeetings(userId,type);
         if (meetingList != null) {
@@ -67,6 +70,9 @@ public class MeetingController {
     @ResponseBody
     @RequestMapping(value = "/getMeetingById.do",method = RequestMethod.POST)
     public ServerResponse<MeetingVo> getMeetingById(Integer meetingId) {
+        if (meetingId == null) {
+            return ServerResponse.createByErrorMessage("参数无效!");
+        }
         MeetingVo meetingVo = meetingService.getMeetingById(meetingId);
         System.out.println(meetingVo);
         if (meetingVo != null) {
@@ -87,6 +93,9 @@ public class MeetingController {
     @ResponseBody
     @RequestMapping(value = "/getPageMeetingInfo.do",method = RequestMethod.POST)
     public ServerResponse<PageInfo> getPageMeetingInfo(Integer roomId,Integer page) {
+        if (roomId == null || page == null) {
+            return ServerResponse.createByErrorMessage("参数无效!");
+        }
         PageInfo list = meetingService.getPageMeetings(roomId,page);
         return ServerResponse.createBySuccess(list);
     }
@@ -101,6 +110,9 @@ public class MeetingController {
     @ResponseBody
     @RequestMapping(value = "/whetherBook.do",method = RequestMethod.POST)
     public ServerResponse whetherBook(Integer roomId, Date startTime, Date endTime) {
+        if (roomId == null || startTime == null || endTime == null) {
+            return ServerResponse.createByErrorMessage("参数无效!");
+        }
         int resultCount = meetingService.whetherBook(roomId,startTime,endTime);
         if (resultCount == 0) {
             return ServerResponse.createBySuccess("可以预约此会议室");
@@ -143,6 +155,9 @@ public class MeetingController {
     @ResponseBody
     @RequestMapping(value = "/cancelBook.do",method = RequestMethod.POST)
     public ServerResponse cancelBook(Integer meetingId, HttpServletRequest request) {
+        if (meetingId == null) {
+            return ServerResponse.createByErrorMessage("参数无效!");
+        }
         Integer masterId = meetingService.getMeetingMasterId(meetingId);
         String token = request.getHeader("token");
         Integer tokenId = Integer.parseInt(TokenUtil.getInfo(token,"id"));
@@ -165,6 +180,9 @@ public class MeetingController {
     @ResponseBody
     @RequestMapping(value = "/inviteMeetingMember.do",method = RequestMethod.POST)
     public ServerResponse inviteMeetingMember(Integer userId,Integer meetingId) {
+        if (userId == null || meetingId == null) {
+            return ServerResponse.createByErrorMessage("参数无效!");
+        }
         UserMeeting userMeeting = new UserMeeting();
         userMeeting.setUserId(userId);
         userMeeting.setMeetingId(meetingId);
@@ -188,6 +206,9 @@ public class MeetingController {
     @ResponseBody
     @RequestMapping(value = "/startMeeting.do",method = RequestMethod.POST)
     public ServerResponse startMeeting(Integer meetingId,HttpServletRequest request) {
+        if (meetingId == null) {
+            return ServerResponse.createByErrorMessage("参数无效!");
+        }
         Integer masterId = meetingService.getMeetingMasterId(meetingId);
         String token = request.getHeader("token");
         Integer tokenId = Integer.parseInt(TokenUtil.getInfo(token,"id"));
@@ -210,6 +231,9 @@ public class MeetingController {
     @ResponseBody
     @RequestMapping(value = "/endMeeting.do",method = RequestMethod.POST)
     public ServerResponse endMeeting(Integer meetingId,HttpServletRequest request) {
+        if (meetingId == null) {
+            return ServerResponse.createByErrorMessage("参数无效!");
+        }
         Integer masterId = meetingService.getMeetingMasterId(meetingId);
         String token = request.getHeader("token");
         Integer tokenId = Integer.parseInt(TokenUtil.getInfo(token,"id"));

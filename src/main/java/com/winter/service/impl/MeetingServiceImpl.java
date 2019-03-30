@@ -8,7 +8,6 @@ import com.winter.dao.RoomMapper;
 import com.winter.dao.UserMapper;
 import com.winter.dao.UserMeetingMapper;
 import com.winter.domain.Meeting;
-import com.winter.domain.UserMeeting;
 import com.winter.service.IMeetingService;
 import com.winter.util.DateTimeUtil;
 import com.winter.vo.MeetingVo;

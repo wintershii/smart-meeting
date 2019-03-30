@@ -222,12 +222,14 @@
             <artifactId>qiniu-java-sdk</artifactId>
             <version>7.1.1</version>
         </dependency>
+
+        <!-- https://mvnrepository.com/artifact/redis.clients/jedis -->
         <dependency>
-            <groupId>com.qiniu</groupId>
-            <artifactId>happy-dns-java</artifactId>
-            <version>0.1.4</version>
-            <scope>compile</scope>
+            <groupId>redis.clients</groupId>
+            <artifactId>jedis</artifactId>
+            <version>2.9.0</version>
         </dependency>
+
     </dependencies>
 
     <build>

@@ -22,6 +22,7 @@ public class UserController {
 
     private IUserService userService;
     private IFileService fileService;
+    private RedisUtil redisUtil;
 
     @Autowired
     public void setUserService(IUserService userService) {
@@ -30,6 +31,10 @@ public class UserController {
     @Autowired
     public void setFileService(IFileService fileService) {
         this.fileService = fileService;
+    }
+    @Autowired
+    public void setRedisUtil(RedisUtil redisUtil) {
+        this.redisUtil = redisUtil;
     }
 
     /**
@@ -44,15 +49,23 @@ public class UserController {
     @ResponseBody
     public ServerResponse<String> register(User user, HttpServletRequest request, @RequestParam(value = "avatar", required = false)
             MultipartFile avatarFile, @RequestParam(value = "face", required = false) MultipartFile faceFile) {
-
         user.setRole(Const.Role.USER);
-        String avatarFileName = fileService.upload(avatarFile,PropertiesUtil.getProperty("upload_path"));
-        String avatarUrl = PropertiesUtil.getProperty("image.server.http.prefix") + avatarFileName;
+        if(avatarFile == null) {
+            user.setAvatarUrl(PropertiesUtil.getProperty("default_avatar_url"));
+        } else {
+            String avatarFileName = fileService.upload(avatarFile,PropertiesUtil.getProperty("upload_path"));
+            String avatarUrl = PropertiesUtil.getProperty("image.server.http.prefix") + avatarFileName;
+            user.setAvatarUrl(avatarUrl);
+        }
+
+        if (faceFile == null) {
+            return ServerResponse.createByErrorMessage("缺少人脸图片参数!");
+        }
 
         String faceFileName = fileService.upload(faceFile,PropertiesUtil.getProperty("upload_path"));
         String faceUrl = PropertiesUtil.getProperty("image.server.http.prefix") + faceFileName;
 
-        user.setAvatarUrl(avatarUrl);
+
         user.setFaceUrl(faceUrl);
 
         return userService.register(user);
@@ -65,11 +78,16 @@ public class UserController {
     @RequestMapping(value = "/login.do",method = RequestMethod.POST)
     @ResponseBody
     public ServerResponse<User> login(String phone, String password) {
+        if (StringUtils.isBlank(phone) || StringUtils.isBlank(password)) {
+            return ServerResponse.createByErrorMessage("参数无效!");
+        }
+
         ServerResponse<User> serverResponse = userService.login(phone,password);
         if (serverResponse.isSuccess()) {
             Integer id = serverResponse.getData().getId();
             String token = TokenUtil.sign(id,phone);
             if (token != null) {
+                redisUtil.setex(PropertiesUtil.getProperty("redis_prefix")+id,3600*24*15,token);
                 return ServerResponse.createBySuccess(token,serverResponse.getData());
             }
         }
@@ -95,6 +113,9 @@ public class UserController {
     @RequestMapping(value = "/getOneByPhone.do",method = RequestMethod.POST)
     @ResponseBody
     public ServerResponse<User> getOneByPhone(String phone) {
+        if (StringUtils.isBlank(phone)) {
+            return ServerResponse.createByErrorMessage("参数无效!");
+        }
         return userService.getOneByPhone(phone);
     }
 
@@ -109,6 +130,13 @@ public class UserController {
                                         @RequestParam(value = "sex") String sex,
                                        @RequestParam(value = "email") String email, @RequestParam(value = "avatar",required = false) MultipartFile avatarFile,
                                        HttpServletRequest request) {
+        if (id == null) {
+            return ServerResponse.createByErrorMessage("参数无效!");
+        }
+        if (StringUtils.isAnyBlank(phone,sex,email)) {
+            return ServerResponse.createByErrorMessage("参数无效!");
+        }
+
         String token = request.getHeader("token");
         Integer tokenId = Integer.parseInt(TokenUtil.getInfo(token,"id"));
         if (tokenId.intValue() == id.intValue()) {
@@ -140,6 +168,12 @@ public class UserController {
     @RequestMapping(value = "/updatePassword.do",method = RequestMethod.POST)
     public ServerResponse<User> updatePassword(Integer userId, String oldPassword, String newPassword,
                                                HttpServletRequest request) {
+        if (userId == null) {
+            return ServerResponse.createByErrorMessage("参数无效!");
+        }
+        if (StringUtils.isAnyBlank(oldPassword,newPassword)) {
+            return ServerResponse.createByErrorMessage("参数无效!");
+        }
         String token = request.getHeader("token");
         Integer tokenId = Integer.parseInt(TokenUtil.getInfo(token,"id"));
         if (tokenId.intValue() == userId.intValue()) {
@@ -165,11 +199,13 @@ public class UserController {
     @ResponseBody
     @RequestMapping(value = "/forgetPassword.do",method = RequestMethod.POST)
     public ServerResponse forgetPassword(String code,String phoneNumber,String newPassword) {
-        if (PhoneUtil.judgeCodeIsTrue(code,phoneNumber)) {
-            return userService.forgetPassword(phoneNumber,MD5Util.MD5EncodeUtf8(newPassword));
+        if (StringUtils.isNoneBlank(code,phoneNumber,newPassword)) {
+            if (PhoneUtil.judgeCodeIsTrue(code,phoneNumber)) {
+                return userService.forgetPassword(phoneNumber,MD5Util.MD5EncodeUtf8(newPassword));
+            }
+            return ServerResponse.createByErrorMessage("验证失败");
         }
-        return ServerResponse.createByErrorMessage("验证失败");
-
+        return ServerResponse.createByErrorMessage("参数无效!");
     }
 
 
@@ -179,5 +215,13 @@ public class UserController {
         return ServerResponse.createByErrorCodeMessage(ResponseCode.NEED_LOGIN.getCode(),"token过期!");
     }
 
+    @ResponseBody
+    @RequestMapping("/offerToken.do")
+    public ServerResponse offerToken(HttpServletRequest request) {
+        String id = (String) request.getAttribute("id");
+        String phone = (String) request.getAttribute("phone");
+        String token = TokenUtil.sign(Integer.parseInt(id),phone);
+        return ServerResponse.createBySuccess(token);
+    }
 }
 
