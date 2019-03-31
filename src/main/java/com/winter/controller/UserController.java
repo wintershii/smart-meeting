@@ -221,6 +221,8 @@ public class UserController {
         String id = (String) request.getAttribute("id");
         String phone = (String) request.getAttribute("phone");
         String token = TokenUtil.sign(Integer.parseInt(id),phone);
+        String key = PropertiesUtil.getProperty("redis_prefix") + id;
+        redisUtil.set(key,token);
         return ServerResponse.createBySuccess(token);
     }
 }
