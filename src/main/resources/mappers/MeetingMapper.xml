@@ -197,7 +197,7 @@
   <select id="whetherBook" parameterType="map" resultType="int">
     select count(1)
     from smart_meeting
-    where id = #{roomId} and status = 3
+    where room_id = #{roomId} and status = 3
     and (#{startTime} >= start_time and #{startTime} &lt;= end_time)
     or (#{endTime} >= start_time and #{endTime} &lt;= end_time)
   </select>
@@ -239,4 +239,16 @@
     where room_id = #{roomId}
     and end_time >= now()
   </select>
+
+  <update id="updateAllMeeting">
+    update smart_meeting
+    set status = 1
+    where end_time &lt; now()
+  </update>
+
+    <update id="updateAllMeetingOngoing">
+      update smart_meeting
+      set status = 2
+      where start_time &lt;= now() and end_time >= now()
+    </update>
 </mapper>

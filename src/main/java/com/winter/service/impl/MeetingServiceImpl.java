@@ -139,6 +139,7 @@ public class MeetingServiceImpl implements IMeetingService {
 
     @Override
     public int setMeetingStatus(Integer meetingId, Integer status) {
+
         return meetingMapper.setMeetingStatus(meetingId,status);
     }
 
@@ -152,6 +153,15 @@ public class MeetingServiceImpl implements IMeetingService {
         return ServerResponse.createByErrorMessage("获取用户数据失败");
     }
 
+
+    public boolean updateAllMeetingInfo() {
+        int finished = meetingMapper.updateAllMeeting();
+        int onGoing = meetingMapper.updateAllMeetingOngoing();
+        if (finished > 0 && onGoing > 0) {
+            return true;
+        }
+        return false;
+    }
 
 
     /**

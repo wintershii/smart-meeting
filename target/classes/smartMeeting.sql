@@ -72,6 +72,24 @@ CREATE TABLE meeting_user (
   DEFAULT CHARSET = utf8;
 
 
+--会议-文件表
+CREATE TABLE meeting_file (
+  id int(11) NOT NULL AUTO_INCREMENT COMMENT 'id',
+  meeting_id int(11) NOT NULL COMMENT '会议id' ,
+  file_name varchar(500) NOT NULL COMMENT '文件名',
+  file_url varchar(500) NOT NULL COMMENT '文件url',
+  file_size int NOT NULL COMMENT '文件大小',
+  uploader varchar(50) NOT NULL COMMENT '上传者用户名',
+  upload_time datetime NOT NULL COMMENT '上传时间',
+  PRIMARY KEY (id),
+  KEY meeting_id_index (meeting_id) USING BTREE,
+  CONSTRAINT file_foreign FOREIGN KEY (meeting_id) REFERENCES smart_meeting (id)
+)
+  ENGINE = InnoDB
+  AUTO_INCREMENT = 1000
+  DEFAULT CHARSET = utf8;
+
+
 
 
 

@@ -4,18 +4,25 @@ import com.github.pagehelper.PageInfo;
 import com.winter.common.Const;
 import com.winter.common.ServerResponse;
 import com.winter.domain.Meeting;
+import com.winter.domain.MeetingFile;
 import com.winter.domain.UserMeeting;
+import com.winter.service.IFileService;
 import com.winter.service.IMeetingService;
 import com.winter.service.IUserMeetingService;
+import com.winter.service.impl.FileServiceImpl;
+import com.winter.util.PropertiesUtil;
 import com.winter.util.TokenUtil;
 import com.winter.vo.MeetingVo;
 import com.winter.vo.UserStatus;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.Date;
@@ -25,12 +32,13 @@ import java.util.List;
 @Controller
 @RequestMapping("/meeting")
 public class MeetingController {
-
+    private Logger logger = LoggerFactory.getLogger(FileServiceImpl.class);
 
     private IMeetingService meetingService;
 
     private IUserMeetingService userMeetingService;
 
+    private IFileService fileService;
 
     @Autowired
     public void setMeetingService(IMeetingService meetingService) {
@@ -41,6 +49,13 @@ public class MeetingController {
     public void setUserMeetingService(IUserMeetingService userMeetingService) {
         this.userMeetingService = userMeetingService;
     }
+
+    @Autowired
+    public void setFileService(IFileService fileService) {
+        this.fileService = fileService;
+    }
+
+
 
     /**
      * 获取用户参加的会议信息(根据用户id)
@@ -54,6 +69,12 @@ public class MeetingController {
         if (userId == null || type == null) {
             return ServerResponse.createByErrorMessage("参数无效!");
         }
+        if (meetingService.updateAllMeetingInfo()) {
+            logger.info("更新会议状态成功!");
+        } else {
+            logger.info("更新会议状态失败!");
+        }
+
         //type: 1--用户正在参加或还未参加的会议  2--用户已经参加过的会议
         List<MeetingVo> meetingList = meetingService.getUserMeetings(userId,type);
         if (meetingList != null) {
@@ -74,7 +95,6 @@ public class MeetingController {
             return ServerResponse.createByErrorMessage("参数无效!");
         }
         MeetingVo meetingVo = meetingService.getMeetingById(meetingId);
-        System.out.println(meetingVo);
         if (meetingVo != null) {
             List<UserStatus> userStatus = meetingService.getUserStatus(meetingId);
             System.out.println(userStatus);
@@ -247,5 +267,28 @@ public class MeetingController {
         return ServerResponse.createByErrorMessage("无权限操作!");
     }
 
+
+    @ResponseBody
+    @RequestMapping(value = "/uploadFile.do",method = RequestMethod.POST)
+    public ServerResponse uploadMeetingFile(MultipartFile uploadFile, Integer meetingId, Integer userId) {
+        MeetingFile meetingFile = new MeetingFile();
+        long fileSize = uploadFile.getSize();
+        int size = (int)(fileSize/1024);
+        String filename = uploadFile.getOriginalFilename();
+        meetingFile.setFileSize(size);
+        meetingFile.setFileName(filename);
+        meetingFile.setMeetingId(meetingId);
+        String uploadFileName = fileService.upload(uploadFile, PropertiesUtil.getProperty("upload_path"));
+        String fileUrl = PropertiesUtil.getProperty("image.server.http.prefix") + uploadFileName;
+        meetingFile.setFileUrl(fileUrl);
+        return fileService.uploadMeetingFile(meetingFile,userId);
+    }
+
+
+    @ResponseBody
+    @RequestMapping(value = "/getMeetingFiles.do",method = RequestMethod.POST)
+    public ServerResponse<List<MeetingFile>> uploadMeetingFile(Integer meetingId) {
+        return fileService.getMeetingFiles(meetingId);
+    }
 
 }

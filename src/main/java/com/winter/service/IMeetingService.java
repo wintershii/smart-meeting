@@ -28,4 +28,6 @@ public interface IMeetingService {
 
     List<MeetingVo> meetingToVo(List<Meeting> meetings);
 
+    boolean updateAllMeetingInfo();
+
 }

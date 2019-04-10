@@ -26,4 +26,5 @@ public interface RoomMapper {
     int checkMapping(@Param("roomNumber") String roomNumber, @Param("machineNumber") String machineNumber);
 
     Room getInfoByRoomNumber(String roomNumber);
+
 }

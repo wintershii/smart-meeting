@@ -142,4 +142,5 @@
     from smart_room
     where room_number = #{roomNumber}
   </select>
+
 </mapper>

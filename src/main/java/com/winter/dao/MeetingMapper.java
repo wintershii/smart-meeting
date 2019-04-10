@@ -39,4 +39,7 @@ public interface MeetingMapper {
 
     List<Meeting> getAccessMeeting(Integer roomId);
 
+    int updateAllMeeting();
+
+    int updateAllMeetingOngoing();
 }

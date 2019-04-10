@@ -69,8 +69,8 @@
         </javaClientGenerator>
 
 
-        <table tableName="smart_meeting" domainObjectName="Meeting" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"></table>
-        <table tableName="meeting_user" domainObjectName="UserMeeting" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"></table>
+        <table tableName="meeting_file" domainObjectName="MeetingFile" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"></table>
+
 
 
         <!-- geelynote mybatis插件的搭建 -->

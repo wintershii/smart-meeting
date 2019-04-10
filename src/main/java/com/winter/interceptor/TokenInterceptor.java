@@ -34,6 +34,9 @@ public class TokenInterceptor implements HandlerInterceptor {
 
         response.setCharacterEncoding("utf-8");
         String token = request.getHeader("token");
+        if (token == null) {
+            request.getRequestDispatcher("/user/tokenExpired.do").forward(request,response);
+        }
         if (token != null){
             boolean result = TokenUtil.verify(token);
             if(result){
