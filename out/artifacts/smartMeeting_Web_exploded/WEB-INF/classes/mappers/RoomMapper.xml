@@ -143,4 +143,16 @@
     where room_number = #{roomNumber}
   </select>
 
+  <update id="setRoomUse" parameterType="integer">
+    update smart_room
+    set status = 2
+    where id = #{roomId}
+  </update>
+
+  <update id="setRoomFree" parameterType="integer">
+    update smart_room
+    set status = 1
+    where id = #{roomId}
+  </update>
+
 </mapper>

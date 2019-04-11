@@ -8,6 +8,7 @@ import com.winter.domain.MeetingFile;
 import com.winter.domain.UserMeeting;
 import com.winter.service.IFileService;
 import com.winter.service.IMeetingService;
+import com.winter.service.IRoomService;
 import com.winter.service.IUserMeetingService;
 import com.winter.service.impl.FileServiceImpl;
 import com.winter.util.PropertiesUtil;
@@ -40,6 +41,8 @@ public class MeetingController {
 
     private IFileService fileService;
 
+    private IRoomService roomService;
+
     @Autowired
     public void setMeetingService(IMeetingService meetingService) {
         this.meetingService = meetingService;
@@ -55,7 +58,10 @@ public class MeetingController {
         this.fileService = fileService;
     }
 
-
+    @Autowired
+    public void setRoomService(IRoomService roomService) {
+        this.roomService = roomService;
+    }
 
     /**
      * 获取用户参加的会议信息(根据用户id)
@@ -233,7 +239,11 @@ public class MeetingController {
         String token = request.getHeader("token");
         Integer tokenId = Integer.parseInt(TokenUtil.getInfo(token,"id"));
         if (masterId != null && masterId.intValue() == tokenId.intValue()) {
-            int resultCount = meetingService.setMeetingStatus(meetingId,Const.MeetingStatus.ONGOING);
+            Integer roomId = meetingService.getRoomIdByMeetingId(meetingId);
+            if (roomId == null) {
+                return ServerResponse.createByErrorMessage("未找到该会议信息!");
+            }
+            int resultCount = roomService.setRoomStatus(roomId,Const.RoomStatus.USE);
             if (resultCount > 0) {
                 return ServerResponse.createBySuccessMessage("会议成功开始");
             }
@@ -258,10 +268,11 @@ public class MeetingController {
         String token = request.getHeader("token");
         Integer tokenId = Integer.parseInt(TokenUtil.getInfo(token,"id"));
         if (masterId != null && masterId.intValue() == tokenId.intValue()) {
-            int resultCount = meetingService.setMeetingStatus(meetingId,Const.MeetingStatus.OVER);
-            if (resultCount > 0) {
-                return ServerResponse.createBySuccessMessage("会议结束");
+            Integer roomId = meetingService.getRoomIdByMeetingId(meetingId);
+            if (roomId == null) {
+                return ServerResponse.createByErrorMessage("未找到该会议信息!");
             }
+            int resultCount = roomService.setRoomStatus(roomId,Const.RoomStatus.FREE);
             return ServerResponse.createByErrorMessage("会议结束失败");
         }
         return ServerResponse.createByErrorMessage("无权限操作!");

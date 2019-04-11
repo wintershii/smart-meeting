@@ -1,6 +1,7 @@
 package com.winter.service.impl;
 
 import com.sun.org.apache.regexp.internal.RE;
+import com.winter.common.Const;
 import com.winter.common.ServerResponse;
 import com.winter.dao.MeetingMapper;
 import com.winter.dao.RoomMapper;
@@ -118,6 +119,16 @@ public class RoomServiceImpl implements IRoomService {
 
     }
 
+    @Override
+    public int setRoomStatus(Integer roomId, int roomStatus) {
+        int resultCount = 0;
+        if (roomStatus == Const.RoomStatus.USE) {
+            resultCount = roomMapper.setRoomUse(roomId);
+        } else if (roomStatus == Const.RoomStatus.FREE) {
+            resultCount = roomMapper.setRoomFree(roomId);
+        }
+        return resultCount;
+    }
 
     /**
      * 将room对象转为roomVo对象

@@ -60,6 +60,7 @@ CREATE TABLE meeting_user (
   meeting_id int(11) NOT NULL COMMENT '会议id' ,
   user_id int(11) NOT NULL COMMENT '与会人员id',
   user_status int(1) NOT NULL COMMENT '用户状态 1-正常 2-缺勤 3-迟到 4-请假',
+  notes text DEFAULT NULL COMMENT '用户会议笔记',
   create_time datetime DEFAULT NULL COMMENT '创建时间',
   update_time datetime DEFAULT NULL COMMENT '更新时间',
   PRIMARY KEY (id),

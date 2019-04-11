@@ -27,4 +27,8 @@ public interface RoomMapper {
 
     Room getInfoByRoomNumber(String roomNumber);
 
+    int setRoomUse(Integer roomId);
+
+    int setRoomFree(Integer roomId);
+
 }

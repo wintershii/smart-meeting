@@ -251,4 +251,10 @@
       set status = 2
       where start_time &lt;= now() and end_time >= now()
     </update>
+
+  <select id="getRoomIdByMeetingId" resultType="integer" parameterType="integer">
+    select room_id
+    from smart_meeting
+    where id = #{meetingId}
+  </select>
 </mapper>

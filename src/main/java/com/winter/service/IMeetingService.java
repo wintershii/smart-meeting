@@ -30,4 +30,6 @@ public interface IMeetingService {
 
     boolean updateAllMeetingInfo();
 
+    Integer getRoomIdByMeetingId(Integer meetingId);
+
 }

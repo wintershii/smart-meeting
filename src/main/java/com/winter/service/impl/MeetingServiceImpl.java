@@ -164,6 +164,11 @@ public class MeetingServiceImpl implements IMeetingService {
     }
 
 
+    @Override
+    public Integer getRoomIdByMeetingId(Integer meetingId) {
+        return meetingMapper.getRoomIdByMeetingId(meetingId);
+    }
+
     /**
      * 会议转vo
      * @param meetings

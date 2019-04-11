@@ -42,4 +42,6 @@ public interface MeetingMapper {
     int updateAllMeeting();
 
     int updateAllMeetingOngoing();
+
+    Integer getRoomIdByMeetingId(Integer meetingId);
 }
