@@ -44,4 +44,8 @@ public interface MeetingMapper {
     int updateAllMeetingOngoing();
 
     Integer getRoomIdByMeetingId(Integer meetingId);
+
+    int editNote(@Param("meetingId") Integer meetingId, @Param("userId") Integer userId, @Param("note") String note);
+
+    String getMeetingNote(@Param("meetingId") Integer meetingId, @Param("userId") Integer userId);
 }

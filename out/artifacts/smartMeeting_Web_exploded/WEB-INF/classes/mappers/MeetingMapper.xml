@@ -257,4 +257,18 @@
     from smart_meeting
     where id = #{meetingId}
   </select>
+
+  <update id="editNote" parameterType="map">
+    update meeting_user
+    set notes = #{note}
+    where meeting_id = #{meetingId}
+    and user_id = #{userId}
+  </update>
+
+  <select id="getMeetingNote" resultType="string" parameterType="map">
+    select notes
+    from meeting_user
+    where meeting_id = #{meetingId}
+    and user_id = #{userId}
+  </select>
 </mapper>

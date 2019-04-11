@@ -223,7 +223,7 @@ public class UserController {
         String token = TokenUtil.sign(Integer.parseInt(id),phone);
         String key = PropertiesUtil.getProperty("redis_prefix") + id;
         redisUtil.set(key,token);
-        return ServerResponse.createBySuccess(token);
+        return ServerResponse.createByErrorCodeMessage(ResponseCode.FRESH_TOKEN.getCode(),token);
     }
 }
 

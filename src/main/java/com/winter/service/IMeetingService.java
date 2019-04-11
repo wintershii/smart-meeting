@@ -32,4 +32,8 @@ public interface IMeetingService {
 
     Integer getRoomIdByMeetingId(Integer meetingId);
 
+    ServerResponse editNote(Integer meetingId, Integer userId, String note);
+
+    ServerResponse<String> getMeetingNote(Integer meetingId, Integer userId);
+
 }

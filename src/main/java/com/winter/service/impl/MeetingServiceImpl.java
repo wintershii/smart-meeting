@@ -13,6 +13,7 @@ import com.winter.util.DateTimeUtil;
 import com.winter.vo.MeetingVo;
 import com.winter.vo.UserAccessInfo;
 import com.winter.vo.UserStatus;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -167,6 +168,25 @@ public class MeetingServiceImpl implements IMeetingService {
     @Override
     public Integer getRoomIdByMeetingId(Integer meetingId) {
         return meetingMapper.getRoomIdByMeetingId(meetingId);
+    }
+
+    @Override
+    public ServerResponse editNote(Integer meetingId, Integer userId, String note) {
+        int resultCount = meetingMapper.editNote(meetingId,userId,note);
+        if (resultCount > 0) {
+            return ServerResponse.createBySuccess("编辑信息成功!");
+        }
+        return ServerResponse.createByErrorMessage("编辑信息失败");
+    }
+
+
+    @Override
+    public ServerResponse<String> getMeetingNote(Integer meetingId, Integer userId) {
+        String note = meetingMapper.getMeetingNote(meetingId,userId);
+        if (note == null || StringUtils.isBlank(note)) {
+            return ServerResponse.createBySuccess("");
+        }
+        return ServerResponse.createBySuccess(note);
     }
 
     /**

@@ -302,4 +302,26 @@ public class MeetingController {
         return fileService.getMeetingFiles(meetingId);
     }
 
+
+    @ResponseBody
+    @RequestMapping(value = "/editNote.do",method = RequestMethod.POST)
+    public ServerResponse editNote(Integer meetingId, Integer userId, String note) {
+        if (meetingId == null || userId == null || note == null) {
+            return ServerResponse.createByErrorMessage("参数错误!");
+        }
+        return meetingService.editNote(meetingId,userId,note);
+    }
+
+
+    @ResponseBody
+    @RequestMapping(value = "/getMeetingNote.do",method = RequestMethod.GET)
+    public ServerResponse<String> getMeetingNote(Integer meetingId, Integer userId) {
+        if (meetingId == null || userId == null) {
+            return ServerResponse.createByErrorMessage("参数错误");
+        }
+        return meetingService.getMeetingNote(meetingId,userId);
+    }
+
+
+
 }
