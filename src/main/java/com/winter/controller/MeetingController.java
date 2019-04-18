@@ -314,7 +314,7 @@ public class MeetingController {
 
 
     @ResponseBody
-    @RequestMapping(value = "/getMeetingNote.do",method = RequestMethod.GET)
+    @RequestMapping(value = "/getMeetingNote.do",method = RequestMethod.POST)
     public ServerResponse<String> getMeetingNote(Integer meetingId, Integer userId) {
         if (meetingId == null || userId == null) {
             return ServerResponse.createByErrorMessage("参数错误");

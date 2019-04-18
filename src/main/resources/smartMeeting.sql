@@ -92,6 +92,54 @@ CREATE TABLE meeting_file (
 
 
 
+--投票项目表
+CREATE TABLE meeting_vote (
+  id int(11) NOT NULL AUTO_INCREMENT COMMENT 'id',
+  meeting_id int(11) NOT NULL COMMENT '会议id',
+  publisher_id int(11) NOT NULL COMMENT '发布人id',
+  topic varchar(1000) NOT NULL COMMENT '投票项目主题',
+  select_way int NOT NULL COMMENT '投票方式  0-单选 1-多选',
+  remind_time int NOT NULL COMMENT '提醒时间',
+  create_time datetime NOT NULL COMMENT '发布时间',
+  end_time datetime NOT NULL COMMENT '结束时间',
+  PRIMARY KEY (id),
+  KEY meeting_id_index (meeting_id) USING BTREE,
+  CONSTRAINT vote_foreign FOREIGN KEY (meeting_id) REFERENCES smart_meeting (id)
+)
+  ENGINE = InnoDB
+  AUTO_INCREMENT = 1000
+  DEFAULT CHARSET = utf8;
+
+
+--投票选项表
+CREATE TABLE vote_option (
+  id int(11) NOT NULL AUTO_INCREMENT COMMENT '选项id',
+  vote_id int(11) NOT NULL COMMENT '投票项目id',
+  option_name varchar(500) NOT NULL COMMENT '选项名',
+  num int NOT NULL COMMENT '投票个数',
+  PRIMARY KEY (id),
+  KEY vote_id_index (vote_id) USING BTREE,
+  CONSTRAINT option_foreign FOREIGN KEY (vote_id) REFERENCES meeting_vote (id)
+)
+  ENGINE = InnoDB
+  AUTO_INCREMENT = 1000
+  DEFAULT CHARSET = utf8;
+
+
+--用户投票表
+CREATE TABLE user_vote_option (
+  id int(11) NOT NULL AUTO_INCREMENT COMMENT 'id',
+  user_id int(11) NOT NULL COMMENT '用户id',
+  vote_id int(11) NOT NULL COMMENT '投票项目id',
+  option_id int(11) NOT NULL COMMENT '所投选项id',
+  PRIMARY KEY (id),
+  UNIQUE vote_id_index (user_id, vote_id) USING BTREE,
+  CONSTRAINT vote_option_foreign FOREIGN KEY (option_id) REFERENCES vote_option (id)
+)
+  ENGINE = InnoDB
+  AUTO_INCREMENT = 1000
+  DEFAULT CHARSET = utf8;
+
 
 
 
