@@ -11,7 +11,7 @@ public class MeetingVote {
 
     private String topic;
 
-    private Integer selectWay;
+    private Integer selectWay; // 0-单选 1-多选
 
     private Integer remindTime;
 

@@ -26,13 +26,13 @@
     delete from meeting_vote
     where id = #{id,jdbcType=INTEGER}
   </delete>
-  <insert id="insert" parameterType="com.winter.domain.MeetingVote">
+  <insert id="insert" parameterType="com.winter.domain.MeetingVote" useGeneratedKeys="true" keyProperty="id">
     insert into meeting_vote (id, meeting_id, publisher_id, 
       topic, select_way, remind_time, 
       create_time, end_time)
-    values (#{id,jdbcType=INTEGER}, #{meetingId,jdbcType=INTEGER}, #{publisherId,jdbcType=INTEGER}, 
+    values (default , #{meetingId,jdbcType=INTEGER}, #{publisherId,jdbcType=INTEGER},
       #{topic,jdbcType=VARCHAR}, #{selectWay,jdbcType=INTEGER}, #{remindTime,jdbcType=INTEGER}, 
-      #{createTime,jdbcType=TIMESTAMP}, #{endTime,jdbcType=TIMESTAMP})
+      now(), #{endTime,jdbcType=TIMESTAMP})
   </insert>
   <insert id="insertSelective" parameterType="com.winter.domain.MeetingVote">
     insert into meeting_vote
@@ -127,4 +127,14 @@
       end_time = #{endTime,jdbcType=TIMESTAMP}
     where id = #{id,jdbcType=INTEGER}
   </update>
+
+  <insert id="addOption" parameterType="map">
+    insert into vote_option (id, vote_id, option_name, num)
+    values (default, #{id}, #{option}, 0)
+  </insert>
+
+  <insert id="userCommitOption" parameterType="map">
+    insert into user_vote_option (id,user_id,vote_id,option_id)
+    values (default, #{userId}, #{voteId}, #{optionId})
+  </insert>
 </mapper>
