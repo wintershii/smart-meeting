@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.winter.dao.TestMapper">
+    <select id="selectById" resultType="com.winter.domain.User" parameterType="integer">
+    select
+    id, username, password, sex, role , phone, email, face_data ,avatar_url, face_url, create_time, update_time
+    from smart_user
+    where id = #{id}
+  </select>
+</mapper>

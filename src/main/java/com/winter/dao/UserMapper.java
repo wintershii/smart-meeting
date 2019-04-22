@@ -1,6 +1,7 @@
 package com.winter.dao;
 
 import com.winter.domain.User;
+import com.winter.vo.UserAvatarInfo;
 import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
@@ -45,4 +46,6 @@ public interface UserMapper {
     int forgetPassword(@Param("phoneNumber") String phoneNumber, @Param("newPassword") String newPassword);
 
     String getPhoneById(Integer id);
+
+    UserAvatarInfo getUserAvatarInfo(Integer userId);
 }

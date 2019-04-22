@@ -16,6 +16,13 @@
       <arg column="update_time" javaType="java.util.Date" jdbcType="TIMESTAMP" />
     </constructor>
   </resultMap>
+
+  <resultMap id="UserAvatarMap" type="com.winter.vo.UserAvatarInfo">
+      <result column="id" property="userId" />
+      <result column="username" property="username" />
+      <result column="avatar_url" property="avatarUrl" />
+  </resultMap>
+
   <resultMap id="ResultMapWithBLOBs" type="com.winter.domain.User">
     <constructor>
       <idArg column="id" javaType="java.lang.Integer" jdbcType="INTEGER" />
@@ -292,5 +299,11 @@
     select phone
     from smart_user
     where id = #{id}
+  </select>
+
+  <select id="getUserAvatarInfo" parameterType="integer" resultType="list" resultMap="UserAvatarMap">
+    select id, username, avatar_url
+    from smart_user
+    where id = #{userId}
   </select>
 </mapper>

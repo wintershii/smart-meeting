@@ -1,7 +1,11 @@
 package com.winter.dao;
 
 import com.winter.domain.MeetingVote;
+import com.winter.vo.VoteOption;
 import org.apache.ibatis.annotations.Param;
+import org.omg.CORBA.INTERNAL;
+
+import java.util.List;
 
 public interface MeetingVoteMapper {
     int deleteByPrimaryKey(Integer id);
@@ -19,4 +23,10 @@ public interface MeetingVoteMapper {
     int addOption(@Param("id") Integer id, @Param("option") String option);
 
     int userCommitOption(@Param("userId") Integer userId, @Param("voteId") Integer voteId, @Param("optionId") Integer optionId);
+
+    List<MeetingVote> getAllMeetingVote(Integer meetingId);
+
+    List<VoteOption> getVoteOption(Integer voteId);
+
+    List<Integer> getUserSelectList(@Param("voteId") Integer voteId, @Param("userId") Integer userId);
 }

@@ -4,6 +4,7 @@ package com.winter.controller;
 import com.winter.common.ServerResponse;
 import com.winter.domain.MeetingVote;
 import com.winter.service.IVoteService;
+import com.winter.vo.VoteVo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -23,12 +24,16 @@ public class VoteController {
     }
 
     @RequestMapping(value = "/add",method = RequestMethod.POST)
-    public ServerResponse createVote(MeetingVote meetingVote, List<String> options) {
+    public ServerResponse createVote(MeetingVote meetingVote, String[] options) {
+        if (meetingVote == null || options == null || options.length < 2 || options.length > 5) {
+            return ServerResponse.createByErrorMessage("参数错误");
+        }
+        System.out.println(options);
         return voteService.createVote(meetingVote,options);
     }
 
     @RequestMapping(value = "/userOption",method = RequestMethod.POST)
-    public ServerResponse userCommitOption(Integer userId, Integer voteId, List<Integer> optionIds) {
+    public ServerResponse userCommitOption(Integer userId, Integer voteId, Integer[] optionIds) {
         return voteService.userCommitOption(userId,voteId,optionIds);
     }
 
@@ -37,17 +42,13 @@ public class VoteController {
      * @param meetingId
      * @return
      */
-    public ServerResponse<> getMeetingVoteInfo(Integer meetingId) {
-
+    @RequestMapping(value = "/specificInfo",method = RequestMethod.GET)
+    public ServerResponse<List<VoteVo>> getMeetingVoteInfo(Integer meetingId, Integer userId) {
+        if (meetingId == null || userId == null) {
+            return ServerResponse.createByErrorMessage("参数错误!");
+        }
+        return voteService.getMeetingVoteInfo(meetingId,userId);
     }
 
-    /**
-     * 根据投票Id获取具体的投票信息
-     * @param voteId
-     * @return
-     */
-    public ServerResponse<> getSpecificVote(Integer voteId) {
-
-    }
 
 }

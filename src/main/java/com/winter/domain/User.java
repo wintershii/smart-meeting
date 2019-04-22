@@ -155,4 +155,22 @@ public class User {
     public void setFaceData(String faceData) {
         this.faceData = faceData == null ? null : faceData.trim();
     }
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "id=" + id +
+                ", username='" + username + '\'' +
+                ", password='" + password + '\'' +
+                ", sex='" + sex + '\'' +
+                ", role=" + role +
+                ", phone='" + phone + '\'' +
+                ", email='" + email + '\'' +
+                ", avatarUrl='" + avatarUrl + '\'' +
+                ", faceUrl='" + faceUrl + '\'' +
+                ", createTime=" + createTime +
+                ", updateTime=" + updateTime +
+                ", faceData='" + faceData + '\'' +
+                '}';
+    }
 }

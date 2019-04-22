@@ -89,7 +89,7 @@
     </bean>
 
     <!-- 使用@Transactional进行声明式事务管理需要声明下面这行 -->
-    <tx:annotation-driven transaction-manager="transactionManager" proxy-target-class="true" />
+    <tx:annotation-driven transaction-manager="transactionManager"/>
     <!-- 事务管理 -->
     <bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
         <property name="dataSource" ref="dataSource"/>
@@ -112,6 +112,8 @@
     <bean id="redisUtil" class="com.winter.util.RedisUtil">
         <property name="jedisPool" ref="jedisPool" />
     </bean>
+
+
 
 
 
