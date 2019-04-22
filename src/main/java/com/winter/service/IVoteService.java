@@ -14,6 +14,8 @@ public interface IVoteService {
 
     boolean addOptions(Integer id, String[] options);
 
+    boolean checkUserHasVoted(Integer userId, Integer voteId);
+
     ServerResponse userCommitOption(Integer userId, Integer voteId, Integer[] optionIds);
 
     ServerResponse<List<VoteVo>> getMeetingVoteInfo(Integer meetingId, Integer userId);

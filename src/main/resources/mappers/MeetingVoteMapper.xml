@@ -165,4 +165,17 @@
     where vote_id = #{voteId}
     and user_id = #{userId}
   </select>
+
+  <update id="increaseOption" parameterType="integer">
+    update vote_option
+    set num = num + 1
+    where id = #{optionId}
+  </update>
+
+  <select id="checkUserHasVoted" parameterType="map" resultType="int">
+    select count(1)
+    from user_vote_option
+    where user_id = #{userId}
+    and vote_id = #{voteId}
+  </select>
 </mapper>

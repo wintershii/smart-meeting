@@ -29,4 +29,8 @@ public interface MeetingVoteMapper {
     List<VoteOption> getVoteOption(Integer voteId);
 
     List<Integer> getUserSelectList(@Param("voteId") Integer voteId, @Param("userId") Integer userId);
+
+    int increaseOption(Integer optionId);
+
+    int checkUserHasVoted(@Param("userId") Integer userId, @Param("voteId") Integer voteId);
 }

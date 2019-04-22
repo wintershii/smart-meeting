@@ -81,7 +81,8 @@ public class VoteServiceImpl implements IVoteService {
         for (Integer option : optionIds) {
             if (option != null) {
                 int resultCount = meetingVoteMapper.userCommitOption(userId,voteId,option);
-                if (resultCount == 0) {
+                int increaseCount = meetingVoteMapper.increaseOption(option);
+                if (resultCount == 0 || increaseCount == 0) {
                     try {
                         throw new Exception();
                     } catch (Exception e) {
@@ -108,6 +109,15 @@ public class VoteServiceImpl implements IVoteService {
         return ServerResponse.createByErrorMessage("查询失败!");
     }
 
+
+    @Override
+    public boolean checkUserHasVoted(Integer userId, Integer voteId) {
+        int resultCount = meetingVoteMapper.checkUserHasVoted(userId,voteId);
+        if (resultCount > 0) {
+            return true;
+        }
+        return false;
+    }
 
     private List<VoteVo> meetingVoteToVo(List<MeetingVote> meetingVotes, Integer userId) {
         List<VoteVo> voList = new ArrayList<>();

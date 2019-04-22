@@ -34,6 +34,10 @@ public class VoteController {
 
     @RequestMapping(value = "/userOption",method = RequestMethod.POST)
     public ServerResponse userCommitOption(Integer userId, Integer voteId, Integer[] optionIds) {
+        boolean hasVoted = voteService.checkUserHasVoted(userId, voteId);
+        if (hasVoted) {
+            return ServerResponse.createByErrorMessage("您已经投过票!");
+        }
         return voteService.userCommitOption(userId,voteId,optionIds);
     }
 

@@ -7,41 +7,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d0d3e8bf-a72a-4995-8ef0-d8f28350ccb6" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/winter/dao/TestMapper.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/winter/vo/UserAvatarInfo.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/winter/vo/VoteOption.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/winter/vo/VoteVo.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/mappers/TestMapper.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/TestMybatis.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/artifacts/smartMeeting_Web_exploded.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/artifacts/smartMeeting_Web_exploded.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/smartMeeting_Web_exploded/WEB-INF/classes/applicationContext-datasource.xml" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/smartMeeting_Web_exploded/WEB-INF/classes/applicationContext-datasource.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/smartMeeting_Web_exploded/WEB-INF/classes/com/winter/dao/UserMapper.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/smartMeeting_Web_exploded/WEB-INF/classes/com/winter/dao/UserMapper.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/smartMeeting_Web_exploded/WEB-INF/classes/com/winter/domain/User.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/smartMeeting_Web_exploded/WEB-INF/classes/com/winter/domain/User.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/smartMeeting_Web_exploded/WEB-INF/classes/com/winter/red5/Manager$ExecuteTranscoderWithCallbacks.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/smartMeeting_Web_exploded/WEB-INF/classes/com/winter/red5/Manager.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/smartMeeting_Web_exploded/WEB-INF/classes/com/winter/red5/ThreadedTranscoderIO.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/smartMeeting_Web_exploded/WEB-INF/classes/com/winter/red5/UseTranscoderBlocking.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/smartMeeting_Web_exploded/WEB-INF/classes/generatorConfig.xml" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/smartMeeting_Web_exploded/WEB-INF/classes/generatorConfig.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/smartMeeting_Web_exploded/WEB-INF/classes/mappers/UserMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/smartMeeting_Web_exploded/WEB-INF/classes/mappers/UserMapper.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/smartMeeting_Web_exploded/WEB-INF/classes/red5.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/smartMeeting_Web_exploded/WEB-INF/classes/smartMeeting.sql" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/smartMeeting_Web_exploded/WEB-INF/classes/smartMeeting.sql" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/smartMeeting_Web_exploded/WEB-INF/web.xml" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/smartMeeting_Web_exploded/WEB-INF/web.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/winter/controller/VoteController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/winter/controller/VoteController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/winter/dao/MeetingVoteMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/winter/dao/MeetingVoteMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/winter/dao/UserMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/winter/dao/UserMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/winter/domain/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/winter/domain/User.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/winter/service/IVoteService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/winter/service/IVoteService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/winter/service/impl/VoteServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/winter/service/impl/VoteServiceImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/mappers/MeetingVoteMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/mappers/MeetingVoteMapper.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/mappers/UserMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/mappers/UserMapper.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/applicationContext-datasource.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/applicationContext-datasource.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/generatorConfig.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/generatorConfig.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/mappers/UserMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/mappers/UserMapper.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/red5.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/smartMeeting.sql" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/smartMeeting.sql" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/WEB-INF/web.xml" beforeDir="false" afterPath="$PROJECT_DIR$/web/WEB-INF/web.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/smartMeeting.sql" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/smartMeeting.sql" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -116,11 +87,11 @@
         <counts>
           <entry key="1" value="4" />
           <entry key="class" value="70" />
-          <entry key="java" value="585" />
+          <entry key="java" value="586" />
           <entry key="png" value="1" />
           <entry key="properties" value="24" />
-          <entry key="sql" value="33" />
-          <entry key="xml" value="152" />
+          <entry key="sql" value="35" />
+          <entry key="xml" value="153" />
           <entry key="xsd" value="2" />
         </counts>
       </usages-collector>
@@ -128,12 +99,12 @@
         <counts>
           <entry key="CLASS" value="70" />
           <entry key="Image" value="1" />
-          <entry key="JAVA" value="585" />
+          <entry key="JAVA" value="586" />
           <entry key="PLAIN_TEXT" value="4" />
           <entry key="Properties" value="24" />
-          <entry key="SQL" value="30" />
+          <entry key="SQL" value="32" />
           <entry key="Scratch" value="3" />
-          <entry key="XML" value="154" />
+          <entry key="XML" value="155" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
@@ -141,22 +112,22 @@
           <entry key="1" value="4" />
           <entry key="class" value="1" />
           <entry key="dummy" value="11" />
-          <entry key="java" value="25034" />
+          <entry key="java" value="25349" />
           <entry key="properties" value="156" />
-          <entry key="sql" value="2494" />
+          <entry key="sql" value="2504" />
           <entry key="txt" value="13" />
-          <entry key="xml" value="4707" />
+          <entry key="xml" value="4841" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
           <entry key="CLASS" value="1" />
-          <entry key="JAVA" value="25034" />
+          <entry key="JAVA" value="25349" />
           <entry key="PLAIN_TEXT" value="28" />
           <entry key="Properties" value="156" />
-          <entry key="SQL" value="2603" />
+          <entry key="SQL" value="2618" />
           <entry key="Scratch" value="40" />
-          <entry key="XML" value="4558" />
+          <entry key="XML" value="4687" />
         </counts>
       </usages-collector>
     </session>
@@ -234,15 +205,6 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/resources/mappers/MeetingVoteMapper.xml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="304">
-              <caret line="16" column="64" selection-start-line="16" selection-start-column="64" selection-end-line="16" selection-end-column="64" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/winter/vo/UserAvatarInfo.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="114">
@@ -265,35 +227,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/winter/dao/MeetingVoteMapper.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="589">
-              <caret line="31" column="1" lean-forward="true" selection-start-line="31" selection-start-column="1" selection-end-line="31" selection-end-column="1" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/winter/controller/VoteController.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="438">
-              <caret line="38" column="35" lean-forward="true" selection-start-line="38" selection-start-column="35" selection-end-line="38" selection-end-column="35" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/winter/service/IVoteService.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="304">
-              <caret line="16" column="76" selection-start-line="16" selection-start-column="76" selection-end-line="16" selection-end-column="76" />
+            <state relative-caret-position="265">
+              <caret line="34" column="73" selection-start-line="34" selection-start-column="73" selection-end-line="34" selection-end-column="73" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -357,7 +295,6 @@
         <option value="$PROJECT_DIR$/src/main/java/com/winter/red5/UseTranscoderBlocking.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/winter/service/impl/MeetingServiceImpl.java" />
         <option value="$PROJECT_DIR$/src/main/resources/applicationContext-datasource.xml" />
-        <option value="$PROJECT_DIR$/src/main/resources/smartMeeting.sql" />
         <option value="$PROJECT_DIR$/src/main/resources/generatorConfig.xml" />
         <option value="$PROJECT_DIR$/src/main/java/com/winter/domain/MeetingVote.java" />
         <option value="$PROJECT_DIR$/src/test/java/TestMapper.java" />
@@ -370,13 +307,14 @@
         <option value="$PROJECT_DIR$/src/main/java/com/winter/vo/VoteOption.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/winter/vo/VoteVo.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/winter/dao/UserMapper.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/winter/dao/MeetingVoteMapper.java" />
         <option value="$PROJECT_DIR$/web/WEB-INF/web.xml" />
         <option value="$PROJECT_DIR$/src/main/resources/mappers/UserMapper.xml" />
-        <option value="$PROJECT_DIR$/src/main/resources/mappers/MeetingVoteMapper.xml" />
+        <option value="$PROJECT_DIR$/src/main/resources/smartMeeting.sql" />
         <option value="$PROJECT_DIR$/src/main/java/com/winter/controller/VoteController.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/winter/service/IVoteService.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/winter/service/impl/VoteServiceImpl.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/winter/dao/MeetingVoteMapper.java" />
+        <option value="$PROJECT_DIR$/src/main/resources/mappers/MeetingVoteMapper.xml" />
       </list>
     </option>
   </component>
@@ -634,10 +572,6 @@
               <item name="web" type="462c0819:PsiDirectoryNode" />
               <item name="WEB-INF" type="462c0819:PsiDirectoryNode" />
             </path>
-            <path>
-              <item name="smartMeeting" type="b2602c69:ProjectViewProjectNode" />
-              <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
-            </path>
           </expand>
           <select />
         </subPane>
@@ -651,7 +585,7 @@
     <property name="SearchEverywhereHistoryKey" value="&#9;FILE&#9;file:///home/shidongxuan/smartMeeting/src/main/resources/applicationContext.xml" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1555938162445" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1555940954330" />
     <property name="database.console.LAST_STATE" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
@@ -939,7 +873,7 @@
       <workItem from="1555670134755" duration="4905000" />
       <workItem from="1555675413632" duration="55000" />
       <workItem from="1555818200226" duration="14784000" />
-      <workItem from="1555931775710" duration="6380000" />
+      <workItem from="1555931775710" duration="8888000" />
     </task>
     <servers />
   </component>
@@ -976,7 +910,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="270635000" />
+    <option name="totallyTimeSpent" value="273143000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -991,7 +925,7 @@
     <frame x="1920" y="0" width="1920" height="1080" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.20170757" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.20170757" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Designer" order="2" />
       <window_info id="Image Layers" order="3" />
@@ -1001,7 +935,7 @@
       <window_info id="Web" order="7" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.44584647" />
+      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.52155626" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -1329,13 +1263,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/smartMeeting.sql">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="178">
-          <caret line="100" column="50" selection-start-line="100" selection-start-column="50" selection-end-line="100" selection-end-column="50" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/web/WEB-INF/dispatcher-servlet.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-513" />
@@ -1403,10 +1330,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/mappers/MeetingVoteMapper.xml">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/winter/domain/MeetingVote.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="304">
-          <caret line="16" column="64" selection-start-line="16" selection-start-column="64" selection-end-line="16" selection-end-column="64" />
+        <state relative-caret-position="76">
+          <caret line="4" column="13" selection-start-line="4" selection-start-column="13" selection-end-line="4" selection-end-column="13" />
         </state>
       </provider>
     </entry>
@@ -1456,10 +1383,17 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/winter/dao/MeetingVoteMapper.java">
+    <entry file="file://$PROJECT_DIR$/src/main/resources/mappers/MeetingVoteMapper.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="589">
-          <caret line="31" column="1" lean-forward="true" selection-start-line="31" selection-start-column="1" selection-end-line="31" selection-end-column="1" />
+        <state relative-caret-position="826">
+          <caret line="178" column="27" selection-start-line="178" selection-start-column="27" selection-end-line="178" selection-end-column="27" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/winter/service/impl/VoteServiceImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="438">
+          <caret line="114" column="32" selection-start-line="114" selection-start-column="32" selection-end-line="114" selection-end-column="32" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -1469,36 +1403,34 @@
     <entry file="file://$PROJECT_DIR$/src/main/java/com/winter/service/IVoteService.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="304">
-          <caret line="16" column="76" selection-start-line="16" selection-start-column="76" selection-end-line="16" selection-end-column="76" />
+          <caret line="16" column="62" selection-start-line="16" selection-start-column="62" selection-end-line="16" selection-end-column="62" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/winter/service/impl/VoteServiceImpl.java">
+    <entry file="file://$PROJECT_DIR$/src/main/resources/smartMeeting.sql">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="374">
-          <caret line="81" column="33" lean-forward="true" selection-start-line="81" selection-start-column="33" selection-end-line="81" selection-end-column="33" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#1025#1026#0" expanded="true" />
-            <element signature="e#1069#1070#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/winter/domain/MeetingVote.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="76">
-          <caret line="4" column="13" selection-start-line="4" selection-start-column="13" selection-end-line="4" selection-end-column="13" />
+        <state relative-caret-position="747">
+          <caret line="137" column="1" lean-forward="true" selection-start-line="137" selection-start-column="1" selection-end-line="137" selection-end-column="1" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/winter/controller/VoteController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="438">
-          <caret line="38" column="35" lean-forward="true" selection-start-line="38" selection-start-column="35" selection-end-line="38" selection-end-column="35" />
+        <state relative-caret-position="457">
+          <caret line="36" column="56" selection-start-line="36" selection-start-column="56" selection-end-line="36" selection-end-column="56" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/winter/dao/MeetingVoteMapper.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="265">
+          <caret line="34" column="73" selection-start-line="34" selection-start-column="73" selection-end-line="34" selection-end-column="73" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>

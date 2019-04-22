@@ -133,7 +133,7 @@ CREATE TABLE user_vote_option (
   vote_id int(11) NOT NULL COMMENT '投票项目id',
   option_id int(11) NOT NULL COMMENT '所投选项id',
   PRIMARY KEY (id),
-  UNIQUE vote_id_index (user_id, vote_id) USING BTREE,
+  UNIQUE vote_id_index (user_id, vote_id,option_id) USING BTREE,
   CONSTRAINT vote_option_foreign FOREIGN KEY (option_id) REFERENCES vote_option (id)
 )
   ENGINE = InnoDB
