@@ -189,4 +189,21 @@ public class UserServiceImpl implements IUserService {
     }
 
 
+    @Override
+    public ServerResponse deleteUser(Integer userId) {
+        int resultCount = userMapper.deleteUser(userId);
+        if (resultCount > 0) {
+            return ServerResponse.createBySuccess("删除用户成功!");
+        }
+        return ServerResponse.createByErrorMessage("删除用户失败!");
+    }
+
+    @Override
+    public ServerResponse updateUserManage(User user) {
+        int resultCount = userMapper.updateByPrimaryKeySelective(user);
+        if (resultCount > 0) {
+            return ServerResponse.createBySuccess("修改信息成功!");
+        }
+        return ServerResponse.createByErrorMessage("修改信息失败!");
+    }
 }

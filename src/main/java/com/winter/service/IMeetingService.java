@@ -36,4 +36,5 @@ public interface IMeetingService {
 
     ServerResponse<String> getMeetingNote(Integer meetingId, Integer userId);
 
+    ServerResponse deleteMeeting(Integer meetingId);
 }

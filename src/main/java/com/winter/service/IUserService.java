@@ -2,6 +2,7 @@ package com.winter.service;
 
 import com.winter.common.ServerResponse;
 import com.winter.domain.User;
+import org.omg.PortableInterceptor.INACTIVE;
 
 import java.util.List;
 
@@ -24,5 +25,9 @@ public interface IUserService {
     String getPhoneById(Integer id);
 
     ServerResponse<String> checkValid(String str, String type);
+
+    ServerResponse deleteUser(Integer userId);
+
+    ServerResponse updateUserManage(User user);
 
 }

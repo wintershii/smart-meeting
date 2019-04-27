@@ -130,6 +130,16 @@ public class RoomServiceImpl implements IRoomService {
         return resultCount;
     }
 
+
+    @Override
+    public ServerResponse bindAccessMachineNumber(String roomNumber, String machineNumber) {
+        int resultCount = roomMapper.bindAccessMachineNumber(roomNumber,machineNumber);
+        if (resultCount > 0) {
+            return ServerResponse.createBySuccess("绑定成功!");
+        }
+        return ServerResponse.createByErrorMessage("绑定失败!");
+    }
+
     /**
      * 将room对象转为roomVo对象
      * @param rooms

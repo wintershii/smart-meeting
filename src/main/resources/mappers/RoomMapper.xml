@@ -155,4 +155,9 @@
     where id = #{roomId}
   </update>
 
+  <update id="bindAccessMachineNumber" parameterType="map">
+    update smart_room
+    set machine_number = #{machineNumber}, update_time = now()
+    where room_number = #{roomNumber}
+  </update>
 </mapper>

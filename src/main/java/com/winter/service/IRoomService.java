@@ -22,4 +22,6 @@ public interface IRoomService {
     ServerResponse<AccessRoomVo> getInfoByRoomNumber(String roomNumber);
 
     int setRoomStatus(Integer roomId, int roomStatus);
+
+    ServerResponse bindAccessMachineNumber(String roomNumber, String machineNumber);
 }

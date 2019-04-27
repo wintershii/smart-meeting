@@ -31,4 +31,6 @@ public interface RoomMapper {
 
     int setRoomFree(Integer roomId);
 
+    int bindAccessMachineNumber(@Param("roomNumber") String roomNumber, @Param("machineNumber") String machineNumber);
+
 }

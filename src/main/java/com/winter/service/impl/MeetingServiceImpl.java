@@ -189,6 +189,17 @@ public class MeetingServiceImpl implements IMeetingService {
         return ServerResponse.createBySuccess(note);
     }
 
+
+    @Override
+    public ServerResponse deleteMeeting(Integer meetingId) {
+        int resultCount = meetingMapper.deleteByPrimaryKey(meetingId);
+        if (resultCount > 0) {
+            return ServerResponse.createBySuccess("删除会议信息成功!");
+        }
+        return ServerResponse.createByErrorMessage("删除会议信息失败!");
+    }
+
+
     /**
      * 会议转vo
      * @param meetings

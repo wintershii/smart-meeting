@@ -48,4 +48,6 @@ public interface UserMapper {
     String getPhoneById(Integer id);
 
     UserAvatarInfo getUserAvatarInfo(Integer userId);
+
+    int deleteUser(Integer userId);
 }

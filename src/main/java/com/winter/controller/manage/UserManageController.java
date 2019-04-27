@@ -1,0 +1,40 @@
+package com.winter.controller.manage;
+
+import com.winter.common.ServerResponse;
+import com.winter.domain.User;
+import com.winter.service.IUserService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RestController;
+
+@RestController
+@RequestMapping("userManage")
+public class UserManageController {
+
+    private IUserService userService;
+
+    @Autowired
+    public void setUserService(IUserService userService) {
+        this.userService = userService;
+    }
+
+    @RequestMapping(value = "deleteUser",method = RequestMethod.DELETE)
+    public ServerResponse deleteUser(Integer userId) {
+        if (userId == null) {
+            return ServerResponse.createByErrorMessage("参数错误!");
+        }
+        return userService.deleteUser(userId);
+    }
+
+    @RequestMapping(value = "updateUserInfo")
+    public ServerResponse updateUserInfo(User user) {
+        String realPhone = userService.getPhoneById(user.getId());
+        if(!realPhone.equals(user.getPhone())) {
+            if (!userService.checkValid(user.getPhone(),"phone").isSuccess()) {
+                return ServerResponse.createByErrorMessage("该手机号已绑定其他账号!");
+            }
+        }
+        return userService.updateUserManage(user);
+    }
+}
