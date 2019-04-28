@@ -3,10 +3,7 @@ package com.winter.service.impl;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import com.winter.common.ServerResponse;
-import com.winter.dao.MeetingMapper;
-import com.winter.dao.RoomMapper;
-import com.winter.dao.UserMapper;
-import com.winter.dao.UserMeetingMapper;
+import com.winter.dao.*;
 import com.winter.domain.Meeting;
 import com.winter.service.IMeetingService;
 import com.winter.util.DateTimeUtil;
@@ -33,6 +30,10 @@ public class MeetingServiceImpl implements IMeetingService {
 
     private RoomMapper roomMapper;
 
+    private MeetingFileMapper meetingFileMapper;
+
+    private MeetingVoteMapper meetingVoteMapper;
+
     @Autowired
     public void setMeetingMapper(MeetingMapper meetingMapper) {
         this.meetingMapper = meetingMapper;
@@ -51,6 +52,16 @@ public class MeetingServiceImpl implements IMeetingService {
     @Autowired
     public void setUserMapper(UserMapper userMapper) {
         this.userMapper = userMapper;
+    }
+
+    @Autowired
+    public void setMeetingFileMapper(MeetingFileMapper meetingFileMapper) {
+        this.meetingFileMapper = meetingFileMapper;
+    }
+
+    @Autowired
+    public void setMeetingVoteMapper(MeetingVoteMapper meetingVoteMapper) {
+        this.meetingVoteMapper = meetingVoteMapper;
     }
 
     /**
@@ -191,8 +202,20 @@ public class MeetingServiceImpl implements IMeetingService {
 
 
     @Override
+    @Transactional(rollbackFor = Exception.class)
     public ServerResponse deleteMeeting(Integer meetingId) {
+        userMeetingMapper.deleteByMeetingId(meetingId);
+        meetingFileMapper.deleteByMeetingId(meetingId);
+        List<Integer> voteIds = meetingVoteMapper.selectVoteIdByMeetingId(meetingId);
+        for (Integer voteId : voteIds) {
+            meetingVoteMapper.deleteOptionsByVoteId(voteId);
+            meetingVoteMapper.deleteUserOptionByVoteId(voteId);
+            meetingVoteMapper.deleteByPrimaryKey(voteId);
+        }
+
+
         int resultCount = meetingMapper.deleteByPrimaryKey(meetingId);
+
         if (resultCount > 0) {
             return ServerResponse.createBySuccess("删除会议信息成功!");
         }

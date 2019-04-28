@@ -29,9 +29,9 @@
     insert into smart_room (id, room_number, content, 
       machine_number, status, create_time, 
       update_time)
-    values (#{id,jdbcType=INTEGER}, #{roomNumber,jdbcType=VARCHAR}, #{content,jdbcType=INTEGER}, 
-      #{machineNumber,jdbcType=VARCHAR}, #{status,jdbcType=INTEGER}, #{createTime,jdbcType=TIMESTAMP}, 
-      #{updateTime,jdbcType=TIMESTAMP})
+    values (default , #{roomNumber,jdbcType=VARCHAR}, #{content,jdbcType=INTEGER},
+      #{machineNumber,jdbcType=VARCHAR}, #{status,jdbcType=INTEGER}, now(),
+      now())
   </insert>
   <insert id="insertSelective" parameterType="com.winter.domain.Room">
     insert into smart_room

@@ -18,4 +18,6 @@ public interface MeetingFileMapper {
     int updateByPrimaryKey(MeetingFile record);
 
     List<MeetingFile> getMeetingFiles(Integer meetingId);
+
+    int deleteByMeetingId(Integer meetingId);
 }

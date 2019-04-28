@@ -3,13 +3,14 @@ package com.winter.controller.manage;
 import com.winter.common.ServerResponse;
 import com.winter.domain.User;
 import com.winter.service.IUserService;
+import com.winter.util.MD5Util;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("userManage")
+@RequestMapping("/userManage")
 public class UserManageController {
 
     private IUserService userService;
@@ -19,7 +20,7 @@ public class UserManageController {
         this.userService = userService;
     }
 
-    @RequestMapping(value = "deleteUser",method = RequestMethod.DELETE)
+    @RequestMapping(value = "/deleteUser",method = RequestMethod.DELETE)
     public ServerResponse deleteUser(Integer userId) {
         if (userId == null) {
             return ServerResponse.createByErrorMessage("参数错误!");
@@ -27,7 +28,7 @@ public class UserManageController {
         return userService.deleteUser(userId);
     }
 
-    @RequestMapping(value = "updateUserInfo")
+    @RequestMapping(value = "/updateUserInfo",method = RequestMethod.POST)
     public ServerResponse updateUserInfo(User user) {
         String realPhone = userService.getPhoneById(user.getId());
         if(!realPhone.equals(user.getPhone())) {
@@ -35,6 +36,7 @@ public class UserManageController {
                 return ServerResponse.createByErrorMessage("该手机号已绑定其他账号!");
             }
         }
+        user.setPassword(MD5Util.MD5EncodeUtf8(user.getPassword()));
         return userService.updateUserManage(user);
     }
 }

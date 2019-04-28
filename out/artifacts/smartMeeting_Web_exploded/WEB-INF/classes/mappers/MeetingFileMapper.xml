@@ -123,4 +123,10 @@
     from meeting_file
     where meeting_id = #{meetingId}
   </select>
+
+  <delete id="deleteByMeetingId" parameterType="integer">
+    delete from
+    meeting_file
+    where meeting_id = #{meetingId}
+  </delete>
 </mapper>

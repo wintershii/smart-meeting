@@ -24,4 +24,10 @@ public interface IRoomService {
     int setRoomStatus(Integer roomId, int roomStatus);
 
     ServerResponse bindAccessMachineNumber(String roomNumber, String machineNumber);
+
+    ServerResponse addMeetingRoom(Room room);
+
+    ServerResponse deleteRoom(Integer roomId);
+
+    ServerResponse updateRoom(Room room);
 }

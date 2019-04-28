@@ -140,6 +140,33 @@ public class RoomServiceImpl implements IRoomService {
         return ServerResponse.createByErrorMessage("绑定失败!");
     }
 
+    @Override
+    public ServerResponse addMeetingRoom(Room room) {
+        int resultCount = roomMapper.insert(room);
+        if (resultCount > 0) {
+            return ServerResponse.createBySuccess("新增会议室成功!");
+        }
+        return ServerResponse.createByErrorMessage("新增会议室失败!");
+    }
+
+    @Override
+    public ServerResponse deleteRoom(Integer roomId) {
+        int resultCount = roomMapper.deleteByPrimaryKey(roomId);
+        if (resultCount > 0) {
+            return ServerResponse.createBySuccess("删除会议室信息成功");
+        }
+        return ServerResponse.createByErrorMessage("删除会议室信息失败");
+    }
+
+    @Override
+    public ServerResponse updateRoom(Room room) {
+        int resultCount = roomMapper.updateByPrimaryKeySelective(room);
+        if (resultCount > 0) {
+            return ServerResponse.createBySuccess("更新会议室信息成功");
+        }
+        return ServerResponse.createByErrorMessage("更新会议室信息失败");
+    }
+
     /**
      * 将room对象转为roomVo对象
      * @param rooms

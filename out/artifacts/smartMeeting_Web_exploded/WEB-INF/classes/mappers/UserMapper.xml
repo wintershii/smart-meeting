@@ -174,12 +174,9 @@
       <if test="faceUrl != null">
         face_url = #{faceUrl,jdbcType=VARCHAR},
       </if>
-      <if test="createTime != null">
-        create_time = #{createTime,jdbcType=TIMESTAMP},
-      </if>
-      <if test="updateTime != null">
-        update_time = #{updateTime,jdbcType=TIMESTAMP},
-      </if>
+
+        update_time = now(),
+
       <if test="faceData != null">
         face_data = #{faceData,jdbcType=LONGVARCHAR},
       </if>
@@ -306,4 +303,9 @@
     from smart_user
     where id = #{userId}
   </select>
+
+  <delete id="deleteUser" parameterType="integer">
+    delete from smart_user
+    where id = #{userId}
+  </delete>
 </mapper>

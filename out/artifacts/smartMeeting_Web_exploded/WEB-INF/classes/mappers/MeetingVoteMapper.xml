@@ -178,4 +178,22 @@
     where user_id = #{userId}
     and vote_id = #{voteId}
   </select>
+
+  <select id="selectVoteIdByMeetingId" parameterType="integer" resultType="integer">
+    select id
+    from meeting_vote
+    where meeting_id = #{meetingId}
+  </select>
+
+    <delete id="deleteOptionsByVoteId" parameterType="integer">
+        delete from
+        vote_option
+        where vote_id = #{voteId}
+    </delete>
+
+    <delete id="deleteUserOptionByVoteId" parameterType="integer">
+        delete from
+        user_vote_option
+        where vote_id = #{voteId}
+    </delete>
 </mapper>

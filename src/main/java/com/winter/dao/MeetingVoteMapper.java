@@ -3,7 +3,6 @@ package com.winter.dao;
 import com.winter.domain.MeetingVote;
 import com.winter.vo.VoteOption;
 import org.apache.ibatis.annotations.Param;
-import org.omg.CORBA.INTERNAL;
 
 import java.util.List;
 
@@ -33,4 +32,10 @@ public interface MeetingVoteMapper {
     int increaseOption(Integer optionId);
 
     int checkUserHasVoted(@Param("userId") Integer userId, @Param("voteId") Integer voteId);
+
+    List<Integer> selectVoteIdByMeetingId(Integer meetingId);
+
+    int deleteOptionsByVoteId(Integer voteId);
+
+    int deleteUserOptionByVoteId(Integer voteId);
 }

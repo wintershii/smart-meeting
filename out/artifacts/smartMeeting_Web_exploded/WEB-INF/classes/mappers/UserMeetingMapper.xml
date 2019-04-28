@@ -148,4 +148,10 @@
     where meeting_id = #{meetingId}
     and user_id = #{userId}
   </update>
+
+  <delete id="deleteByMeetingId" parameterType="integer">
+    delete from
+    meeting_user
+    where meeting_id = #{meetingId}
+  </delete>
 </mapper>
