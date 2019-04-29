@@ -3,6 +3,7 @@ package com.winter.service.impl;
 import com.winter.common.Const;
 import com.winter.common.ServerResponse;
 import com.winter.dao.UserMapper;
+import com.winter.dao.UserMeetingMapper;
 import com.winter.domain.User;
 import com.winter.service.IUserService;
 import com.winter.util.MD5Util;
@@ -18,9 +19,16 @@ public class UserServiceImpl implements IUserService {
 
     private UserMapper userMapper;
 
+    private UserMeetingMapper userMeetingMapper;
+
     @Autowired
     public void setUserMapper(UserMapper userMapper) {
         this.userMapper = userMapper;
+    }
+
+    @Autowired
+    public void setUserMeetingMapper(UserMeetingMapper userMeetingMapper) {
+        this.userMeetingMapper = userMeetingMapper;
     }
 
     /**
@@ -205,5 +213,14 @@ public class UserServiceImpl implements IUserService {
             return ServerResponse.createBySuccess("修改信息成功!");
         }
         return ServerResponse.createByErrorMessage("修改信息失败!");
+    }
+
+    @Override
+    public ServerResponse applyMeeting(Integer userId, Integer meetingId) {
+        int resultCount = userMeetingMapper.applyLeave(userId,meetingId);
+        if (resultCount > 0) {
+            return ServerResponse.createBySuccess("请假成功!");
+        }
+        return ServerResponse.createBySuccess("请假失败!");
     }
 }

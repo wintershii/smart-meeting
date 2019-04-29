@@ -3,6 +3,7 @@ package com.winter.vo;
 public class UserStatus {
     private Integer userId;
     private String username;
+    private String avatarUrl;
     private Integer userStatus;
 
     public UserStatus() {
@@ -30,5 +31,13 @@ public class UserStatus {
 
     public void setUserStatus(Integer userStatus) {
         this.userStatus = userStatus;
+    }
+
+    public String getAvatarUrl() {
+        return avatarUrl;
+    }
+
+    public void setAvatarUrl(String avatarUrl) {
+        this.avatarUrl = avatarUrl;
     }
 }

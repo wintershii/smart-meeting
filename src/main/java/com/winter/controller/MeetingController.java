@@ -214,14 +214,22 @@ public class MeetingController {
         userMeeting.setMeetingId(meetingId);
         userMeeting.setUserStatus(Const.UserPerform.ABSENCE);
         if (userMeetingService.checkExist(userId,meetingId)) {
-            int resultCount = userMeetingService.inviteMeetingMember(userMeeting);
-            if (resultCount > 0) {
-                return ServerResponse.createBySuccessMessage("邀请会议成员成功!");
-            }
-            return ServerResponse.createByErrorMessage("邀请会议成员失败");
+            return userMeetingService.inviteMeetingMember(userMeeting);
         }
         return ServerResponse.createByErrorMessage("该成员已在会议中!");
     }
+
+
+    @ResponseBody
+    @RequestMapping(value = "/inviteMembers.do",method = RequestMethod.POST)
+    public ServerResponse inviteMembers(Integer[] userIds, Integer meetingId) {
+        if (userIds == null || userIds.length == 0 || meetingId == null) {
+            return ServerResponse.createByErrorMessage("参数无效!");
+        }
+        return userMeetingService.inviteMembers(userIds, meetingId);
+
+    }
+
 
     /**
      * 开始会议

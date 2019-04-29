@@ -30,4 +30,6 @@ public interface UserMeetingMapper {
     int uploadUserMeetingStatus(@Param("userId") Integer userId, @Param("meetingId") Integer meetingId,
                                 @Param("userStatus") Integer userStatus);
     int deleteByMeetingId(Integer meetingId);
+
+    int applyLeave(@Param("userId") Integer userId, @Param("meetingId") Integer meetingId);
 }

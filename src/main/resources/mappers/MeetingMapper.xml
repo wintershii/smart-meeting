@@ -19,6 +19,7 @@
   <resultMap id="UserAccessInfo" type="com.winter.vo.UserAccessInfo">
     <result column="user_id" property="userId" />
     <result column="username" property="userName" />
+    <result column="avatar_url" property="avatarUrl" />
     <result column="face_data" property="faceData" />
   </resultMap>
 
@@ -226,7 +227,7 @@
   </update>
 
   <select id="getAllUserByMeetingId" parameterType="integer" resultType="com.winter.vo.UserAccessInfo" resultMap="UserAccessInfo">
-    select  meeting_user.user_id, smart_user.username, smart_user.face_data
+    select  meeting_user.user_id, smart_user.username, smart_user.avatar_url, smart_user.face_data
     from smart_user,meeting_user
     where meeting_user.meeting_id = #{meetingId}
     and smart_user.id = meeting_user.user_id

@@ -15,6 +15,7 @@
     <resultMap id="UserStatus" type="com.winter.vo.UserStatus">
         <result column="user_id" property="userId" />
         <result column="username" property="username" />
+        <result column="avatar_url" property="avatarUrl" />
         <result column="user_status" property="userStatus" />
     </resultMap>
 
@@ -121,7 +122,7 @@
   </select>
 
   <select id="getUserStatus" parameterType="integer" resultMap="UserStatus" resultType="list">
-    select user_id, username, user_status
+    select user_id, username,avatar_url, user_status
     from meeting_user ,smart_user
     where meeting_user.meeting_id = #{meetingId}
     and
@@ -154,4 +155,11 @@
     meeting_user
     where meeting_id = #{meetingId}
   </delete>
+
+  <update id="applyLeave" parameterType="map">
+    update meeting_user
+    set user_status = 4
+    where user_id = #{userId}
+    and meeting_id = #{meetingId}
+  </update>
 </mapper>

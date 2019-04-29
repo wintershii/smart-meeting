@@ -9,6 +9,7 @@ import com.winter.service.IUserService;
 import com.winter.util.*;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
@@ -210,6 +211,20 @@ public class UserController {
 
 
     @ResponseBody
+    @RequestMapping(value = "/applyLeave.do",method = RequestMethod.POST)
+    public ServerResponse applyLeave(Integer userId, Integer meetingId, HttpServletRequest request) {
+        if (userId == null || meetingId == null) {
+            return ServerResponse.createByErrorMessage("参数错误!");
+        }
+        String token = request.getHeader("token");
+        Integer tokenId = Integer.parseInt(TokenUtil.getInfo(token,"id"));
+        if (tokenId.intValue() == userId.intValue()) {
+            return userService.applyMeeting(userId,meetingId);
+        }
+        return ServerResponse.createByErrorMessage("无权限操作!");
+    }
+
+    @ResponseBody
     @RequestMapping("/tokenExpired.do")
     public ServerResponse tokenExpired() {
         return ServerResponse.createByErrorCodeMessage(ResponseCode.NEED_LOGIN.getCode(),"token过期!");
@@ -225,5 +240,8 @@ public class UserController {
         redisUtil.set(key,token);
         return ServerResponse.createByErrorCodeMessage(ResponseCode.FRESH_TOKEN.getCode(),token);
     }
+
+
+
 }
 

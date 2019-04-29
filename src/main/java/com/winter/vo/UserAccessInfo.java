@@ -3,6 +3,7 @@ package com.winter.vo;
 public class UserAccessInfo {
     private Integer userId;
     private String userName;
+    private String avatarUrl;
     private String faceData;
 
     public Integer getUserId() {
@@ -27,5 +28,13 @@ public class UserAccessInfo {
 
     public void setFaceData(String faceData) {
         this.faceData = faceData;
+    }
+
+    public String getAvatarUrl() {
+        return avatarUrl;
+    }
+
+    public void setAvatarUrl(String avatarUrl) {
+        this.avatarUrl = avatarUrl;
     }
 }

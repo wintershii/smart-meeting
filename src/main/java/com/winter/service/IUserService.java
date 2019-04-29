@@ -30,4 +30,6 @@ public interface IUserService {
 
     ServerResponse updateUserManage(User user);
 
+    ServerResponse applyMeeting(Integer userId, Integer meetingId);
+
 }
