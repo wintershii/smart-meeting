@@ -36,7 +36,11 @@ public class UserManageController {
                 return ServerResponse.createByErrorMessage("该手机号已绑定其他账号!");
             }
         }
-        user.setPassword(MD5Util.MD5EncodeUtf8(user.getPassword()));
+        if (user.getPassword() != null) {
+            user.setPassword(MD5Util.MD5EncodeUtf8(user.getPassword()));
+        } else {
+            user.setPassword(null);
+        }
         return userService.updateUserManage(user);
     }
 }
