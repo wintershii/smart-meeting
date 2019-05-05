@@ -196,4 +196,11 @@
         user_vote_option
         where vote_id = #{voteId}
     </delete>
+
+  <select id="getNoticeMeetingIds" resultType="integer">
+    select meeting_id
+    from meeting_vote
+    where date_add(now(),INTERVAL remind_time MINUTE ) > end_time
+    and now() &lt; end_time
+  </select>
 </mapper>

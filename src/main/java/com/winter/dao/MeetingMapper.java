@@ -48,4 +48,6 @@ public interface MeetingMapper {
     int editNote(@Param("meetingId") Integer meetingId, @Param("userId") Integer userId, @Param("note") String note);
 
     String getMeetingNote(@Param("meetingId") Integer meetingId, @Param("userId") Integer userId);
+
+    List<Integer> getPeopleIds(Integer meetingId);
 }

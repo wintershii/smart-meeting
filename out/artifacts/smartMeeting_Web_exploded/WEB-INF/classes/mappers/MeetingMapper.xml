@@ -272,4 +272,10 @@
     where meeting_id = #{meetingId}
     and user_id = #{userId}
   </select>
+
+  <select id="getPeopleIds" resultType="integer" parameterType="integer">
+    select user_id
+    from meeting_user
+    where meeting_id = #{meetingId}
+  </select>
 </mapper>

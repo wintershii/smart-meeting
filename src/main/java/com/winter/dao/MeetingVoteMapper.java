@@ -38,4 +38,6 @@ public interface MeetingVoteMapper {
     int deleteOptionsByVoteId(Integer voteId);
 
     int deleteUserOptionByVoteId(Integer voteId);
+
+    List<Integer> getNoticeMeetingIds();
 }

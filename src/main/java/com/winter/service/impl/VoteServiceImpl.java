@@ -1,6 +1,7 @@
 package com.winter.service.impl;
 
 import com.winter.common.ServerResponse;
+import com.winter.dao.MeetingMapper;
 import com.winter.dao.MeetingVoteMapper;
 import com.winter.dao.UserMapper;
 import com.winter.domain.Meeting;
@@ -28,6 +29,8 @@ public class VoteServiceImpl implements IVoteService {
 
     private UserMapper userMapper;
 
+    private MeetingMapper meetingMapper;
+
     @Autowired
     public void setMeetingVoteMapper(MeetingVoteMapper meetingVoteMapper) {
         this.meetingVoteMapper = meetingVoteMapper;
@@ -36,6 +39,11 @@ public class VoteServiceImpl implements IVoteService {
     @Autowired
     public void setUserMapper(UserMapper userMapper) {
         this.userMapper = userMapper;
+    }
+
+    @Autowired
+    public void setMeetingMapper(MeetingMapper meetingMapper) {
+        this.meetingMapper = meetingMapper;
     }
 
     @Override
@@ -117,6 +125,22 @@ public class VoteServiceImpl implements IVoteService {
             return true;
         }
         return false;
+    }
+
+
+    @Override
+    public List<Integer> checkNoticeMeeting() {
+        List<Integer> noticeVoteIds = meetingVoteMapper.getNoticeMeetingIds();
+        return noticeVoteIds;
+    }
+
+    @Override
+    public List<Integer> checkNoticePeople(List<Integer> noticeMeetingIds) {
+        List<Integer> peopleList = new ArrayList<>();
+        for (Integer meetingId : noticeMeetingIds) {
+            peopleList.addAll(meetingMapper.getPeopleIds(meetingId));
+        }
+        return peopleList;
     }
 
     private List<VoteVo> meetingVoteToVo(List<MeetingVote> meetingVotes, Integer userId) {

@@ -19,4 +19,8 @@ public interface IVoteService {
     ServerResponse userCommitOption(Integer userId, Integer voteId, Integer[] optionIds);
 
     ServerResponse<List<VoteVo>> getMeetingVoteInfo(Integer meetingId, Integer userId);
+
+    List<Integer> checkNoticeMeeting();
+
+    List<Integer> checkNoticePeople(List<Integer> noticeMeetingIds);
 }
