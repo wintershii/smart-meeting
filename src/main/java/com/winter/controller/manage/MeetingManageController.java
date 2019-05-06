@@ -30,6 +30,11 @@ public class MeetingManageController {
         this.roomService = roomService;
     }
 
+    /**
+     * 删除会议信息(包括会议,会议文件,会议投票等关联信息)
+     * @param meetingId
+     * @return
+     */
     @RequestMapping(value = "/deleteMeeting",method = RequestMethod.DELETE)
     public ServerResponse deleteMeeting(Integer meetingId) {
         if (meetingId == null) {
@@ -38,13 +43,22 @@ public class MeetingManageController {
         return meetingService.deleteMeeting(meetingId);
     }
 
-
+    /**
+     * 添加会议室
+     * @param room
+     * @return
+     */
     @RequestMapping(value = "/addRoom",method = RequestMethod.POST)
     public ServerResponse addMeetingRoom(Room room) {
         room.setStatus(Const.RoomStatus.FREE);
         return roomService.addMeetingRoom(room);
     }
 
+    /**
+     * 删除会议室
+     * @param roomId
+     * @return
+     */
     @RequestMapping(value = "/deleteRoom",method = RequestMethod.DELETE)
     public ServerResponse deleteRoom(Integer roomId) {
         if (roomId == null) {
@@ -53,6 +67,11 @@ public class MeetingManageController {
         return roomService.deleteRoom(roomId);
     }
 
+    /**
+     * 更新会议室信息
+     * @param room
+     * @return
+     */
     @RequestMapping(value = "/updateRoom",method = RequestMethod.POST)
     public ServerResponse updateRoom(Room room) {
         return roomService.updateRoom(room);

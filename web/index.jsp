@@ -13,10 +13,10 @@
         //判断当前浏览器是否支持WebSocket
         var webSocket = null;
         if ('WebSocket' in window) {
-            webSocket = new WebSocket("ws://localhost:8080/socket/1000");
+            webSocket = new WebSocket("ws://www.shidongxuan.top:8080/smartMeeting_Web/socket/1000");
         }
         else if ('MozWebSocket' in window) {
-            webSocket = new MozWebSocket("ws://localhost:8080/socket/1000");
+            webSocket = new MozWebSocket("ws://www.shidongxuan.top:8080/smartMeeting_Web/socket/1000");
         }
         else {
             alert('Not support webSocket');

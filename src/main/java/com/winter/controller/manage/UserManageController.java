@@ -20,6 +20,11 @@ public class UserManageController {
         this.userService = userService;
     }
 
+    /**
+     * 删除用户信息
+     * @param userId
+     * @return
+     */
     @RequestMapping(value = "/deleteUser",method = RequestMethod.DELETE)
     public ServerResponse deleteUser(Integer userId) {
         if (userId == null) {
@@ -28,6 +33,11 @@ public class UserManageController {
         return userService.deleteUser(userId);
     }
 
+    /**
+     * 更新用户信息
+     * @param user
+     * @return
+     */
     @RequestMapping(value = "/updateUserInfo",method = RequestMethod.POST)
     public ServerResponse updateUserInfo(User user) {
         String realPhone = userService.getPhoneById(user.getId());

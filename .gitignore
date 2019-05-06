@@ -1,0 +1,7 @@
+# 一些需要git忽略的文件
+
+# sql语句文件
+*.sql
+
+# 配置文件
+*.properties

@@ -286,7 +286,13 @@ public class MeetingController {
         return ServerResponse.createByErrorMessage("无权限操作!");
     }
 
-
+    /**
+     * 上传会议文件
+     * @param uploadFile
+     * @param meetingId
+     * @param userId
+     * @return
+     */
     @ResponseBody
     @RequestMapping(value = "/uploadFile.do",method = RequestMethod.POST)
     public ServerResponse uploadMeetingFile(MultipartFile uploadFile, Integer meetingId, Integer userId) {
@@ -303,14 +309,24 @@ public class MeetingController {
         return fileService.uploadMeetingFile(meetingFile,userId);
     }
 
-
+    /**
+     * 获取会议文件列表
+     * @param meetingId
+     * @return
+     */
     @ResponseBody
     @RequestMapping(value = "/getMeetingFiles.do",method = RequestMethod.POST)
     public ServerResponse<List<MeetingFile>> uploadMeetingFile(Integer meetingId) {
         return fileService.getMeetingFiles(meetingId);
     }
 
-
+    /**
+     * 上传个人会议笔记
+     * @param meetingId
+     * @param userId
+     * @param note
+     * @return
+     */
     @ResponseBody
     @RequestMapping(value = "/editNote.do",method = RequestMethod.POST)
     public ServerResponse editNote(Integer meetingId, Integer userId, String note) {
@@ -320,7 +336,12 @@ public class MeetingController {
         return meetingService.editNote(meetingId,userId,note);
     }
 
-
+    /**
+     * 获取个人会议笔记
+     * @param meetingId
+     * @param userId
+     * @return
+     */
     @ResponseBody
     @RequestMapping(value = "/getMeetingNote.do",method = RequestMethod.POST)
     public ServerResponse<String> getMeetingNote(Integer meetingId, Integer userId) {

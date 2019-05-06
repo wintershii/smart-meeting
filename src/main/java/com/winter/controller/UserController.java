@@ -209,7 +209,13 @@ public class UserController {
         return ServerResponse.createByErrorMessage("参数无效!");
     }
 
-
+    /**
+     * 申请请假
+     * @param userId
+     * @param meetingId
+     * @param request
+     * @return
+     */
     @ResponseBody
     @RequestMapping(value = "/applyLeave.do",method = RequestMethod.POST)
     public ServerResponse applyLeave(Integer userId, Integer meetingId, HttpServletRequest request) {
@@ -224,12 +230,21 @@ public class UserController {
         return ServerResponse.createByErrorMessage("无权限操作!");
     }
 
+    /**
+     * token无效后作出响应
+     * @return
+     */
     @ResponseBody
     @RequestMapping("/tokenExpired.do")
     public ServerResponse tokenExpired() {
         return ServerResponse.createByErrorCodeMessage(ResponseCode.NEED_LOGIN.getCode(),"token过期!");
     }
 
+    /**
+     * token延期响应  响应码--100
+     * @param request
+     * @return
+     */
     @ResponseBody
     @RequestMapping("/offerToken.do")
     public ServerResponse offerToken(HttpServletRequest request) {

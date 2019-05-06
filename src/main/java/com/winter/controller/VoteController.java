@@ -23,6 +23,12 @@ public class VoteController {
         this.voteService = voteService;
     }
 
+    /**
+     * 新建一个投票
+     * @param meetingVote
+     * @param options
+     * @return
+     */
     @RequestMapping(value = "/add",method = RequestMethod.POST)
     public ServerResponse createVote(MeetingVote meetingVote, String[] options) {
         if (meetingVote == null || options == null || options.length < 2 || options.length > 5) {
@@ -32,6 +38,13 @@ public class VoteController {
         return voteService.createVote(meetingVote,options);
     }
 
+    /**
+     * 用户进行投票
+     * @param userId
+     * @param voteId
+     * @param optionIds
+     * @return
+     */
     @RequestMapping(value = "/userOption",method = RequestMethod.POST)
     public ServerResponse userCommitOption(Integer userId, Integer voteId, Integer[] optionIds) {
         boolean hasVoted = voteService.checkUserHasVoted(userId, voteId);
@@ -42,7 +55,7 @@ public class VoteController {
     }
 
     /**
-     * 根据会议id获取所有投票简单信息
+     * 根据会议id获取所有投票信息
      * @param meetingId
      * @return
      */

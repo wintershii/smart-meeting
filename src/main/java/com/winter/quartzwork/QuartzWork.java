@@ -9,6 +9,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import java.util.List;
 import java.util.concurrent.ConcurrentHashMap;
 
+/**
+ * 定时任务类,每十分钟执行一次
+ * 查询需要投票即将截止的人
+ * 调用websocket推送消息
+ */
 public class QuartzWork {
 
     @Autowired
@@ -23,7 +28,7 @@ public class QuartzWork {
             WebSocketServer webSocketServer = map.get(userId.toString());
             if (webSocketServer == null) {
                 LOGGER.info("该用户没有进行WebSocket连接,userId:{}",userId);
-                return;
+                continue;
             }
             webSocketServer.sendMessage("您有一个投票项目即将过期,点击查看");
         }
