@@ -82,6 +82,14 @@ public class FileServiceImpl implements IFileService {
             return ServerResponse.createByErrorMessage("获取会议文件失败");
         }
         return ServerResponse.createBySuccess(list);
+    }
 
+    @Override
+    public ServerResponse<List<String>> getUserMeetingFiles(Integer userId) {
+        List<String> fileList = meetingFileMapper.getUserFiles(userId);
+        if (fileList == null) {
+            return ServerResponse.createByErrorMessage("查找失败");
+        }
+        return ServerResponse.createBySuccess(fileList);
     }
 }

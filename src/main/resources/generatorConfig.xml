@@ -69,7 +69,8 @@
         </javaClientGenerator>
 
 
-        <table tableName="meeting_vote" domainObjectName="MeetingVote" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"></table>
+        <table tableName="online_meeting" domainObjectName="OnlineMeeting" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"></table>
+        <table tableName="online_meeting_user" domainObjectName="OnlineMeetingUser" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"></table>
 
 
 

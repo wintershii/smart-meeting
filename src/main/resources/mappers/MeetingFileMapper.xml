@@ -129,4 +129,10 @@
     meeting_file
     where meeting_id = #{meetingId}
   </delete>
+
+  <select id="getUserFiles" parameterType="integer" resultType="string">
+    select file_url
+    from meeting_file
+    where up_id = #{userId}
+  </select>
 </mapper>

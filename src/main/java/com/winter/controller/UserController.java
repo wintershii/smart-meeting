@@ -22,7 +22,9 @@ import java.util.List;
 public class UserController {
 
     private IUserService userService;
+
     private IFileService fileService;
+
     private RedisUtil redisUtil;
 
     @Autowired
@@ -226,6 +228,26 @@ public class UserController {
         Integer tokenId = Integer.parseInt(TokenUtil.getInfo(token,"id"));
         if (tokenId.intValue() == userId.intValue()) {
             return userService.applyMeeting(userId,meetingId);
+        }
+        return ServerResponse.createByErrorMessage("无权限操作!");
+    }
+
+    /**
+     * 根据用户id获取之前所上传的文件
+     * @param userId
+     * @param request
+     * @return
+     */
+    @ResponseBody
+    @RequestMapping(value = "/getMyFiles.do",method = RequestMethod.GET)
+    public ServerResponse<List<String>> getUserMeetingFiles(Integer userId, HttpServletRequest request) {
+        if (userId == null) {
+            return ServerResponse.createByErrorMessage("参数错误");
+        }
+        String token = request.getHeader("token");
+        Integer tokenId = Integer.parseInt(TokenUtil.getInfo(token,"id"));
+        if (tokenId.intValue() == userId.intValue()) {
+            return fileService.getUserMeetingFiles(userId);
         }
         return ServerResponse.createByErrorMessage("无权限操作!");
     }

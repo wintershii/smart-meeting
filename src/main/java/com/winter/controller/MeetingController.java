@@ -301,6 +301,7 @@ public class MeetingController {
         int size = (int)(fileSize/1024);
         String filename = uploadFile.getOriginalFilename();
         meetingFile.setFileSize(size);
+        meetingFile.setUpId(userId);
         meetingFile.setFileName(filename);
         meetingFile.setMeetingId(meetingId);
         String uploadFileName = fileService.upload(uploadFile, PropertiesUtil.getProperty("upload_path"));

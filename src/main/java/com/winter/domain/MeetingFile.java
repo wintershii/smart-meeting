@@ -13,22 +13,25 @@ public class MeetingFile {
 
     private Integer fileSize;
 
+    private Integer upId;
+
     private String uploader;
 
     private Date uploadTime;
 
-    public MeetingFile(Integer id, Integer meetingId, String fileName, String fileUrl, Integer fileSize, String uploader, Date uploadTime) {
+
+    public MeetingFile() {
+    }
+
+    public MeetingFile(Integer id, Integer meetingId, String fileName, String fileUrl, Integer fileSize, Integer upId, String uploader, Date uploadTime) {
         this.id = id;
         this.meetingId = meetingId;
         this.fileName = fileName;
         this.fileUrl = fileUrl;
         this.fileSize = fileSize;
+        this.upId = upId;
         this.uploader = uploader;
         this.uploadTime = uploadTime;
-    }
-
-    public MeetingFile() {
-        super();
     }
 
     public Integer getId() {
@@ -52,7 +55,7 @@ public class MeetingFile {
     }
 
     public void setFileName(String fileName) {
-        this.fileName = fileName == null ? null : fileName.trim();
+        this.fileName = fileName;
     }
 
     public String getFileUrl() {
@@ -60,7 +63,7 @@ public class MeetingFile {
     }
 
     public void setFileUrl(String fileUrl) {
-        this.fileUrl = fileUrl == null ? null : fileUrl.trim();
+        this.fileUrl = fileUrl;
     }
 
     public Integer getFileSize() {
@@ -71,12 +74,20 @@ public class MeetingFile {
         this.fileSize = fileSize;
     }
 
+    public Integer getUpId() {
+        return upId;
+    }
+
+    public void setUpId(Integer upId) {
+        this.upId = upId;
+    }
+
     public String getUploader() {
         return uploader;
     }
 
     public void setUploader(String uploader) {
-        this.uploader = uploader == null ? null : uploader.trim();
+        this.uploader = uploader;
     }
 
     public Date getUploadTime() {
