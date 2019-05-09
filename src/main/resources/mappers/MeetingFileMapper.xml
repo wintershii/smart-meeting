@@ -8,12 +8,13 @@
       <arg column="file_name" javaType="java.lang.String" jdbcType="VARCHAR" />
       <arg column="file_url" javaType="java.lang.String" jdbcType="VARCHAR" />
       <arg column="file_size" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="up_id" javaType="java.lang.Integer" jdbcType="INTEGER" />
       <arg column="uploader" javaType="java.lang.String" jdbcType="VARCHAR" />
       <arg column="upload_time" javaType="java.util.Date" jdbcType="TIMESTAMP" />
     </constructor>
   </resultMap>
   <sql id="Base_Column_List">
-    id, meeting_id, file_name, file_url, file_size, uploader, upload_time
+    id, meeting_id, file_name, file_url, file_size,up_id, uploader, upload_time
   </sql>
   <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
     select 
@@ -27,10 +28,10 @@
   </delete>
   <insert id="insert" parameterType="com.winter.domain.MeetingFile">
     insert into meeting_file (id, meeting_id, file_name, 
-      file_url, file_size, uploader, 
+      file_url, file_size, up_id, uploader,
       upload_time)
     values (default , #{meetingId,jdbcType=INTEGER}, #{fileName,jdbcType=VARCHAR},
-      #{fileUrl,jdbcType=VARCHAR}, #{fileSize,jdbcType=INTEGER}, #{uploader,jdbcType=VARCHAR}, 
+      #{fileUrl,jdbcType=VARCHAR}, #{fileSize,jdbcType=INTEGER}, #{upId,jdbcType=INTEGER} ,#{uploader,jdbcType=VARCHAR},
       now())
   </insert>
   <insert id="insertSelective" parameterType="com.winter.domain.MeetingFile">
@@ -130,8 +131,9 @@
     where meeting_id = #{meetingId}
   </delete>
 
-  <select id="getUserFiles" parameterType="integer" resultType="string">
-    select file_url
+  <select id="getUserFiles" parameterType="integer" resultType="list" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List"/>
     from meeting_file
     where up_id = #{userId}
   </select>

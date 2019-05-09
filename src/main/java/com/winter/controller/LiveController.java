@@ -3,7 +3,6 @@ package com.winter.controller;
 import com.winter.common.ServerResponse;
 import com.winter.domain.OnlineMeeting;
 import com.winter.service.ILiveService;
-import com.winter.util.RedisUtil;
 import com.winter.vo.OnlineMeetingVo;
 import com.winter.vo.OverOnlineMeeting;
 import com.winter.vo.UserAvatarInfo;

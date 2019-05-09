@@ -68,6 +68,7 @@ public class FileServiceImpl implements IFileService {
     @Override
     public ServerResponse uploadMeetingFile(MeetingFile meetingFile, Integer userId) {
         meetingFile.setUploader(userMapper.getNameById(userId));
+        meetingFile.setUpId(userId);
         int resultCount = meetingFileMapper.insert(meetingFile);
         if (resultCount > 0) {
             return ServerResponse.createBySuccess("上传文件成功");
@@ -85,8 +86,8 @@ public class FileServiceImpl implements IFileService {
     }
 
     @Override
-    public ServerResponse<List<String>> getUserMeetingFiles(Integer userId) {
-        List<String> fileList = meetingFileMapper.getUserFiles(userId);
+    public ServerResponse<List<MeetingFile>> getUserMeetingFiles(Integer userId) {
+        List<MeetingFile> fileList = meetingFileMapper.getUserFiles(userId);
         if (fileList == null) {
             return ServerResponse.createByErrorMessage("查找失败");
         }

@@ -21,5 +21,5 @@ public interface MeetingFileMapper {
 
     int deleteByMeetingId(Integer meetingId);
 
-    List<String> getUserFiles(Integer userId);
+    List<MeetingFile> getUserFiles(Integer userId);
 }

@@ -112,6 +112,7 @@ public class LiveServiceImpl implements ILiveService {
             for (OnlineMeetingUser user : list) {
                 if (user.getMemberId().intValue() == userId.intValue()) {
                     list.remove(user);
+                    break;
                 }
             }
         }

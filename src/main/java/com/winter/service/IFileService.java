@@ -13,5 +13,5 @@ public interface IFileService {
 
     ServerResponse<List<MeetingFile>> getMeetingFiles(Integer meetingId);
 
-    ServerResponse<List<String>> getUserMeetingFiles(Integer userId);
+    ServerResponse<List<MeetingFile>> getUserMeetingFiles(Integer userId);
 }

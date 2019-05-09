@@ -3,6 +3,7 @@ package com.winter.controller;
 import com.winter.common.Const;
 import com.winter.common.ResponseCode;
 import com.winter.common.ServerResponse;
+import com.winter.domain.MeetingFile;
 import com.winter.domain.User;
 import com.winter.service.IFileService;
 import com.winter.service.IUserService;
@@ -240,7 +241,7 @@ public class UserController {
      */
     @ResponseBody
     @RequestMapping(value = "/getMyFiles.do",method = RequestMethod.GET)
-    public ServerResponse<List<String>> getUserMeetingFiles(Integer userId, HttpServletRequest request) {
+    public ServerResponse<List<MeetingFile>> getUserMeetingFiles(Integer userId, HttpServletRequest request) {
         if (userId == null) {
             return ServerResponse.createByErrorMessage("参数错误");
         }
