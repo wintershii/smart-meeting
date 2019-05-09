@@ -82,10 +82,15 @@ public class LiveServiceImpl implements ILiveService {
         OnlineMeetingUser onlineMeetingUser = new OnlineMeetingUser();
         onlineMeetingUser.setLiveId(liveId);
         onlineMeetingUser.setMemberId(userId);
-        int resultCount = onlineMeetingUserMapper.insert(onlineMeetingUser);
+        int resultCount = 0;
+        if (onlineMeetingUserMapper.checkIfExist(liveId,userId) == 0) {
+             resultCount = onlineMeetingUserMapper.insert(onlineMeetingUser);
+        }
+
         if (resultCount > 0) {
             onlineMeetingMapper.updateOnlinePeopleNum(liveId);
-            ArrayList<OnlineMeetingUser> list = (ArrayList<OnlineMeetingUser>) SerializeUtil.unserialize(redisUtil.get(PropertiesUtil.getProperty("live_prefix")+liveId).getBytes());
+            ArrayList<OnlineMeetingUser> list = (ArrayList<OnlineMeetingUser>) SerializeUtil.unserialize(redisUtil.get(PropertiesUtil.getProperty("live_prefix")+liveId));
+
             list.add(onlineMeetingUser);
             redisUtil.setex(PropertiesUtil.getProperty("live_prefix")+liveId,60*120, new String(SerializeUtil.serialize(list)));
             UserAvatarInfo userAvatarInfo = userMapper.getUserAvatarInfo(userId);
@@ -100,10 +105,14 @@ public class LiveServiceImpl implements ILiveService {
     @Override
     public ServerResponse quitLive(Integer liveId, Integer userId) {
         String key = PropertiesUtil.getProperty("live_prefix")+liveId;
-        ArrayList<OnlineMeetingUser> list = (ArrayList<OnlineMeetingUser>) SerializeUtil.unserialize(redisUtil.get(key).getBytes());
-        for (OnlineMeetingUser user : list) {
-            if (user.getMemberId().intValue() == userId.intValue()) {
-                list.remove(user);
+        ArrayList<OnlineMeetingUser> list = (ArrayList<OnlineMeetingUser>) SerializeUtil.unserialize(redisUtil.get(key));
+        if (list.size() == 1 && (list.get(0).getMemberId()).intValue() == userId.intValue()) {
+            list.clear();
+        } else {
+            for (OnlineMeetingUser user : list) {
+                if (user.getMemberId().intValue() == userId.intValue()) {
+                    list.remove(user);
+                }
             }
         }
         if (list.size() == 0) {
@@ -129,8 +138,14 @@ public class LiveServiceImpl implements ILiveService {
             vo.setLiveName(tmpMeeting.getLiveName());
             vo.setStatus(tmpMeeting.getStatus());
             vo.setUserAvatarInfo(userMapper.getUserAvatarInfo(tmpMeeting.getCreateId()));
-            int onlineNum = ((ArrayList<OnlineMeetingUser>)SerializeUtil.unserialize(redisUtil.get(key).getBytes())).size();
-            vo.setOnlineNum(onlineNum);
+            String info = redisUtil.get(key);
+            if (info == null) {
+                vo.setOnlineNum(tmpMeeting.getOnlineNum());
+            } else {
+                ArrayList<OnlineMeetingUser> users = ((ArrayList<OnlineMeetingUser>)SerializeUtil.unserialize(info));
+                vo.setOnlineNum(users.size());
+            }
+            voList.add(vo);
         }
         return ServerResponse.createBySuccess(voList);
     }

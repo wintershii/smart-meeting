@@ -76,4 +76,11 @@
     from online_meeting_user
     where live_id = #{liveId}
   </select>
+
+  <select id="checkIfExist" resultType="int" parameterType="map">
+    select count(1)
+    from online_meeting_user
+    where live_id = #{liveId}
+    and member_id = #{userId}
+  </select>
 </mapper>

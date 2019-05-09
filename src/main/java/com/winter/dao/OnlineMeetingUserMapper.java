@@ -1,6 +1,7 @@
 package com.winter.dao;
 
 import com.winter.domain.OnlineMeetingUser;
+import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 
@@ -18,4 +19,6 @@ public interface OnlineMeetingUserMapper {
     int updateByPrimaryKey(OnlineMeetingUser record);
 
     List<Integer> selectAllUsers(Integer liveId);
+
+    int checkIfExist(@Param("liveId") Integer liveId, @Param("userId") Integer userId);
 }

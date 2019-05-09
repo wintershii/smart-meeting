@@ -24,7 +24,7 @@
     delete from online_meeting
     where id = #{id,jdbcType=INTEGER}
   </delete>
-  <insert id="insert" parameterType="com.winter.domain.OnlineMeeting" keyProperty="id">
+  <insert id="insert" parameterType="com.winter.domain.OnlineMeeting" keyProperty="id" useGeneratedKeys="true">
     insert into online_meeting (id, live_name, live_pwd, 
       create_id, online_num, status
       )

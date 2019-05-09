@@ -73,4 +73,16 @@ public class OnlineMeeting {
     public void setStatus(Integer status) {
         this.status = status;
     }
+
+    @Override
+    public String toString() {
+        return "OnlineMeeting{" +
+                "id=" + id +
+                ", liveName='" + liveName + '\'' +
+                ", livePwd='" + livePwd + '\'' +
+                ", createId=" + createId +
+                ", onlineNum=" + onlineNum +
+                ", status=" + status +
+                '}';
+    }
 }
