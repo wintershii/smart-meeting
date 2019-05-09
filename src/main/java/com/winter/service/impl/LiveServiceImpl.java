@@ -138,6 +138,8 @@ public class LiveServiceImpl implements ILiveService {
             vo.setId(tmpMeeting.getId());
             vo.setLiveName(tmpMeeting.getLiveName());
             vo.setStatus(tmpMeeting.getStatus());
+            vo.setStartTime(tmpMeeting.getStartTime());
+            vo.setEndTime(tmpMeeting.getEndTime());
             vo.setUserAvatarInfo(userMapper.getUserAvatarInfo(tmpMeeting.getCreateId()));
             String info = redisUtil.get(key);
             if (info == null) {
@@ -160,6 +162,8 @@ public class LiveServiceImpl implements ILiveService {
         vo.setLiveName(onlineMeeting.getLiveName());
         vo.setStatus(onlineMeeting.getStatus());
         vo.setOnlineNum(onlineMeeting.getOnlineNum());
+        vo.setStartTime(onlineMeeting.getStartTime());
+        vo.setEndTime(onlineMeeting.getEndTime());
         List<UserAvatarInfo> userList = new ArrayList<>();
         List<Integer> userIds = onlineMeetingUserMapper.selectAllUsers(liveId);
         for (Integer userId : userIds) {

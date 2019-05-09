@@ -1,5 +1,7 @@
 package com.winter.domain;
 
+import java.util.Date;
+
 public class OnlineMeeting {
     private Integer id;
 
@@ -13,13 +15,35 @@ public class OnlineMeeting {
 
     private Integer status;
 
-    public OnlineMeeting(Integer id, String liveName, String livePwd, Integer createId, Integer onlineNum, Integer status) {
+    private Date startTime;
+
+    private Date endTime;
+
+    public OnlineMeeting(Integer id, String liveName, String livePwd, Integer createId, Integer onlineNum, Integer status, Date startTime, Date endTime) {
         this.id = id;
         this.liveName = liveName;
         this.livePwd = livePwd;
         this.createId = createId;
         this.onlineNum = onlineNum;
         this.status = status;
+        this.startTime = startTime;
+        this.endTime = endTime;
+    }
+
+    public Date getStartTime() {
+        return startTime;
+    }
+
+    public void setStartTime(Date startTime) {
+        this.startTime = startTime;
+    }
+
+    public Date getEndTime() {
+        return endTime;
+    }
+
+    public void setEndTime(Date endTime) {
+        this.endTime = endTime;
     }
 
     public OnlineMeeting() {

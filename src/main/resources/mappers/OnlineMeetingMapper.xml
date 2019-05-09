@@ -9,10 +9,12 @@
       <arg column="create_id" javaType="java.lang.Integer" jdbcType="INTEGER" />
       <arg column="online_num" javaType="java.lang.Integer" jdbcType="INTEGER" />
       <arg column="status" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="start_time" javaType="java.util.Date" jdbcType="TIMESTAMP" />
+      <arg column="end_time" javaType="java.util.Date" jdbcType="TIMESTAMP" />
     </constructor>
   </resultMap>
   <sql id="Base_Column_List">
-    id, live_name, live_pwd, create_id, online_num, status
+    id, live_name, live_pwd, create_id, online_num, status,start_time, end_time
   </sql>
   <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
     select 
@@ -26,10 +28,11 @@
   </delete>
   <insert id="insert" parameterType="com.winter.domain.OnlineMeeting" keyProperty="id" useGeneratedKeys="true">
     insert into online_meeting (id, live_name, live_pwd, 
-      create_id, online_num, status
+      create_id, online_num, status,start_time
       )
     values (default , #{liveName,jdbcType=VARCHAR}, #{livePwd,jdbcType=VARCHAR},
-      #{createId,jdbcType=INTEGER}, #{onlineNum,jdbcType=INTEGER}, #{status,jdbcType=INTEGER}
+      #{createId,jdbcType=INTEGER}, #{onlineNum,jdbcType=INTEGER}, #{status,jdbcType=INTEGER},
+      now()}
       )
   </insert>
   <insert id="insertSelective" parameterType="com.winter.domain.OnlineMeeting">
@@ -108,7 +111,7 @@
 
   <update id="updateStatus" parameterType="integer">
     update online_meeting
-    set status = 0
+    set status = 0, end_time = now()
     where id = #{liveId}
   </update>
 

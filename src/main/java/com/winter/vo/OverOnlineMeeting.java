@@ -1,5 +1,6 @@
 package com.winter.vo;
 
+import java.util.Date;
 import java.util.List;
 
 public class OverOnlineMeeting {
@@ -12,6 +13,26 @@ public class OverOnlineMeeting {
     private Integer onlineNum;
 
     private List<UserAvatarInfo> meetingMembers;
+
+    private Date startTime;
+
+    private Date endTime;
+
+    public Date getStartTime() {
+        return startTime;
+    }
+
+    public void setStartTime(Date startTime) {
+        this.startTime = startTime;
+    }
+
+    public Date getEndTime() {
+        return endTime;
+    }
+
+    public void setEndTime(Date endTime) {
+        this.endTime = endTime;
+    }
 
     public Integer getOnlineNum() {
         return onlineNum;
