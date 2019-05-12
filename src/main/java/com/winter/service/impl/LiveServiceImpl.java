@@ -1,5 +1,6 @@
 package com.winter.service.impl;
 
+import com.winter.common.Const;
 import com.winter.common.ServerResponse;
 import com.winter.dao.OnlineMeetingMapper;
 import com.winter.dao.OnlineMeetingUserMapper;
@@ -75,6 +76,11 @@ public class LiveServiceImpl implements ILiveService {
     @Override
     @Transactional
     public ServerResponse<UserAvatarInfo> joinLive(Integer liveId, Integer userId,String password) {
+        if (checkMeetingOver(liveId)) {
+            return ServerResponse.createByErrorMessage("该会议已结束");
+        }
+
+
         String realPwd = onlineMeetingMapper.getPassword(liveId);
         if (!realPwd.equals(password)) {
             return ServerResponse.createByErrorMessage("密码错误!");
@@ -82,23 +88,23 @@ public class LiveServiceImpl implements ILiveService {
         OnlineMeetingUser onlineMeetingUser = new OnlineMeetingUser();
         onlineMeetingUser.setLiveId(liveId);
         onlineMeetingUser.setMemberId(userId);
-        int resultCount = 0;
         if (onlineMeetingUserMapper.checkIfExist(liveId,userId) == 0) {
-             resultCount = onlineMeetingUserMapper.insert(onlineMeetingUser);
-        }
-
-        if (resultCount > 0) {
+            onlineMeetingUserMapper.insert(onlineMeetingUser);
             onlineMeetingMapper.updateOnlinePeopleNum(liveId);
-            ArrayList<OnlineMeetingUser> list = (ArrayList<OnlineMeetingUser>) SerializeUtil.unserialize(redisUtil.get(PropertiesUtil.getProperty("live_prefix")+liveId));
-
-            list.add(onlineMeetingUser);
-            redisUtil.setex(PropertiesUtil.getProperty("live_prefix")+liveId,60*120, new String(SerializeUtil.serialize(list)));
-            UserAvatarInfo userAvatarInfo = userMapper.getUserAvatarInfo(userId);
-            if (userAvatarInfo != null) {
-                return ServerResponse.createBySuccess("加入直播会议成功!",userAvatarInfo);
-            }
         }
-        return ServerResponse.createByErrorMessage("加入直播会议失败!");
+
+        ArrayList<OnlineMeetingUser> list = (ArrayList<OnlineMeetingUser>) SerializeUtil.unserialize(redisUtil.get(PropertiesUtil.getProperty("live_prefix") + liveId));
+        if (list == null) {
+            return ServerResponse.createByErrorMessage("未找到远程会议信息!");
+        }
+        list.add(onlineMeetingUser);
+        redisUtil.setex(PropertiesUtil.getProperty("live_prefix") + liveId, 60 * 120, new String(SerializeUtil.serialize(list)));
+        UserAvatarInfo userAvatarInfo = userMapper.getUserAvatarInfo(userId);
+        if (userAvatarInfo != null) {
+            return ServerResponse.createBySuccess("加入直播会议成功!", userAvatarInfo);
+        } else {
+            return ServerResponse.createByErrorMessage("未查找到用户信息!");
+        }
     }
 
 
@@ -172,4 +178,10 @@ public class LiveServiceImpl implements ILiveService {
         vo.setMeetingMembers(userList);
         return ServerResponse.createBySuccess(vo);
     }
+
+    private boolean checkMeetingOver(Integer liveId) {
+        int status = onlineMeetingMapper.checkStatus(liveId);
+        return status != Const.OnlineMeetingStatus.OVER;
+    }
+
 }

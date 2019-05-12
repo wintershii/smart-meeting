@@ -32,7 +32,7 @@
       )
     values (default , #{liveName,jdbcType=VARCHAR}, #{livePwd,jdbcType=VARCHAR},
       #{createId,jdbcType=INTEGER}, #{onlineNum,jdbcType=INTEGER}, #{status,jdbcType=INTEGER},
-      now()}
+      now()
       )
   </insert>
   <insert id="insertSelective" parameterType="com.winter.domain.OnlineMeeting">
@@ -131,4 +131,10 @@
     from online_meeting
     where id = #{liveId}
   </select>
+
+    <select id="checkStatus" parameterType="integer" resultType="int">
+        select status
+        from online_meeting
+        where id = #{liveId}
+    </select>
 </mapper>

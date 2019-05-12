@@ -24,4 +24,6 @@ public interface OnlineMeetingMapper {
     List<OnlineMeeting> selectAll();
 
     String getPassword(Integer liveId);
+
+    int checkStatus(Integer liveId);
 }

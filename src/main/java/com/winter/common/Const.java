@@ -44,5 +44,8 @@ public class Const {
         static final int LEAVE = 4;
     }
 
-
+    public interface OnlineMeetingStatus{
+        static final int ONGOING = 1;
+        static final int OVER = 0;
+    }
 }
