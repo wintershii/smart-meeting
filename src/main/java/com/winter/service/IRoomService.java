@@ -30,4 +30,6 @@ public interface IRoomService {
     ServerResponse deleteRoom(Integer roomId);
 
     ServerResponse updateRoom(Room room);
+
+    ServerResponse<Integer> getIdByRoom(String roomNumber);
 }

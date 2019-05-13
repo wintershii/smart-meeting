@@ -79,8 +79,6 @@ public class LiveServiceImpl implements ILiveService {
         if (checkMeetingOver(liveId)) {
             return ServerResponse.createByErrorMessage("该会议已结束");
         }
-
-
         String realPwd = onlineMeetingMapper.getPassword(liveId);
         if (!realPwd.equals(password)) {
             return ServerResponse.createByErrorMessage("密码错误!");
@@ -179,9 +177,11 @@ public class LiveServiceImpl implements ILiveService {
         return ServerResponse.createBySuccess(vo);
     }
 
+
     private boolean checkMeetingOver(Integer liveId) {
         int status = onlineMeetingMapper.checkStatus(liveId);
-        return status != Const.OnlineMeetingStatus.OVER;
+        return status == Const.OnlineMeetingStatus.OVER;
     }
+
 
 }

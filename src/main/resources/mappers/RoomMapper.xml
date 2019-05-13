@@ -160,4 +160,10 @@
     set machine_number = #{machineNumber}, update_time = now()
     where room_number = #{roomNumber}
   </update>
+
+  <select id="getIdByRoom" resultType="integer" parameterType="string">
+    select id
+    from smart_room
+    where room_number = #{roomNumber}
+  </select>
 </mapper>

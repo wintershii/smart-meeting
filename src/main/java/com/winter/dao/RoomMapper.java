@@ -33,4 +33,6 @@ public interface RoomMapper {
 
     int bindAccessMachineNumber(@Param("roomNumber") String roomNumber, @Param("machineNumber") String machineNumber);
 
+    Integer getIdByRoom(String roomNumber);
+
 }

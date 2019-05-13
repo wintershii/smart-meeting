@@ -5,6 +5,7 @@ import com.winter.domain.Meeting;
 import com.winter.domain.Room;
 import com.winter.service.IRoomService;
 import com.winter.vo.RoomVo;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -55,7 +56,14 @@ public class RoomController {
         return ServerResponse.createByErrorMessage("查询失败");
     }
     
-
+    @ResponseBody
+    @RequestMapping(value = "/getIdByRoom.do",method = RequestMethod.GET)
+    public ServerResponse<Integer> getIdByRoom(String roomNumber) {
+        if (StringUtils.isBlank(roomNumber)) {
+            return ServerResponse.createByErrorMessage("参数错误");
+        }
+        return roomService.getIdByRoom(roomNumber);
+    }
 
 
 

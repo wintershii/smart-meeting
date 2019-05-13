@@ -167,6 +167,13 @@ public class RoomServiceImpl implements IRoomService {
         return ServerResponse.createByErrorMessage("更新会议室信息失败");
     }
 
+
+    @Override
+    public ServerResponse<Integer> getIdByRoom(String roomNumber) {
+        Integer roomId = roomMapper.getIdByRoom(roomNumber);
+        return ServerResponse.createBySuccess(roomId);
+    }
+
     /**
      * 将room对象转为roomVo对象
      * @param rooms

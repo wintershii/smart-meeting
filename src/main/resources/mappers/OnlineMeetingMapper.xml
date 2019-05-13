@@ -118,6 +118,7 @@
   <update id="updateOnlinePeopleNum" parameterType="integer">
     update online_meeting
     set online_num = online_num + 1
+    where id = #{liveId}
   </update>
 
   <select id="selectAll" resultType="list" resultMap="BaseResultMap">
