@@ -41,7 +41,7 @@ public class UserMeetingServiceImpl implements IUserMeetingService {
 
     @Override
     public ServerResponse uploadUserMeetingStatus(Integer userId, Integer meetingId, Integer userStatus) {
-        int resultCount = userMeetingMapper.uploadUserMeetingStatus(userId,meetingId,userId);
+        int resultCount = userMeetingMapper.uploadUserMeetingStatus(userId,meetingId,userStatus);
         if (resultCount > 0) {
             return ServerResponse.createBySuccessMessage("签到成功!");
         }
