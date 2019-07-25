@@ -10,6 +10,7 @@ import javax.websocket.server.ServerEndpoint;
 import java.util.Map;
 import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
+import java.util.concurrent.Future;
 
 
 //ServerEndpoint它的功能主要是将目前的类定义成一个websocket服务器端。注解的值将被用于监听用户连接的终端访问URL地址。
@@ -39,6 +40,7 @@ public class WebSocketServer {
     public void onOpen(@PathParam("id") String userId, Session session){
         //根据业务,自定义逻辑实现
         this.session = session;
+
         webSocketMap.put(userId,this);  //将当前对象放入map中
         addOnLineCount();  //在线人数加一
         LOGGER.info("有新的连接加入,id:{}!当前在线人数:{}",userId,getOnLineCount());

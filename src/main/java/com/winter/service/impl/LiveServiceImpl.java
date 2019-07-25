@@ -161,8 +161,11 @@ public class LiveServiceImpl implements ILiveService {
     @Override
     public ServerResponse<OverOnlineMeeting> getLiveSpecificInfo(Integer liveId) {
         OnlineMeeting onlineMeeting = onlineMeetingMapper.selectByPrimaryKey(liveId);
+        if (onlineMeeting == null) {
+            return ServerResponse.createByErrorMessage("会议不存在!");
+        }
         OverOnlineMeeting vo = new OverOnlineMeeting();
-        vo.setId(onlineMeeting.getId());
+        vo.setId(onlineMeeting.getId());//NPE
         vo.setLiveName(onlineMeeting.getLiveName());
         vo.setStatus(onlineMeeting.getStatus());
         vo.setOnlineNum(onlineMeeting.getOnlineNum());
